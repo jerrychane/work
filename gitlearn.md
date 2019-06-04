@@ -1,6 +1,4 @@
 # Git 学习笔记 #
- 
-**2019.05.30 Thur. 22Weeks Beijing**<br>
 **1.创建版本库**
 初始化一个Git仓库，使用git init命令<br>
 添加文件到Git仓库，分两步：<br>
@@ -64,7 +62,6 @@ Git跟踪并管理的是**修改**，而非文件。每次修改，如果不用g
 注意：**从来没有被添加到版本库就被删除的文件，是无法恢复的**！<br>
 命令git rm用于删除一个文件，如果一个文件已经被提交到版本库，那么你永远不要担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。<br>
 
-**2019.05.31 Fri. 22Weeks Beijing**<br>
 **3. 远程仓库**<br>
 **第1步：创建SSH Key**。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_ras和id_rsa_pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell(Windows下打开Git Bash)，创建SSH Key:<br>
 
@@ -165,7 +162,6 @@ Git的标签是版本库的快照，指向某个commit指针(与分支的区别�
 命令 `git tag`   可以查看所有标签<br>
 命令 `git show <tagname>`  可以看到标签说明文字<br>
 
-**2019/6/2 21:42:58  Sun. 22Weeks Beijing**
 
 **10.2 操作标签**<br>
 删除标签：`git tag -d <tagname>`<br>
@@ -192,7 +188,6 @@ Git的标签是版本库的快照，指向某个commit指针(与分支的区别�
 强制添加被.gitignore忽略的文件 `git add -f filename` <br>
 检查.gitignore文件的错误 `git check-ignore -v filename`
 
-**2019/6/3 17:30:57 Mon. 23Weeks Beijing** <br>
 
 **11.2 配置别名** <br>
 
@@ -214,11 +209,3 @@ Git的标签是版本库的快照，指向某个commit指针(与分支的区别�
 第四步，初始化Git仓库，先选定一个目录作为Git仓库，假定是/srv/simple.git，在/srv目录下输入命令：`git init --bare simple.git` ，把owner改为git,防止用户直接登录服务器上去改工作区: `chown -R git:git simple.git`<br>
 第五步，禁用shell登录,出于安全考虑，第二步创建git用户不允许登录shell，可以通过编辑/etc/passwd文件完成。将`git:x:1001:1001:,,,:/home/git:/bin/bash` 改为`git:x:1001:1001:,,,:/home/git:/bin/git-shell`<br>
 第六步，克隆远程仓库：git clone
-
-
-
-
-
-
-
-

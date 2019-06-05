@@ -161,7 +161,12 @@ Git的标签是版本库的快照，指向某个commit指针(与分支的区别�
 命令 `git tag`   可以查看所有标签<br>
 命令 `git show <tagname>`  可以看到标签说明文字<br>
 
+<<<<<<< HEAD
 **5.2 操作标签**<br>
+=======
+
+**10.2 操作标签**<br>
+>>>>>>> d5bb06f1ae9f4616cdf73622cd43b0b21c2d09b2
 删除标签：`git tag -d <tagname>`<br>
 推送某个标签到远程：`git push origin <tagname>`<br>
 推送所有标签到远程：`git push origin --tags`<br>
@@ -186,7 +191,12 @@ Git的标签是版本库的快照，指向某个commit指针(与分支的区别�
 强制添加被.gitignore忽略的文件 `git add -f filename` <br>
 检查.gitignore文件的错误 `git check-ignore -v filename`
 
+<<<<<<< HEAD
 **6.2 配置别名** <br>
+=======
+
+**11.2 配置别名** <br>
+>>>>>>> d5bb06f1ae9f4616cdf73622cd43b0b21c2d09b2
 
 设置别名的方法：<br>
  `git config --global alias.co checkout` <br>
@@ -206,6 +216,7 @@ Git的标签是版本库的快照，指向某个commit指针(与分支的区别�
 第四步，初始化Git仓库，先选定一个目录作为Git仓库，假定是/srv/simple.git，在/srv目录下输入命令：`git init --bare simple.git` ，把owner改为git,防止用户直接登录服务器上去改工作区: `chown -R git:git simple.git`<br>
 第五步，禁用shell登录,出于安全考虑，第二步创建git用户不允许登录shell，可以通过编辑/etc/passwd文件完成。将`git:x:1001:1001:,,,:/home/git:/bin/bash` 改为`git:x:1001:1001:,,,:/home/git:/bin/git-shell`<br>
 第六步，克隆远程仓库：git clone
+<<<<<<< HEAD
 
 ### 后记补充 ###
 **1.删除远程Github库上的文件夹或文件命令**<br>
@@ -222,3 +233,5 @@ d.将更新同步到远程仓库：`git push -u origin master`
 
 
 
+=======
+>>>>>>> d5bb06f1ae9f4616cdf73622cd43b0b21c2d09b2

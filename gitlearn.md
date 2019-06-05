@@ -1,6 +1,4 @@
 # Git 学习笔记 #
- 
-**2019.05.30 Thur. 22Weeks Beijing**<br>
 **1.创建版本库**
 初始化一个Git仓库，使用git init命令<br>
 添加文件到Git仓库，分两步：<br>
@@ -64,7 +62,6 @@ Git跟踪并管理的是**修改**，而非文件。每次修改，如果不用g
 注意：**从来没有被添加到版本库就被删除的文件，是无法恢复的**！<br>
 命令git rm用于删除一个文件，如果一个文件已经被提交到版本库，那么你永远不要担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。<br>
 
-**2019.05.31 Fri. 22Weeks Beijing**<br>
 **3. 远程仓库**<br>
 **第1步：创建SSH Key**。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_ras和id_rsa_pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell(Windows下打开Git Bash)，创建SSH Key:<br>
 
@@ -110,7 +107,6 @@ Git用<<<<<<<,=======,>>>>>>>标记处不同分支的内容<br>
 
     git log --graph --pretty=oneline --abbrev-commit命令可以看到分支合并图
 
-**2019.06.01 Sat. 22Weeks Beijing**<br>
 **4.3 分支管理策略**<br>
 在实际开发中，我们应该按照几个基本原则进行分支管理：<br>
 1.master分支应该是非常稳定的，仅用来发布新版本，平时不能在上面干活；<br>
@@ -165,25 +161,23 @@ Git的标签是版本库的快照，指向某个commit指针(与分支的区别�
 命令 `git tag`   可以查看所有标签<br>
 命令 `git show <tagname>`  可以看到标签说明文字<br>
 
-**2019/6/2 21:42:58  Sun. 22Weeks Beijing**
-
-**10.2 操作标签**<br>
+**5.2 操作标签**<br>
 删除标签：`git tag -d <tagname>`<br>
 推送某个标签到远程：`git push origin <tagname>`<br>
 推送所有标签到远程：`git push origin --tags`<br>
 删除远程标签的命令：先从本地删除 `git tag -d <tagname>` 然后从远程删除 `git push origin :refs/tags/<tagname>` 例如 `git push origin:refs/tags/v0.9`
 
-**10.3 使用Github**<br> 
+**5.3 使用Github**<br> 
 如何参与Github上的开源项目呢？例如bootstrap，可以访问其github项目主页，点"Fork"就在自己的账号下克隆了一个bootstrap仓库，然后从自己的账号下clone:`git clone git@github:jerrychane/bootstrap.git`<br>
 拥有Fork后的仓库的读写权限；可以推送pull request给官方仓库来贡献代码。
 
-**10.4 使用码云**<br>
+**5.4 使用码云**<br>
 如果希望体验Git飞一般的速度，可以使用国内的Git托管服务 —— **码云([gitee.com](https://gitee.com/))** , 基本命令与Git一样，只是远程库的名字叫gitee不叫origin。
 
-**11. 自定义Git**<br>
+**6. 自定义Git**<br>
 在安装Git一节中，已经配置了user.name和user.email，实际上Git还有很多可配置项，例如，让Git显示颜色，会让命令输出看起来更醒目：`git config --global color.ui true`
 
-**11.1 忽略特殊文件**<br>
+**6.1 忽略特殊文件**<br>
 在Git工作区目录下创建一个特殊的.gitignore文件，然后把要忽略的文件填进去，Git就会自动忽略这些文件，不需要从头写.gitignore文件，Github已经为我们准备了各种配置文件，只需要组合一下就可以使用了。<br>
 忽略文件的原则是：<br>
 1. 忽略操作系统自动生成的文件，比如缩略图等；
@@ -192,9 +186,7 @@ Git的标签是版本库的快照，指向某个commit指针(与分支的区别�
 强制添加被.gitignore忽略的文件 `git add -f filename` <br>
 检查.gitignore文件的错误 `git check-ignore -v filename`
 
-**2019/6/3 17:30:57 Mon. 23Weeks Beijing** <br>
-
-**11.2 配置别名** <br>
+**6.2 配置别名** <br>
 
 设置别名的方法：<br>
  `git config --global alias.co checkout` <br>
@@ -206,7 +198,7 @@ Git的标签是版本库的快照，指向某个commit指针(与分支的区别�
 配置文件<br>
 配置Git的时候，加上--global是针对当前用户起作用的，如果不加，只针对当前仓库自作用。配置文件放在.git/config文件中。别名就在[alias]后面，要删除别名，直接对应的行删掉即可。
 
-**11.3 搭建Git服务器**
+**6.3 搭建Git服务器**
 搭建Git服务器需要准备一台运行Linux的机器，推荐Ubuntu或Debian,这样，通过几条简单的apt命令就可以完成安装。假设你已经有sudo权限的用户账号，下面正式开始安装<br>
 第一步,安装git:`apt-get isntall git` <br>
 第二步，创建一个git用户，用来运行git服务： `adduser git`<br>
@@ -214,6 +206,14 @@ Git的标签是版本库的快照，指向某个commit指针(与分支的区别�
 第四步，初始化Git仓库，先选定一个目录作为Git仓库，假定是/srv/simple.git，在/srv目录下输入命令：`git init --bare simple.git` ，把owner改为git,防止用户直接登录服务器上去改工作区: `chown -R git:git simple.git`<br>
 第五步，禁用shell登录,出于安全考虑，第二步创建git用户不允许登录shell，可以通过编辑/etc/passwd文件完成。将`git:x:1001:1001:,,,:/home/git:/bin/bash` 改为`git:x:1001:1001:,,,:/home/git:/bin/git-shell`<br>
 第六步，克隆远程仓库：git clone
+
+### 后记补充 ###
+**1.删除远程Github库上的文件夹或文件命令**<br>
+a.将远程仓库项目拉下来：`git pull origin master` <br>
+b.删除指定文件或文件夹：`git rm -r --cached filename`（可以用dir命令查看有哪些文件，注意--cached是保留git仓库的文件，如果没有这个命令，git仓库的文件也会被删除）<br>
+c.提交本次修改的备注：`git commit -m "提交的备注"`<br>
+d.将更新同步到远程仓库：`git push -u origin master`
+
 
 
 

@@ -1,2 +1,2 @@
-# learngit
-学习git版本控制管理工具
+# work and learn
+日常工作和学习记录

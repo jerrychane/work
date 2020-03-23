@@ -1,3 +1,4 @@
 .git
 .Archive
 /*.bak
+node_modules

@@ -75,3 +75,8 @@ class AnswerRadioInput extends Component {
 AnswerRadioInput.propTypes: {
     onChanged: React.PropTypes.func.isRequired
 };
+
+shouldComponentWillUpdate(nextProps,nextState) {
+    if(this.props.data !== nextProps.data) {return true;}
+    return fasle;
+}

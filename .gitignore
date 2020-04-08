@@ -3,3 +3,6 @@
 /*.bak
 node_modules
 bleeding-edge-react-sample-app.github.io
+yarn.lock
+.idea
+yarn-error.log

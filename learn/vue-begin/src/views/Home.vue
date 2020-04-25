@@ -55,7 +55,9 @@ export default {
     };
   },
   components: {},
-  mounted () {},
+  mounted () {
+    this.lists = this.$store.state.lists;
+  },
   methods: {
     submit () {
       this.isShow = false;
@@ -66,6 +68,7 @@ export default {
       // ... 扩展运算符
       // obj.name = this.unit.name; obj.url = this.unit.url; obj.type = this.unit.type; obj.price = this.unit.price;
       this.lists.push({ ...this.unit });
+      this.$store.commit('setList',this.lists);
       this.unit.name = "";
       this.unit.url = "";
       this.unit.type = "";
@@ -80,12 +83,5 @@ export default {
 </script>
 
 <style lang="scss">
-.left {
-  float: left;
-  width: 40%;
-}
-.right {
-  float: left;
-  width: 60%;
-}
+
 </style>

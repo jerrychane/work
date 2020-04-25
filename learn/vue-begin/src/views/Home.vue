@@ -24,14 +24,14 @@
       <div class="info" v-else>
         {{unit.name}}-{{unit.url}}-{{unit.type}}-{{unit.price}}
         <div class="ctrl">
-          <button>添加</button>
-          <button>取消</button>
+          <button type="button" @click="add">添加</button>
+          <button type="button" @click="cancel">取消</button>
         </div>
       </div>
     </div>
     <div class="right">
       <ul>
-        <li v-for="(item,index) in lists" :key="index">{{unit.name}}-{{unit.type}}-{{unit.price}}</li>
+        <li v-for="(item,index) in lists" :key="index">{{item.name}}-{{item.type}}-{{item.price}}</li>
       </ul>
     </div>
   </div>
@@ -41,7 +41,7 @@
 // @ is an alias to /src
 export default {
   name: "home",
-  data() {
+  data () {
     return {
       msg: "hello world",
       isShow: true,
@@ -55,10 +55,25 @@ export default {
     };
   },
   components: {},
-  mounted() {},
+  mounted () {},
   methods: {
-    submit() {
+    submit () {
       this.isShow = false;
+    },
+    add () {
+      // 添加 unit,菜单项目到list列表
+      // let obj = new Object()
+      // ... 扩展运算符
+      // obj.name = this.unit.name; obj.url = this.unit.url; obj.type = this.unit.type; obj.price = this.unit.price;
+      this.lists.push({ ...this.unit });
+      this.unit.name = "";
+      this.unit.url = "";
+      this.unit.type = "";
+      this.unit.price = "";
+      this.isShow = true;
+    },
+    cancel () {
+      this.isShow = true;
     }
   }
 };

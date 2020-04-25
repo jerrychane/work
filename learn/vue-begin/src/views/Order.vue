@@ -15,9 +15,9 @@
         <ul>
             <li v-for="(item,index) in orders" :key="'order'+ index"> 
                 菜品名称: {{item.name}} - 菜品单价: {{item.price}} - 单项总价: {{item.price * item.num}}
-
             </li>
         </ul>
+        <p>菜单总价: {{total}}</p>
     </div>
   </div>
 </template>
@@ -38,6 +38,13 @@ export default {
   computed : {
       orders () {
           return _.filter(this.lists,(item)=> typeof item.num !== "undefined" && item.num >0)
+      },
+      total () {
+         let sum = 0;
+         _.each(this.orders,(item)=>{
+             sum += item.price * item.num;
+         }) 
+         return sum;
       }
   },
   methods: {

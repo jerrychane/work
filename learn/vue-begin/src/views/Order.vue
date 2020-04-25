@@ -11,17 +11,34 @@
         </li>
       </ul>
     </div>
-    <div class="right">计算部分</div>
+    <div class="right">计算部分
+        <ul>
+            <li v-for="(item,index) in orders" :key="'order'+ index"> 
+                菜品名称: {{item.name}} - 菜品单价: {{item.price}} - 单项总价: {{item.price * item.num}}
+
+            </li>
+        </ul>
+    </div>
   </div>
 </template>
 
 <script>
+import _ from 'lodash';
 export default {
   name: "order",
   data() {
     return {
       lists: this.$store.state.lists
     };
+  },
+//   mounted () {
+//      let arr = _.filter([1,2,3],(item)=>item>1);
+//      console.log(arr);
+//   },
+  computed : {
+      orders () {
+          return _.filter(this.lists,(item)=> typeof item.num !== "undefined" && item.num >0)
+      }
   },
   methods: {
     minus(item, index) {

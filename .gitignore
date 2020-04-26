@@ -6,3 +6,4 @@ bleeding-edge-react-sample-app.github.io
 yarn.lock
 .idea
 yarn-error.log
+package-lock.json

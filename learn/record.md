@@ -47,3 +47,11 @@ Request （请求）、Response （响应）
 **4.Koa开发RESTful接口**
 
 Koa 中间件：路由 koa-router 、协议解析 koa-body、跨域处理 @koa/cors
+
+```shell
+npm install -S koa-body@4.1.0 @koa/cors@3.0.0
+```
+
+路由路径前缀设置：`router.prefix('/api');`
+
+获取 GET 请求中的 params:

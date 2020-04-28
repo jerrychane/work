@@ -72,3 +72,12 @@ JSON.parse('{"name":"imooc","age":"28"}'); // 括号里第1个为单引号
 JSON.stringify(objJson,null,2);// JSON.stringify(value,?replacer,?space);
 ```
 
+##### 5.开发目录结构
+
+按照功能模块进行区分 ; 路由压缩：koa-combine-routers ; 静态资源： koa-static ; 
+
+```
+npm install koa-combine-routers@4.0.2 -S
+yarn add koa-combine-routers@4.0.2
+```
+

@@ -48,10 +48,27 @@ Request （请求）、Response （响应）
 
 Koa 中间件：路由 koa-router 、协议解析 koa-body、跨域处理 @koa/cors
 
-```shell
+```
 npm install -S koa-body@4.1.0 @koa/cors@3.0.0
 ```
 
 路由路径前缀设置：`router.prefix('/api');`
 
-获取 GET 请求中的 params:
+获取 GET 请求中的 params:`const params = ctx.request.query;`
+
+koa-json 用来格式json数据的中间件
+
+```
+# 安装
+npm install -S koa-json@2.0.2
+# 使用
+app.use(json({ pretty: false, param: 'pretty' }));
+```
+
+格式化字符串数据的第2个方法
+
+```
+JSON.parse('{"name":"imooc","age":"28"}'); // 括号里第1个为单引号
+JSON.stringify(objJson,null,2);// JSON.stringify(value,?replacer,?space);
+```
+

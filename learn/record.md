@@ -78,6 +78,13 @@ JSON.stringify(objJson,null,2);// JSON.stringify(value,?replacer,?space);
 
 ```
 npm install koa-combine-routers@4.0.2 -S
-yarn add koa-combine-routers@4.0.2
+yarn add koa-combine-routers@^4.0.2
+```
+
+Koa 安全 header 处理和静态文件处理
+
+```
+npm install koa-helmet@4.2.0 -S
+npm install koa-static@5.0.0 -S
 ```
 

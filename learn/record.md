@@ -117,3 +117,68 @@ yarn add webpack@^4.38.0 webpack-cli@^3.3.6
 yarn add clean-webpack-plugin@^3.0.0 webpack-node-externals@^1.7.2 babel-loader@^8.0.6 @babel/core@^7.5.5 @babel/preset-env@^7.5.5 @babel/node@^7.5.5 cross-env@^5.2.0 
 ```
 
+创建 webpack.config.js 和 .babelrc
+
+```
+# webpack.config.js
+const path = require('path');
+const nodeExternals = require('webpack-node-externals');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const webpackconfig = {
+    target: "node",
+    mode: "development",
+    entry: {
+        server: path.join(__dirname, "./src/index.js")
+    },
+    output: {
+        filename: "[name].bundle.js",
+        path: path.join(__dirname, "./dist")
+    },
+    devtool: "eval-source-map",
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                use: {
+                    loader: "babel-loader"
+                },
+                exclude: [path.join(__dirname, './node_modules')]
+            }
+        ]
+    },
+    externals: [nodeExternals()],
+    plugins: [
+        new CleanWebpackPlugin()
+    ],
+    node: {
+        console: true,
+        global: true,
+        process: true,
+        Buffer: true,
+        __filename: true,
+        __dirname: true,
+        setImmediate: true,
+        path: true
+    }
+}
+
+module.exports = webpackconfig;
+```
+
+```
+# .babelrc
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "node": "current"
+                }
+            }
+        ]
+    ]
+}
+```
+

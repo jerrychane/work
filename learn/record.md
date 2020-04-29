@@ -77,6 +77,13 @@ JSON.stringify(objJson,null,2);// JSON.stringify(value,?replacer,?space);
 按照功能模块进行区分 ; 路由压缩：koa-combine-routers ; 静态资源： koa-static ; 
 
 ```
+├─public 
+└─src 
+  ├─api 
+  └─routes 
+```
+
+```
 npm install koa-combine-routers@4.0.2 -S
 yarn add koa-combine-routers@^4.0.2
 ```
@@ -86,5 +93,27 @@ Koa 安全 header 处理和静态文件处理
 ```
 npm install koa-helmet@4.2.0 -S
 npm install koa-static@5.0.0 -S
+```
+
+**6.Koa配置开发热加载、ES6语法支持&webpack配置**
+
+第一步，实现开发热加载：
+
+```
+npm install nodemon@1.19.1 -S
+yarn add nodemon@^1.19.1
+# 查看 nodemon 版本，类似webpack
+npx nodemon --version // 等价于 ./node_modules/.bin/nodemon --version
+# 实现开发热加载
+npx nodemon src/index.js
+```
+
+此时 package.json 中可加入 "start":"nodemon src/index.js"命令，执行npm run start命令，实现真正的热加载方式。
+
+第二步，实现ES6语法支持：
+
+```
+yarn add webpack@^4.38.0 webpack-cli@^3.3.6
+yarn add clean-webpack-plugin@^3.0.0 webpack-node-externals@^1.7.2 babel-loader@^8.0.6 @babel/core@^7.5.5 @babel/preset-env@^7.5.5 @babel/node@^7.5.5 cross-env@^5.2.0 
 ```
 

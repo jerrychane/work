@@ -31,5 +31,9 @@
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-node-externals": "^1.7.2"
+  },
+  "devDependencies": {
+    "terser-webpack-plugin": "^1.4.1",
+    "webpack-merge": "^4.2.1"
   }
 }

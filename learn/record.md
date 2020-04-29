@@ -182,3 +182,9 @@ module.exports = webpackconfig;
 }
 ```
 
+配置完成后，执行 npx webpakc 打包成功后，接下来就可以在 src/index.js 中书写 ES6 语法，执行 npx babel-node src/index.js 启动；对于 nodemon,默认是使用commonjs规范，如何使用nodemon的热更新呢？
+
+```
+ "start:es6":"npx nodemon --exec babel-node src/index.js",
+```
+

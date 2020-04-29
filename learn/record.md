@@ -188,3 +188,11 @@ module.exports = webpackconfig;
  "start:es6":"npx nodemon --exec babel-node src/index.js",
 ```
 
+**7.如何调试webpack和配置VSCode**
+
+```
+npx node --inspect-brk ./node_modules/webpack/bin/webpack.js --inline --progress
+```
+
+在浏览器中输入 chrome://inspect/#devices , 便可进行调试；
+

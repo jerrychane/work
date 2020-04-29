@@ -196,3 +196,17 @@ npx node --inspect-brk ./node_modules/webpack/bin/webpack.js --inline --progress
 
 在浏览器中输入 chrome://inspect/#devices , 便可进行调试；
 
+**8.优化Webpack配置，npm 构建脚本**
+
+```
+npm install -g npm-check-updates@3.1.20
+ncu // package.json 中版本包的更新情况
+ncu -u // 更新package.json 中所有依赖包版本
+```
+
+合并中间件的中间件 koa-compose
+
+```
+npm install koa-compose@4.1.0 -S
+```
+

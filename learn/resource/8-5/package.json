@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "start:es6":"nodemon --exec babel-node src/index.js",
+    "start:es6": "nodemon --exec babel-node src/index.js",
     "webpack:debug": "node --inspect-brk ./node_modules/webpack/bin/webpack.js --inline --progress"
   },
   "keywords": [],
@@ -22,12 +22,13 @@
     "koa": "^2.7.0",
     "koa-body": "^4.1.0",
     "koa-combine-routers": "^4.0.2",
+    "koa-compose": "^4.1.0",
     "koa-helmet": "4.2.0",
     "koa-json": "^2.0.2",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "nodemon": "^1.19.1",
-    "webpack": "^4.38.0",
+    "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-node-externals": "^1.7.2"
   }

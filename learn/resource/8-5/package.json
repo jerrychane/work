@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon src/index.js",
     "start:es6": "nodemon --exec babel-node src/index.js",
-    "webpack:debug": "node --inspect-brk ./node_modules/webpack/bin/webpack.js --inline --progress"
+    "webpack:debug": "node --inspect-brk ./node_modules/webpack/bin/webpack.js --inline --progress",
+    "build": "cross-env NODE_ENV=prod webpack --config config/webpack.config.dev.js"
   },
   "keywords": [],
   "author": "",
@@ -29,7 +30,7 @@
     "koa-static": "^5.0.0",
     "nodemon": "^1.19.1",
     "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
+    "webpack-cli": "^3.3.11",
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {

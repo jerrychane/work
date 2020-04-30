@@ -219,3 +219,9 @@ npm install rimraf@2.6.3 -D
 yarn add -D webpack-cli
 ```
 
+安装 koa-compress 压缩代码
+
+```
+npm install koa-compress@3.0.0 -S
+```
+

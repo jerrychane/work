@@ -1,6 +1,6 @@
 const webpackMerge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.config.base')
-const TerserWebpackPlugin = require('terser-webpack-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin') // webpack4 以后推荐的对 js 进行压缩的插件
 const webpackConfig = webpackMerge(baseWebpackConfig, {
     mode: 'production',
     stats: { children: false, warnings: false },

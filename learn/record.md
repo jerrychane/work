@@ -227,10 +227,26 @@ npm install koa-compress@3.0.0 -S
 
 ##### 第2章 项目开发之前端--UI框架
 
-**1.前端框架分类**
+**1.框架 & 库**
 
 类库：JQuery , Lodash (Underscore)
 
 JS库：React , Vue , Angular , Ext JS , Backbone
 
 工具：Webpack(Build) ， Jest(Test) , ESlint(Lint) , Template(EJS) , 应用类(Echarts/D3/Three)
+
+**2.UI框架选型**
+
+☆ 判断使用场景-PC，移动Web,小程序，响应式；
+
+☆ 组件丰富，成熟的模板，方便集成；
+
+☆ 成熟的社区，成熟的生态；
+
+```
+layui ---- https://www.layui.com
+iviewui ---- https://www.iviewui.com
+weapp ---- https://weapp.iviewui.com (小程序)
+inmap ---- http://inmap.talkingdata.com/#/index (大屏可视化)
+```
+

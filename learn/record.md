@@ -215,5 +215,7 @@ npm install koa-compose@4.1.0 -S
 ```
 npm install webpack-merge@4.2.1 -D
 npm install terser-webpack-plugin@1.4.1 --save-dev
+npm install rimraf@2.6.3 -D
+yarn add -D webpack-cli
 ```
 

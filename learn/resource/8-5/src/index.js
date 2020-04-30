@@ -10,6 +10,8 @@ import cors from '@koa/cors';
 import compose from 'koa-compose';
 const app = new koa();
 
+const isDevMode = process.env.NODE_ENV === "production" ? false : true
+
 /**
  * 使用 koa-compose 集成中间件
  */

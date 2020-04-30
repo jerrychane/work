@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "start:es6": "nodemon --exec babel-node src/index.js",
+    "start:es6": "nodemon --exec babel-node ./src/index.js",
     "webpack:debug": "node --inspect-brk ./node_modules/webpack/bin/webpack.js --inline --progress",
-    "build": "cross-env NODE_ENV=prod webpack --config config/webpack.config.dev.js"
+    "build": "cross-env NODE_ENV=prod webpack --config config/webpack.config.dev.js",
+    "dev": "cross-env NODE_ENV=dev nodemon --exec babel-node --inspect ./src/index.js",
+    "clean": "rimraf dist"
   },
   "keywords": [],
   "author": "",
@@ -34,6 +36,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
+    "rimraf": "^2.6.3",
     "terser-webpack-plugin": "^1.4.1",
     "webpack-merge": "^4.2.1"
   }

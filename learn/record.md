@@ -22,7 +22,7 @@ Vue DevTools 插件；
 
 #### 前端框架分类及选型
 
-##### 一、下一代 web 引擎 koa 框架
+##### 第一章、下一代 web 引擎 koa 框架
 
 **1.Koa 是什么？**
 
@@ -225,3 +225,12 @@ yarn add -D webpack-cli
 npm install koa-compress@3.0.0 -S
 ```
 
+##### 第2章 项目开发之前端--UI框架
+
+**1.前端框架分类**
+
+类库：JQuery , Lodash (Underscore)
+
+JS库：React , Vue , Angular , Ext JS , Backbone
+
+工具：Webpack(Build) ， Jest(Test) , ESlint(Lint) , Template(EJS) , 应用类(Echarts/D3/Three)

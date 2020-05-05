@@ -119,7 +119,7 @@ yarn add clean-webpack-plugin@^3.0.0 webpack-node-externals@^1.7.2 babel-loader@
 
 创建 webpack.config.js 和 .babelrc
 
-```
+``` js
 # webpack.config.js
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
@@ -238,15 +238,26 @@ JS库：React , Vue , Angular , Ext JS , Backbone
 **2.UI框架选型**
 
 ☆ 判断使用场景-PC，移动Web,小程序，响应式；
-
 ☆ 组件丰富，成熟的模板，方便集成；
-
 ☆ 成熟的社区，成熟的生态；
 
-```
+``` text
 layui ---- https://www.layui.com
 iviewui ---- https://www.iviewui.com
 weapp ---- https://weapp.iviewui.com (小程序)
 inmap ---- http://inmap.talkingdata.com/#/index (大屏可视化)
 ```
+
+**三款 Vue.js 的移动端框架 - UI 框架**
+
+mint-ui (by eleme), didi-ui (by didi), vant-ui (by youzan)
+
+**3.JS 框架的选型**
+
+☆ 团队的技术能力
+
+☆ 应用场景（后台？性能要求？时间要求？）
+
+☆ 成熟的社区，成熟的生态
+
 

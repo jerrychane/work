@@ -32,6 +32,7 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "nodemon": "^1.19.1",
+    "svg-captcha": "^1.4.0",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.11",
     "webpack-node-externals": "^1.7.2"

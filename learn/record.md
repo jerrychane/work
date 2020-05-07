@@ -193,3 +193,8 @@ mint-ui (by eleme), didi-ui (by didi), vant-ui (by youzan)
 图形验证码、NodeMailer 邮件服务配置
 **3-2 UI框架快速完成登录业务的样式开发（学会用轮子）**
 登录注册页需求分析
+**3-3 图形验证码功能开发**
+在 npmjs 中搜索 svg-captcha 依赖包
+```shell
+npm install --save svg-captcha@1.4.0
+```

@@ -251,3 +251,13 @@ checkForm() {
 }
 ```
 
+**3-6 Vuelidate的安装及使用（表单验证进阶）**
+
+首先安装 vuelidate `npm install vuelidate@0.7.4 -S`, src/main.js 中引入 Vuelidate:
+
+```javascript
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
+// 具体用法见网站 https://vuelidate.js.org/
+```
+

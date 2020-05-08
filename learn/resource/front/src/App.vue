@@ -3,19 +3,19 @@
     <div class="layui-container">
       <form class="layui-form layui-form-pane" action>
         <div class="layui-form-item">
-          <label class="layui-form-label">用户名</label>
-          <div class="layui-input-block">
+          <label class="layui-form-label" :class="{'from-group--error':$v.name.$error}">用户名</label>
+          <div class="layui-input-inline">
             <input
               type="text"
               name="title"
-              v-model="name"
-              required
-              lay-verify="required"
+              v-model.trim="$v.name.$model"
               placeholder="请输入标题"
               autocomplete="off"
               class="layui-input"
             />
           </div>
+          <div class="error" v-if="!$v.name.required">用户名不得为空</div>
+          <div class="error" v-if="!$v.name.email">用户名输入格式错误</div>
         </div>
         <div class="layui-form-item">
           <label class="layui-form-label">密码</label>
@@ -56,6 +56,7 @@
 </template>
 <script>
 import axios from "axios";
+import { required, email } from "vuelidate/lib/validators";
 export default {
   name: "app",
   data() {
@@ -66,6 +67,18 @@ export default {
       code: "",
       errorMsg: []
     };
+  },
+  validations: {
+    name: {
+      required,
+      email
+    },
+    password: {
+      required
+    },
+    code: {
+      required
+    }
   },
   mounted() {
     this.getCaptcha();

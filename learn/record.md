@@ -209,15 +209,20 @@ npm install axios@0.19.0 -S
 在 App.vue 中通过 axios 发送请求
 
 ``` javascript
-mounted () {
-    axios.get('http://localhost:3000/getCaptcha').then((res) => {
-      if (res.status === 200) {
-        const obj = res.data
-        if (obj.code === 200) {
-          this.svg = obj.data
+mounted() {
+    this.getCaptcha();
+  },
+  methods: {
+    getCaptcha() {
+      axios.get("http://localhost:3000/getCaptcha").then(res => {
+        if (res.status === 200) {
+          const obj = res.data;
+          if (obj.code === 200) {
+            this.svg = obj.data;
+          }
         }
-      }
-    })
+      });
+    }
   }
 ```
 
@@ -226,3 +231,23 @@ mounted () {
 **3-4 图形验证码功能开发2**
 
 在 Vue 中 data 是个方法，通过 return 返回一个对象；methods 则是一个对象，里面可以写方法或者对象；
+
+**3-5 基本的验证方法（表单验证）**
+
+可以通过 v-model 双向绑定的方式，在 data 中初始化 name , password , code , 在 methods 对象中，添加 checkForm() 函数进行简单的校验；
+
+```js
+checkForm() {
+    this.errorMsg = [];
+    if (!this.name) {
+        this.errorMsg.push("登录名为空！");
+    }
+    if (!this.password) {
+        this.errorMsg.push("密码不得为空！");
+    }
+    if (!this.code) {
+        this.errorMsg.push("验证码为空！");
+    }
+}
+```
+

@@ -8,6 +8,7 @@
             <input
               type="text"
               name="title"
+              v-model="name"
               required
               lay-verify="required"
               placeholder="请输入标题"
@@ -22,6 +23,7 @@
             <input
               type="password"
               name="title"
+              v-model="password"
               required
               lay-verify="required"
               placeholder="请输入标题"
@@ -36,6 +38,7 @@
             <input
               type="text"
               name="title"
+              v-model="code"
               required
               lay-verify="required"
               placeholder="请输入标题"
@@ -45,7 +48,7 @@
           </div>
           <div class="layui-form-mid svg" v-html="svg" @click="getCaptcha()">图片</div>
         </div>
-        <button type="button" class="layui-btn">点击登录</button>
+        <button type="button" class="layui-btn" @click="checkForm()">点击登录</button>
         <a class="imooc-link" href="http://www.layui.com">忘记密码</a>
       </form>
     </div>
@@ -57,7 +60,11 @@ export default {
   name: "app",
   data() {
     return {
-      svg: ""
+      svg: "",
+      name: "",
+      password: "",
+      code: "",
+      errorMsg: []
     };
   },
   mounted() {
@@ -74,6 +81,19 @@ export default {
           }
         }
       });
+    },
+
+    checkForm() {
+      this.errorMsg = [];
+      if (!this.name) {
+        this.errorMsg.push("登录名为空！");
+      }
+      if (!this.password) {
+        this.errorMsg.push("密码不得为空！");
+      }
+      if (!this.code) {
+        this.errorMsg.push("验证码为空！");
+      }
     }
   }
 };
@@ -96,6 +116,6 @@ input {
 }
 .svg {
   position: relative;
-  top: -15px;
+  top: -20px;
 }
 </style>

@@ -43,7 +43,7 @@
               class="layui-input"
             />
           </div>
-          <div class="layui-form-mid" v-html="svg">图片</div>
+          <div class="layui-form-mid svg" v-html="svg" @click="getCaptcha()">图片</div>
         </div>
         <button type="button" class="layui-btn">点击登录</button>
         <a class="imooc-link" href="http://www.layui.com">忘记密码</a>
@@ -52,26 +52,31 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
-  name: 'app',
-  data () {
+  name: "app",
+  data() {
     return {
-      svg: ''
-    }
+      svg: ""
+    };
   },
-  mounted () {
-    axios.get('http://localhost:3000/getCaptcha').then((res) => {
-      console.log(res)
-      if (res.status === 200) {
-        const obj = res.data
-        if (obj.code === 200) {
-          this.svg = obj.data
+  mounted() {
+    this.getCaptcha();
+  },
+  methods: {
+    getCaptcha() {
+      axios.get("http://localhost:3000/getCaptcha").then(res => {
+        console.log(res);
+        if (res.status === 200) {
+          const obj = res.data;
+          if (obj.code === 200) {
+            this.svg = obj.data;
+          }
         }
-      }
-    })
+      });
+    }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 #app {
@@ -88,5 +93,9 @@ input {
   &:hover {
     color: #009688;
   }
+}
+.svg {
+  position: relative;
+  top: -15px;
 }
 </style>

@@ -193,8 +193,9 @@ mint-ui (by eleme), didi-ui (by didi), vant-ui (by youzan)
 图形验证码、NodeMailer 邮件服务配置
 **3-2 UI框架快速完成登录业务的样式开发（学会用轮子）**
 登录注册页需求分析
-**3-3 图形验证码功能开发**
+**3-3 图形验证码功能开发1**
 在 npmjs 中搜索 svg-captcha 依赖包
+
 ```shell
 npm install --save svg-captcha@1.4.0
 ```
@@ -205,3 +206,23 @@ npm install --save svg-captcha@1.4.0
 npm install axios@0.19.0 -S
 ```
 
+在 App.vue 中通过 axios 发送请求
+
+``` javascript
+mounted () {
+    axios.get('http://localhost:3000/getCaptcha').then((res) => {
+      if (res.status === 200) {
+        const obj = res.data
+        if (obj.code === 200) {
+          this.svg = obj.data
+        }
+      }
+    })
+  }
+```
+
+
+
+**3-4 图形验证码功能开发2**
+
+在 Vue 中 data 是个方法，通过 return 返回一个对象；methods 则是一个对象，里面可以写方法或者对象；

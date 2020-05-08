@@ -198,3 +198,10 @@ mint-ui (by eleme), didi-ui (by didi), vant-ui (by youzan)
 ```shell
 npm install --save svg-captcha@1.4.0
 ```
+
+将验证码放到 input 框，需要安装 axios；
+
+```shell
+npm install axios@0.19.0 -S
+```
+

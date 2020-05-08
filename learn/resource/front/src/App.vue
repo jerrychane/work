@@ -32,7 +32,7 @@
         </div>
         <div class="layui-form-item">
           <label class="layui-form-label">验证码</label>
-          <div class="layui-input-block">
+          <div class="layui-input-inline">
             <input
               type="text"
               name="title"
@@ -43,6 +43,7 @@
               class="layui-input"
             />
           </div>
+          <div class="layui-form-mid" v-html="svg">图片</div>
         </div>
         <button type="button" class="layui-btn">点击登录</button>
         <a class="imooc-link" href="http://www.layui.com">忘记密码</a>
@@ -50,7 +51,28 @@
     </div>
   </div>
 </template>
-
+<script>
+import axios from 'axios'
+export default {
+  name: 'app',
+  data () {
+    return {
+      svg: ''
+    }
+  },
+  mounted () {
+    axios.get('http://localhost:3000/getCaptcha').then((res) => {
+      console.log(res)
+      if (res.status === 200) {
+        const obj = res.data
+        if (obj.code === 200) {
+          this.svg = obj.data
+        }
+      }
+    })
+  }
+}
+</script>
 <style lang="scss" scoped>
 #app {
   background: #f2f2f2;

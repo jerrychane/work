@@ -261,3 +261,4 @@ Vue.use(Vuelidate)
 // 具体用法见网站 https://vuelidate.js.org/
 ```
 
+使用校验时，有两种方法参考，一种是引入 $model ,一种是 withourt $model。

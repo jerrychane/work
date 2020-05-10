@@ -2,20 +2,21 @@
   <div id="app">
     <div class="layui-container">
       <form class="layui-form layui-form-pane" action>
-        <div class="layui-form-item">
-          <label class="layui-form-label" :class="{'from-group--error':$v.name.$error}">用户名</label>
+        <div class="layui-form-item" :class="{'form-group--error':$v.name.$error}">
+          <label class="layui-form-label">用户名</label>
           <div class="layui-input-inline">
             <input
               type="text"
               name="title"
-              v-model.trim="$v.name.$model"
+              v-model.trim="name"
+              @input="setName($event.target.value)"
               placeholder="请输入标题"
               autocomplete="off"
               class="layui-input"
             />
           </div>
-          <div class="error" v-if="!$v.name.required">用户名不得为空</div>
-          <div class="error" v-if="!$v.name.email">用户名输入格式错误</div>
+          <div class="error layui-form-mid" v-if="!$v.name.required">用户名不得为空</div>
+          <div class="error layui-form-mid" v-if="!$v.name.email">用户名输入格式错误</div>
         </div>
         <div class="layui-form-item">
           <label class="layui-form-label">密码</label>
@@ -84,6 +85,10 @@ export default {
     this.getCaptcha();
   },
   methods: {
+    setName (value) {
+      this.name = value
+      this.$v.name.$touch() // 告诉 vuelidate 进行一次校验
+    },
     getCaptcha() {
       axios.get("http://localhost:3000/getCaptcha").then(res => {
         console.log(res);
@@ -130,5 +135,13 @@ input {
 .svg {
   position: relative;
   top: -20px;
+}
+.error {
+  display: none;
+}
+.form-group--error {
+  .error {
+    display: block;
+  }
 }
 </style>

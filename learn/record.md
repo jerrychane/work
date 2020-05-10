@@ -310,3 +310,50 @@ VeeValidate 相对来说要比 Vuelidate 好用一些，需要加入的代码比
 
 **3-10 vee-validate3.x简介**
 
+升级 package.json 中 "vee-validate": "^3.0.8", 以及其他依赖包的版本，最终 package.json 如下：
+
+``` json
+{
+  "name": "front",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "core-js": "^2.6.9",
+    "svg-captcha": "^1.4.0",
+    "vee-validate": "^3.0.8",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.3",
+    "vuex": "^3.1.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.5.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "sass": "^1.22.12",
+    "sass-loader": "^8.0.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
+```
+
+然后执行 npm run server , 终端会报 Cannot find module '@vue/cli-plugin-babel/preset'错误，此时需要修改 babel.config.js ：
+
+```javascript
+module.exports = {
+  presets: [
+    '@vue/app'
+  ]
+}
+```
+
+**3-11 vee-validate3.x演练**

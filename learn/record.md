@@ -262,3 +262,45 @@ Vue.use(Vuelidate)
 ```
 
 使用校验时，有两种方法参考，一种是引入 $model ,一种是 withourt $model。
+
+**3-7 VeeValidate的安装及使用（表单验证进阶）**
+
+首先安装 vee-validate `npm install vee-validate@2.2.13 --save` , src/main.js 中引入 VeeValidate:
+
+```js
+import VeeValidate,{ Validator } from 'vee-validate'
+// method1 to zh-CN
+import zh from 'vee-validate/dist/locale/zh_CN'
+Vue.use(VeeValidate)
+Validator.localize('zh-CN',zh)
+```
+
+改变 message 为中文的第二中方法：
+
+```javascript
+# main.js
+import VeeValidate,{ Validator } from 'vee-validate'
+import './local/index'
+Vue.use(VeeValidate)
+const validator = new Validator()
+validator.localize('zh-CN')
+# src/local/index.js
+import { Validator } from 'vee-validate'
+const dictionary = {
+    'zh-CN':{
+        messages:{
+            required: field => '请输入' + field,
+            email:() => '请输入正确的邮箱格式'
+        },
+        attributes: {
+            email:'邮箱',
+            passwor:'密码',
+            name:'账号'
+        }
+    }
+}
+Validator.localize(dictionary);
+```
+
+VeeValidate 相对来说要比 Vuelidate 好用一些，需要加入的代码比较少，不需要添加setName 方法；
+

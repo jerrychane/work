@@ -5,17 +5,19 @@
         <div class="layui-form-item">
           <label class="layui-form-label">用户名</label>
           <div class="layui-input-inline">
-            <input
+            <validation-provider rules="required" v-slot="{errors}">
+              <input
               type="text"
               name="name"
               v-model.trim="name"
-              v-validate="'required|email'" 
               placeholder="请输入标题"
               autocomplete="off"
               class="layui-input"
             />
+            <span>{{errors[0]}}</span>
+            </validation-provider>
+            
           </div>
-          <div class="error layui-form-mid">{{ errors.first('name') }}</div>
         </div>
         <div class="layui-form-item">
           <label class="layui-form-label">密码</label>
@@ -56,6 +58,13 @@
 </template>
 <script>
 import axios from "axios";
+import { ValidationProvider, extend } from "vee-validate";
+import { required, email } from "vee-validate/dist/rules";
+
+extend('required',{
+  ...required,
+  message: '请输入{_field_}内容'
+})
 export default {
   name: "app",
   data() {
@@ -67,7 +76,9 @@ export default {
       errorMsg: []
     };
   },
-
+  components: {
+    ValidationProvider
+  },
   mounted() {
     this.getCaptcha();
   },

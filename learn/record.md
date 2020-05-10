@@ -304,3 +304,9 @@ Validator.localize(dictionary);
 
 VeeValidate 相对来说要比 Vuelidate 好用一些，需要加入的代码比较少，不需要添加setName 方法；
 
+**3-9 适配vee-validate旧版本v2.x**
+
+用 npm install 安装 2.x 具体的版本号即可
+
+**3-10 vee-validate3.x简介**
+

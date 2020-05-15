@@ -164,15 +164,17 @@ yarn add -D webpack-cli
 ```
 npm install koa-compress@3.0.0 -S
 ```
-##### 第 2 章 项目开发之前端--UI 框架
-**1.框架 & 库**
+#### 第 2 章 项目开发之前端--UI 框架
+
+##### 2.1.框架 & 库
 类库：JQuery , Lodash (Underscore)
 JS 库：React , Vue , Angular , Ext JS , Backbone
 工具：Webpack(Build) ， Jest(Test) , ESlint(Lint) , Template(EJS) , 应用类(Echarts/D3/Three)
-**2.UI 框架选型**
+#####  2.2.UI 框架选型
 ☆ 判断使用场景-PC，移动 Web,小程序，响应式；
 ☆ 组件丰富，成熟的模板，方便集成；
 ☆ 成熟的社区，成熟的生态；
+
 ```text
 layui ---- https://www.layui.com
 iviewui ---- https://www.iviewui.com
@@ -181,20 +183,25 @@ inmap ---- http://inmap.talkingdata.com/#/index (大屏可视化)
 ```
 **三款 Vue.js 的移动端框架 - UI 框架**
 mint-ui (by eleme), didi-ui (by didi), vant-ui (by youzan)
-**3.JS 框架的选型**
+
+#####  2.3.JS 框架的选型
+
 ☆ 团队的技术能力:根据团队技术能力选择框架，按需取用；
 ☆ 应用场景（后台？性能要求？时间要求？）；
 ☆ 成熟的社区，成熟的生态；
 ☆ 了解框架背后的原理，并思考如何自己实现一个 JS 框架；
 ☆ 多读文档，求助社区，高效开发；
-##### 第 3 章 项目开发之前端—登录模块
-**3-1 本章导学**
+
+#### 第 3 章 项目开发之前端—登录模块
+
+##### 3-1 本章导学
 登录模块需求分析
 登入页面、注册页面、忘记密码页面
 图形验证码、NodeMailer 邮件服务配置
-**3-2 UI框架快速完成登录业务的样式开发（学会用轮子）**
+
+##### 3-2 UI框架快速完成登录业务的样式开发（学会用轮子）
 登录注册页需求分析
-**3-3 图形验证码功能开发1**
+##### 3-3 图形验证码功能开发1
 在 npmjs 中搜索 svg-captcha 依赖包
 
 ```shell
@@ -229,11 +236,11 @@ mounted() {
 
 
 
-**3-4 图形验证码功能开发2**
+##### 3-4 图形验证码功能开发2
 
 在 Vue 中 data 是个方法，通过 return 返回一个对象；methods 则是一个对象，里面可以写方法或者对象；
 
-**3-5 基本的验证方法（表单验证）**
+##### 3-5 基本的验证方法（表单验证）
 
 可以通过 v-model 双向绑定的方式，在 data 中初始化 name , password , code , 在 methods 对象中，添加 checkForm() 函数进行简单的校验；
 
@@ -252,7 +259,7 @@ checkForm() {
 }
 ```
 
-**3-6 Vuelidate的安装及使用（表单验证进阶）**
+##### 3-6 Vuelidate的安装及使用（表单验证进阶）
 
 首先安装 vuelidate `npm install vuelidate@0.7.4 -S`, src/main.js 中引入 Vuelidate:
 
@@ -264,7 +271,7 @@ Vue.use(Vuelidate)
 
 使用校验时，有两种方法参考，一种是引入 $model ,一种是 withourt $model。
 
-**3-7 VeeValidate的安装及使用（表单验证进阶）**
+##### 3-7 VeeValidate的安装及使用（表单验证进阶）
 
 首先安装 vee-validate `npm install vee-validate@2.2.13 --save` , src/main.js 中引入 VeeValidate:
 
@@ -305,11 +312,11 @@ Validator.localize(dictionary);
 
 VeeValidate 相对来说要比 Vuelidate 好用一些，需要加入的代码比较少，不需要添加setName 方法；
 
-**3-9 适配vee-validate旧版本v2.x**
+##### 3-9 适配vee-validate旧版本v2.x
 
 用 npm install 安装 2.x 具体的版本号即可
 
-**3-10 vee-validate3.x简介**
+##### 3-10 vee-validate3.x简介
 
 升级 package.json 中 "vee-validate": "^3.0.8", 以及其他依赖包的版本，最终 package.json 如下：
 

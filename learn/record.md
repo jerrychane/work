@@ -138,6 +138,7 @@ module.exports = webpackconfig;
  "start:es6":"npx nodemon --exec babel-node src/index.js",
 ```
 **7.如何调试 webpack 和配置 VSCode**
+
 ```
 npx node --inspect-brk ./node_modules/webpack/bin/webpack.js --inline --progress
 ```
@@ -356,7 +357,7 @@ module.exports = {
 }
 ```
 
-**3-11 vee-validate3.x演练**
+##### 3-11 vee-validate3.x演练
 
 ```vue
 // template
@@ -388,3 +389,8 @@ for (let rule in rules) {
 }
 ```
 
+##### 3-12 完成登录、注册、找回密码页面样式及路由懒加载（1）
+
+组件拆分：Header => Header 组件, Body => Router-view  , Footer => Footer 组件
+
+Router-view：/login => Login 组件，/forget =>  Forget 组件， /reg =>  Reg 组件

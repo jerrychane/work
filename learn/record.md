@@ -395,4 +395,42 @@ for (let rule in rules) {
 
 Router-view：/login => Login 组件，/forget =>  Forget 组件， /reg =>  Reg 组件
 
+```vue
+<template>
+<!--app.vue-->
+  <div id="app">
+     <imooc-header></imooc-header>
+     <router-view></router-view>
+     <imooc-footer></imooc-footer>
+  </div>
+</template>
+<script>
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
+
+export default {
+  name: "app",
+  components:{
+    'imooc-header': Header,
+    'imooc-footer': Footer
+  }
+};
+</script>
+<style lang="scss">
+@import "assets/layui/css/layui.css";
+@import "assets/css/global.css";
+@import "assets/layui/css/modules/layer/default/layer.css";
+</style>
+
+```
+
 ##### 3-13 完成登录、注册、找回密码页面样式及路由懒加载（2）
+
+使用 `<router-link :to="{name:'routername'}"></router-link>` ，实现路由的跳转；
+
+```vue
+<router-link :to="{name:'login'}">登入</router-link>
+<router-link :to="{name:'reg'}">注册</router-link>
+<router-link :to="{name:'forget'}">忘记密码</router-link>
+```
+

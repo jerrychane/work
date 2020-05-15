@@ -434,3 +434,6 @@ export default {
 <router-link :to="{name:'forget'}">忘记密码</router-link>
 ```
 
+##### 3-14 完成登录注册页输入校验及图形验证码
+
+注意本节课使用功能的版本为 `"vee-validate": "^2.2.13",`

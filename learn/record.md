@@ -75,7 +75,7 @@ yarn add clean-webpack-plugin@^3.0.0 webpack-node-externals@^1.7.2 babel-loader@
 ```
 创建 webpack.config.js 和 .babelrc
 ```js
-# webpack.config.js
+// webpack.config.js
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -278,13 +278,13 @@ Validator.localize('zh-CN',zh)
 改变 message 为中文的第二中方法：
 
 ```javascript
-# main.js
+// main.js
 import VeeValidate,{ Validator } from 'vee-validate'
 import './local/index'
 Vue.use(VeeValidate)
 const validator = new Validator()
 validator.localize('zh-CN')
-# src/local/index.js
+// src/local/index.js
 import { Validator } from 'vee-validate'
 const dictionary = {
     'zh-CN':{
@@ -357,3 +357,34 @@ module.exports = {
 ```
 
 **3-11 vee-validate3.x演练**
+
+```vue
+// template
+<validation-provider
+            name="用户名"
+            rules="required|email"
+            v-slot="{ errors }"
+          >
+            <div class="layui-input-inline">
+              <input
+                type="text"
+                name="name"
+                v-model.trim="name"
+                placeholder="请输入标题"
+                autocomplete="off"
+                class="layui-input"
+              />
+            </div>
+            <div class="error layui-form-mid ">{{ errors[0] }}</div>
+</validation-provider>
+// script
+import * as rules from "vee-validate/dist/rules";
+import zh from "vee-validate/dist/locale/zh_CN";
+for (let rule in rules) {
+  extend(rule, {
+    ...rules[rule],
+    message: zh.messages[rule]
+  });
+}
+```
+

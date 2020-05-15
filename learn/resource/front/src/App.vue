@@ -4,20 +4,23 @@
       <form class="layui-form layui-form-pane" action>
         <div class="layui-form-item">
           <label class="layui-form-label">用户名</label>
-          <div class="layui-input-inline">
-            <validation-provider rules="required" v-slot="{errors}">
+          <validation-provider
+            name="用户名"
+            rules="required|email"
+            v-slot="{ errors }"
+          >
+            <div class="layui-input-inline">
               <input
-              type="text"
-              name="name"
-              v-model.trim="name"
-              placeholder="请输入标题"
-              autocomplete="off"
-              class="layui-input"
-            />
-            <span>{{errors[0]}}</span>
-            </validation-provider>
-            
-          </div>
+                type="text"
+                name="name"
+                v-model.trim="name"
+                placeholder="请输入标题"
+                autocomplete="off"
+                class="layui-input"
+              />
+            </div>
+            <div class="error layui-form-mid ">{{ errors[0] }}</div>
+          </validation-provider>
         </div>
         <div class="layui-form-item">
           <label class="layui-form-label">密码</label>
@@ -48,9 +51,13 @@
               class="layui-input"
             />
           </div>
-          <div class="layui-form-mid svg" v-html="svg" @click="getCaptcha()">图片</div>
+          <div class="layui-form-mid svg" v-html="svg" @click="getCaptcha()">
+            图片
+          </div>
         </div>
-        <button type="button" class="layui-btn" @click="checkForm()">点击登录</button>
+        <button type="button" class="layui-btn" @click="checkForm()">
+          点击登录
+        </button>
         <a class="imooc-link" href="http://www.layui.com">忘记密码</a>
       </form>
     </div>
@@ -59,12 +66,16 @@
 <script>
 import axios from "axios";
 import { ValidationProvider, extend } from "vee-validate";
-import { required, email } from "vee-validate/dist/rules";
+import * as rules from "vee-validate/dist/rules";
+import zh from "vee-validate/dist/locale/zh_CN";
 
-extend('required',{
-  ...required,
-  message: '请输入{_field_}内容'
-})
+for (let rule in rules) {
+  extend(rule, {
+    ...rules[rule],
+    message: zh.messages[rule]
+  });
+}
+
 export default {
   name: "app",
   data() {
@@ -129,5 +140,8 @@ input {
 .svg {
   position: relative;
   top: -20px;
+}
+.error {
+  color: red;
 }
 </style>

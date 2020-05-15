@@ -394,3 +394,5 @@ for (let rule in rules) {
 组件拆分：Header => Header 组件, Body => Router-view  , Footer => Footer 组件
 
 Router-view：/login => Login 组件，/forget =>  Forget 组件， /reg =>  Reg 组件
+
+##### 3-13 完成登录、注册、找回密码页面样式及路由懒加载（2）

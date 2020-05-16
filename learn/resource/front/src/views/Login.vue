@@ -60,8 +60,8 @@
                         class="layui-input"
                       />
                     </div>
-                    <div class="layui-form-mid">
-                      <span style="color: #c00;">Hello</span>
+                    <div>
+                      <span class="svg" style="color: #c00;" @click="_getCode()" v-html="svg"></span>
                     </div>
                   </div>
                   <div class="layui-form-mid">
@@ -99,6 +99,7 @@
 </template>
 
 <script>
+import { getCode } from "@/api/login";
 export default {
   name: "login",
   data() {
@@ -109,9 +110,24 @@ export default {
       svg: ""
     };
   },
- 
+  mounted() {
+    this._getCode();
+  },
+  methods: {
+    _getCode() {
+      getCode().then(res => {
+        console.log("res=========================>",res);
+        if (res.code === 200) {
+          this.svg = res.data;
+        }
+      });
+    }
+  }
 };
 </script>
-
 <style lang="scss" scoped>
+.svg {
+  position: relative;
+  top: -4px;
+}
 </style>

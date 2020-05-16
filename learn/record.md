@@ -428,7 +428,6 @@ export default {
 @import "assets/css/global.css";
 @import "assets/layui/css/modules/layer/default/layer.css";
 </style>
-
 ```
 
 ##### 3-13 完成登录、注册、找回密码页面样式及路由懒加载（2）
@@ -444,3 +443,44 @@ export default {
 ##### 3-14 完成登录注册页输入校验及图形验证码
 
 注意本节课使用功能的版本为 `"vee-validate": "^2.2.13",`
+
+##### 3-16 配置邮件服务NodeMailer（Nodejs进阶）
+
+邮件服务注意：
+
+- 使用客户端授权码，QQ邮箱14天限制；
+- 公共邮箱限制了发送频次、数量、群发；
+- 邮件服务：阿里云/亚马逊 SES / SendCloud;
+
+```shell
+npm install nodemailer@6.3.0 -S
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

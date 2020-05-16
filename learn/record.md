@@ -456,13 +456,28 @@ export default {
 npm install nodemailer@6.3.0 -S
 ```
 
+具体 nodemailer 配置项可访问下面的官网链接：
 
+```html
+https://nodemailer.com/about/
+```
 
+##### 3-17 完成邮件服务接口与找回密码对接（Nodejs进阶）
 
+生产环境下安装 moment
 
+```shell
+npm install moment@2.24.0 -S 
+taskkill /f /t /im node.exe # 结束进程
+```
 
+在使用 postman 发送 post 请求时，记得将 methods 方法改为 post, body 部分改为 raw & json;
 
+邮件服务总结
 
+- 公共邮箱限制，使用授权码；
+- 开发接口 Api : 业务 => 路由 => 测试接口 => 前端页面
+- devServer 处理开发过程中的跨域问题；
 
 
 

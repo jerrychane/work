@@ -11,7 +11,7 @@ class PublicController {
       width: 150,
       height: 38,
     })
-    console.log(newCaptca)
+    // console.log(newCaptca)
     ctx.body = {
       code: 200,
       data: newCaptca.data,

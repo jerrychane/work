@@ -521,7 +521,15 @@ taskkill /f /t /im node.exe # 结束进程
 
 ##### 1-5 Typora主题及Markdown输出样式自定义
 
+##### 1-7 4 款文档管理工具介绍（思想决定视野，工具提升效率）
 
+Showdoc:`https://www.showdoc.cc/`
+
+ eoLinker:`https://www.eolinker.com/`
+
+Mindoc:`https://www.iminho.me/`
+
+apizza:`https://apizza.net/`
 
 
 

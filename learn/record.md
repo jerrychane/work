@@ -513,15 +513,13 @@ taskkill /f /t /im node.exe # 结束进程
 ![]()
 ```
 
-超链接：
+超链接（快捷键 ctrl + k）：
 
 ```mark
 []()
 ```
 
-[链接名称](http://www.jerrychane.com)
-
-
+##### 1-5 Typora主题及Markdown输出样式自定义
 
 
 

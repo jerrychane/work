@@ -531,5 +531,10 @@ Mindoc:`https://www.iminho.me/`
 
 apizza:`https://apizza.net/`
 
+##### 1-8 ShowDoc的本地化安装
 
+* 数据字典、接口模板；
+* 团队协作；
+* 免费开源；
 
+##### 1-9 ShowDoc工作流及配置

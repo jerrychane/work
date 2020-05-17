@@ -633,9 +633,31 @@ git fetch 查看哪些分支上的代码做了更新，然后使用 git merge FE
 git fetch origin some-branch:dev
 ```
 
+##### 2-20 实操 git flow &常见问题（多人协作之分支管理）
 
+在某个分支上打 tag
 
+    ```bash
+git tag v1.0.0 
+git push origin mater --tags
+git tag -d v1.0.0  # 删除本地 tag
+git tag --list
+git push origin :refs/tags/v1.0.0 # 删除远程 tag 
+git reset HEAD <filename> # 取消暂存文件
+git checkout -- <filename> # 丢弃工作区的改动
+    ```
 
+Git Flow 重要意义
+
+* 多人协作，权限控制；
+* 解决冲突；
+* 溯源，问题 Issue;
+
+Branch 创建原则
+
+* 按需创建；
+* 重要的版本管理（版本历史）；
+* 学会使用 Tags;
 
 
 

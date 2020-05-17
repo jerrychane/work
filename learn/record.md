@@ -625,9 +625,13 @@ ls -la
 git config --global --list
 ```
 
+##### 2-18 分支管理的基础命令介绍（多人协作之分支管理）
 
+git fetch 查看哪些分支上的代码做了更新，然后使用 git merge FETCH_HEAD 合并更新,这两句命令相当于 git pull 这一句命令；
 
-
+```bash
+git fetch origin some-branch:dev
+```
 
 
 

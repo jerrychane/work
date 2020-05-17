@@ -595,11 +595,16 @@ git flow: 分支管理、团队协作
 git remote add origin http://github.com/jerrychane/learngit.git
 ```
 
+##### 2-9 情景一：空仓库&创建仓库提交代码（版本控制工具git）
 
+```bash
+# 显示所有文件
+ls -la 
+```
 
+.git 目录下是存放的快照文件，快照有多个状态，git 是通过管理这些快照，进行版本的管理。
 
-
-
+##### 2-10 情境二：推送代码到多个仓库（版本控制工具git）
 
 
 

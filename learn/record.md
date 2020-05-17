@@ -606,11 +606,24 @@ ls -la
 
 ##### 2-10 情境二：推送代码到多个仓库（版本控制工具git）
 
+##### 2-11 github仓库settings介绍（版本控制工具git）
 
+##### 2-13 深入理解git工作原理——快照管理（版本控制工具git）
 
+| 工作区            | 暂存区          | 远程仓库   |
+| ----------------- | --------------- | ---------- |
+| git clone         | git reset       | git branch |
+| git init          | git checkout    | git merge  |
+| git add           | git stash&apply | git diff   |
+| git fetch         | git rm          | git remote |
+| git pull/git push | git status      | git rebase |
+| git checkout      | ......          | git reset  |
+| git log/reflog    | ......          | ......     |
+| git config/status | ......          | ......     |
 
-
-
+```bash
+git config --global --list
+```
 
 
 

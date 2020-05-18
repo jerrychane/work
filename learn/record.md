@@ -713,3 +713,44 @@ Sourcetree,Gitlens,
 ##### 1-9 Trello&Teambition使用介绍
 
 ##### 1-10 禅道&Jira&Redmine简介
+
+#### 第2章 缺陷控制之质量管理工具
+
+##### 2-1 ESLint安装&初始化
+
+```bash
+npm install -D eslint@6.3.0
+```
+
+执行 eslint 命令的方法
+
+```bash
+# 方法1
+./node_modules/.bin/eslint --version
+# 方法2
+npx eslint --version
+```
+
+初始化 eslint 配置文件 : `npx eslint --init`, 在根目录下生成 .eslintrc.js文件
+
+```javascript
+module.exports = {
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "rules": {
+    }
+};
+```
+

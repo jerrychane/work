@@ -754,3 +754,34 @@ module.exports = {
 };
 ```
 
+如果同一个目录下有多个配置文件，ESLint 只会使用一个。优先级顺序如下：
+
+1. .eslintrc.js
+2. .eslintrc.yaml
+3. .eslintrc.yml
+4. .eslintrc.json
+5. .eslintrc
+6. package.json
+
+##### 2-3 ESLint规则&配置方法
+
+* 规则分三种等级：off(0) 关闭，warn(1) 警告、error(2) 强制；
+
+```html
+"off" 或 0 - 关闭规则
+"warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出)
+"error" 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
+```
+
+* 在 eslint 配置文件中配置 rules, 对应不同类型的规则；
+
+* 在行内书写规则，需要写在 /* eslint ... */
+
+##### 2-6 ESLint与VSCode&Webstorm结合使用 
+
+ESLint 的插件使用，需要全局安装 eslint
+
+```bash
+npm install -g eslint
+```
+

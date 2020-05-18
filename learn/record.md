@@ -785,3 +785,5 @@ ESLint 的插件使用，需要全局安装 eslint
 npm install -g eslint
 ```
 
+##### 2-7 Vue项目中使用VSCode插件自动格式化+自动ESLint代码
+

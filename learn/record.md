@@ -860,9 +860,17 @@ npm install -g eslint
 | 多服务器 | 是         | 否        | 否        |
 | 费用     | 免费       | 60$/c/m   | 50$/c/m   |
 
+```bash
+git rebase -i head~3 # 和先前的3次提交做变基
+```
 
+vm 中按两次dd，就是删除1行；删除多的话，先按d,再输入一个数字10，表示删除10行，再按d即可删除；
 
+##### 4-7 CircleCI实战Vue项目发布到github pages 
 
+- Github 账号注册、授权；
+- 新建项目添加 .circleci/config.yml 文件；
+- 配置脚本任务，流程：环境 => 构建 => （缓存）=> 发布
 
 
 

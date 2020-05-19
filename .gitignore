@@ -8,3 +8,4 @@ yarn.lock
 yarn-error.log
 package-lock.json
 learn/learn_daily.code-workspace
+learn/resource/circleci-demo

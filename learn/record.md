@@ -668,8 +668,7 @@ git fetch origin some-branch:dev
 
 在某个分支上打 tag
 
-    ```bash
-
+```bash
 git tag v1.0.0
 git push origin mater --tags
 git tag -d v1.0.0 # 删除本地 tag
@@ -677,11 +676,9 @@ git tag --list
 git push origin :refs/tags/v1.0.0 # 删除远程 tag
 git reset HEAD <filename> # 取消暂存文件
 git checkout -- <filename> # 丢弃工作区的改动
-
-````
+```
 
 Git Flow 重要意义
-
 - 多人协作，权限控制；
 - 解决冲突；
 - 溯源，问题 Issue;
@@ -708,7 +705,7 @@ Gitlab 权限控制
 
 ##### 2-26 三种方法产生.gitignore 文件（git 必备知识）
 
-​```bash
+```bash
 git rm --cached -r . # 删除 git 本地缓存
 ````
 

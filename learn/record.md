@@ -875,6 +875,10 @@ vm 中按两次dd，就是删除1行；删除多的话，先按d,再输入一个
 * 新建项目添加 .travis.yml 文件
 * 配置环境变量 GITHUB_TOKEN 发布到 github_pages;
 
+#### 第5章 Jenkins — CI&CD工具鼻祖
+
+##### 5-1 Jenkins使用介绍&课程案例架构
+
 
 
 

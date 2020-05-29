@@ -869,9 +869,11 @@ vm 中按两次dd，就是删除1行；删除多的话，先按d,再输入一个
 - 新建项目添加 .circleci/config.yml 文件；
 - 配置脚本任务，流程：环境 => 构建 => （缓存）=> 发布
 
+##### 4-9 TravisCI介绍&配置自动化任务
 
-
-
+* Github 账号注册、授权，控制面板中同步项目
+* 新建项目添加 .travis.yml 文件
+* 配置环境变量 GITHUB_TOKEN 发布到 github_pages;
 
 
 

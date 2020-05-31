@@ -929,7 +929,19 @@ Gitlab 与 Jenkins 流程
 2. 创建 SSH 公私钥， Jenkins 添加私钥凭据，Jenkins 任务配置源码；
 3. Jenkins 任务配置构建触发器，产生 secret token, 添加到 gitlab 的 webhooks 中，然后测试。
 
+#### 第6章 自动化实战
 
+##### 6-1 前后端项目Dockerfile&项目实战配置 
+
+Dockerfile 的作用
+
+* 用于产生 Docker 镜像
+* Dockerfile 按照步骤构建，产生文件系统
+* Dockerfile 是镜像配置文件，高度可配置
+
+##### 6-2 本地测试Dockerfile及打包镜像 
+
+##### 6-3 前后端项目Jenkins任务配置（1） 
 
 
 

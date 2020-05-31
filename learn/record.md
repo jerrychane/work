@@ -895,6 +895,40 @@ vm 中按两次dd，就是删除1行；删除多的话，先按d,再输入一个
 * 基于安全矩阵的权限管理
 * gitlab 集成的权限管理方案
 
+##### 5-11 Jenkins&gitlab项目任务 
+
+Jenkins 任务配置
+
+* 源码管理 - > 构建触发器 - > 构建环境 - > 构建 - > 后操作
+* Webhooks 概念理解，配置部署秘钥
+* Shell 脚本及 Docker & Docerfile 结合
+
+Gitlab 与 Jenkins 流程
+
+(1) 创建 git 项目
+
+(2) 在 gitlab 中配置 deploy 密钥
+
+(3) 使用 sshkey 命令来创建一个 ssh 公私钥，用于 deploy
+
+(4) 在 Jenkins 中添加 SSH 密钥凭据
+
+(5) 在 Jenkins 中配置源码管理，配置 ssh 项目地址，选择 deploy 密钥
+
+(6) 在 Jenkins 中选择需要构建的分支
+
+(7) 查看 Jenkins 中的 webhooks 的地址，设置 secret token
+
+(8) 配置 gitlab 中的 webhooks
+
+(9) 在 gitlab 进行 test 测试
+
+正确的流程分三步走：
+
+1. gitlab 这边是创建 git 项目，添加 deploy 公钥，添加 webhooks 配置；
+2. 创建 SSH 公私钥， Jenkins 添加私钥凭据，Jenkins 任务配置源码；
+3. Jenkins 任务配置构建触发器，产生 secret token, 添加到 gitlab 的 webhooks 中，然后测试。
+
 
 
 

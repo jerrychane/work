@@ -949,6 +949,26 @@ Dockerfile 的作用
 * Shell 脚本控制发布
 * 构建端口防火墙规则及脚本优化
 
+### 第8周-NoSQL数据库的设计与集成
+
+#### 第1章 NoSQL数据库MongoDB 认知与设计
+
+##### 1-1 章导读
+
+* NoSQL 数据库设计
+* MongoDB 安装、配置、GUI 工具
+* Nodejs 中的 Mongoose 库
+
+**目标:**
+
+* 掌握 NoSQL 数据库设计原则
+* 熟练 Mongo 安装、配置，及 GUI 工具的使用
+* Mongoose 库的集成，学会如何配置到 Node 项目
+
+##### 1-2 NoSQL数据库&设计原则
+
+
+
 
 
 

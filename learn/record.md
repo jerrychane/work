@@ -943,7 +943,11 @@ Dockerfile 的作用
 
 ##### 6-3 前后端项目Jenkins任务配置（1） 
 
+##### 6-4 前后端项目Jenkins任务配置（2） 
 
+* Dockerfile 基础的语法，构建镜像命令： docker build
+* Shell 脚本控制发布
+* 构建端口防火墙规则及脚本优化
 
 
 

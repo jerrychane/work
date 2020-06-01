@@ -1038,3 +1038,9 @@ firewall-cmd reload
 #### 第2章 MongoDB 应用与实战
 
 ##### 2-1 MongoDB初始化配置
+
+MongoDB SQL语句：https://docs.mongodb.com/manual/crud/
+
+> 知识是没有边界的，先学会使用，解决现实问题，再深入学习
+>
+> 学习方法：新的知识 -> 业务问题->学习原理->熟悉到熟练

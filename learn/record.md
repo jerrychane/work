@@ -1023,3 +1023,18 @@ NoSQL 是对不同于传统的关系型数据库的数据库管理系统的统�
 * 考虑读写比，考虑反范式，考虑应用场景
 
 ##### 1-3 MongoDB简介&安装
+
+
+https://docs.mongodb.com/
+
+Linux 安装（Docker 安装）、MacOS 安装、Window 安装
+
+```shell
+# CenOS
+firewall-cmd --add-prot=27017/tcp --permanent
+firewall-cmd reload
+```
+
+#### 第2章 MongoDB 应用与实战
+
+##### 2-1 MongoDB初始化配置

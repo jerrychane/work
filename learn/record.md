@@ -1118,3 +1118,9 @@ Redis 是完全开源免费的，遵守 BSD 协议，是一个高性能的 key -
 * 手动方式安装（适合不熟悉 Docker / 无 Docker 环境）
 * Docker 方式安装（推荐）
 * 配置 redis.conf , 缓存 redis 数据（生产需要）
+
+##### 3-6 Redis常见CLI命令1—取值 
+
+* 设置/取值 （String, Hash , List , Set）
+
+Redis 命令参考：http://doc.redisfans.com/ (推荐) or http://redisdoc.com/

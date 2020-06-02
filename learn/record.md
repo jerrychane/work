@@ -1030,7 +1030,7 @@ https://docs.mongodb.com/
 Linux 安装（Docker 安装）、MacOS 安装、Window 安装
 
 ```shell
-# CenOS
+# CentOS
 firewall-cmd --add-prot=27017/tcp --permanent
 firewall-cmd reload
 ```
@@ -1044,3 +1044,20 @@ MongoDB SQL语句：https://docs.mongodb.com/manual/crud/
 > 知识是没有边界的，先学会使用，解决现实问题，再深入学习
 >
 > 学习方法：新的知识 -> 业务问题->学习原理->熟悉到熟练
+
+##### 2-2 介绍GUI工具
+
+Robo 3T: https://robomongo.org/
+
+##### 2-3 MongoDB备份与恢复
+
+* 备份方式：docker cp , mongodump
+* 恢复方式：docker cp , mongorestore
+
+```sql
+# 备份数据到 /tmp/test
+docker exec -it mongotest_mongo_1 mongodump -h localhost -u root -p example -o /tmp/test
+# 恢复数据	/tmp/test
+docker exec -it mongotest_mongo_1 mongorestore -h localhost -u root -p example --dir /tmp/test
+```
+

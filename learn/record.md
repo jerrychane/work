@@ -1090,3 +1090,25 @@ npm install -S saslprep@1.0.3  # 消除 warning
 * Redis 简介 & 安装
 * Redis 命令行，GUI 工具
 * Nodejs 中集成 Redis
+
+##### 3-2 Redis简介
+
+Redis 是完全开源免费的，遵守 BSD 协议，是一个高性能的 key - value 数据库。Redis 与其他 key - value 缓存产品相比：支持数据的持久化，多数据结构 list , set , zset , hash 等的存储，支持数据备份。
+
+**Redis 特点**
+
+* 高性能，可持久化
+* key - value 结构，支持多种数据类型
+* 支持事务，数据的原子性（要么不做/全做）
+
+**Redis 应用场景**
+
+* 缓存（读写性能优异）
+* 计数 & 消息系统（高并发、发布/订阅阻塞队列功能）
+* 分布式会话 session & 分布式锁（秒杀）
+
+**Redis  vs Mongo**
+
+* 存储方式不一样： key - value vs Document
+* 使用方式 & 可靠性不一样： MongoDB SQL & ACID 支持
+* 应用场景不一样：高性能缓存 vs 海量数据分析

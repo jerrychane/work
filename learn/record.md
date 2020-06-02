@@ -1082,3 +1082,11 @@ npm install -S saslprep@1.0.3  # 消除 warning
 * 核心概念介绍（Schema、Model）
 * 安装 & 初始化配置
 * 常见的增删改查操作
+
+#### 第3章  Redis 认知与必备CLI命令 
+
+#####  3-1 章导读
+
+* Redis 简介 & 安装
+* Redis 命令行，GUI 工具
+* Nodejs 中集成 Redis

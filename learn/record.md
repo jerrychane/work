@@ -1061,3 +1061,21 @@ docker exec -it mongotest_mongo_1 mongodump -h localhost -u root -p example -o /
 docker exec -it mongotest_mongo_1 mongorestore -h localhost -u root -p example --dir /tmp/test
 ```
 
+##### 2-4 Mongoose使用简介
+
+| 分类 | Oralce/Mysql   | MongoDB            | Mongoose                    |
+| ---- | -------------- | ------------------ | --------------------------- |
+| 1    | 数据库实例     | MongoDB实例        | Mongoose                    |
+| 2    | 模式（schema） | 数据库（database） | mongoose                    |
+| 3    | 表（table）    | 集合（collection） | 模板（Schema）模型（Model） |
+| 4    | 行（row）      | 文档（document）   | 实例（instance）            |
+| 5    | Primary key    | Object (_id)       | Object (_id)                |
+| 6    | 表字段 Column  | Field              | Field                       |
+
+```bash
+npm install -S mongoose@5.7.1
+npm install -S saslprep@1.0.3  # 消除 warning
+```
+
+##### 2-5 Mongoose实战配置&CURD操作
+

@@ -1112,3 +1112,9 @@ Redis 是完全开源免费的，遵守 BSD 协议，是一个高性能的 key -
 * 存储方式不一样： key - value vs Document
 * 使用方式 & 可靠性不一样： MongoDB SQL & ACID 支持
 * 应用场景不一样：高性能缓存 vs 海量数据分析
+
+##### 3-4 Redis安装
+
+* 手动方式安装（适合不熟悉 Docker / 无 Docker 环境）
+* Docker 方式安装（推荐）
+* 配置 redis.conf , 缓存 redis 数据（生产需要）

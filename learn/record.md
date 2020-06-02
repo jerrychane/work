@@ -1079,3 +1079,6 @@ npm install -S saslprep@1.0.3  # 消除 warning
 
 ##### 2-5 Mongoose实战配置&CURD操作
 
+* 核心概念介绍（Schema、Model）
+* 安装 & 初始化配置
+* 常见的增删改查操作

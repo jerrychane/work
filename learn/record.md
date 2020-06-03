@@ -1141,3 +1141,23 @@ SUBSCRIBE / PUBLISH
 
 CONFIG / CLIENT / FLUSHALL (清空所有数据库) / FLUSHDB（清空单个数据库）/ SAVE(备份-同步任务) / BGSAVE (备份-开启子任务) /  LASTSAVE(备份-最后一次)
 
+SAVE命令是同步命令，执行的时候，Redis中断了其他命令的执行。BGSAVE是一个后台执行的保存命令。
+
+CONFIG是配置命令
+
+CLIENT是服务器端去查看客户端的连接的命令
+
+SLOWLOG是用于调试Redis查询服务器的命令。
+
+#### 第4章 Redis 和 Nodejs 集成与实践
+
+##### 4-1 Redis的GUI工具 
+
+Rdis GUI 工具推荐：
+
+- Another Redis DeskTop Manager （免费）
+
+- Medis (收费，可自构建)
+- Redist DeskTop Manager （收费）
+
+##### 4-2 Redis实战应用配置—get&set方法

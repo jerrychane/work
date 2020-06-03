@@ -1169,3 +1169,21 @@ Rdis GUI 工具推荐：
 * redis 包的安装及配置
 * 定义 redis 的常用方法 get , set , hset , hget
 * bluebird 引用， Promise EveryThing
+
+### 第9周-JWT登录鉴权—通用登录模块后端开发
+
+#### 第1章 鉴权方式及相关概念
+
+##### 1-1 章导学 
+
+鉴权方式： jwt 、session / cookie、oAuth 2.0
+
+* 核心概念（鉴权方式，加密/解密，HTTPS）
+* JWT 工作原理
+* Nodejs 集成 JWT
+
+目标：
+
+* 理解鉴权 / 加密/ HTTPS 等核心概念
+* 熟悉常见的鉴权方式（JWT、session） 及优缺点
+* 使用 JWT 方式开发登录鉴权模块，设计相应接口

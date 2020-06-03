@@ -1163,3 +1163,9 @@ Rdis GUI 工具推荐：
 ##### 4-2 Redis实战应用配置—get&set方法
 
 ##### 4-3 Redis实战应用配置—哈希表hset&hgetall
+
+##### 4-4 Redis实战应用配置-BlueBird
+
+* redis 包的安装及配置
+* 定义 redis 的常用方法 get , set , hset , hget
+* bluebird 引用， Promise EveryThing

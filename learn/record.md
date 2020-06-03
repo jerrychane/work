@@ -1161,3 +1161,5 @@ Rdis GUI 工具推荐：
 - Redist DeskTop Manager （收费）
 
 ##### 4-2 Redis实战应用配置—get&set方法
+
+##### 4-3 Redis实战应用配置—哈希表hset&hgetall

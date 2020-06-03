@@ -1203,3 +1203,13 @@ Rdis GUI 工具推荐：
 | Oauth          | 开放、安全、简单、权限指定                           | 需要增加授权服务器，增加网络请求                             |
 
 ##### 1-3 JWT的工作原理
+
+什么是 JWT ?JWT的全称是 Json Web Token， 一个JWT由三部分构成：Header（头部）/PayLoad（载荷）/ Signature（签名）。
+
+JWT 特点
+
+* 防 CSRF(主要是伪造请求，带上 Cookie)
+* 适合移动应用
+* 无状态，编码数据
+
+##### 1-4 API接口安全相关知识（加密&算法&HTTPS）

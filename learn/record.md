@@ -1124,3 +1124,15 @@ Redis 是完全开源免费的，遵守 BSD 协议，是一个高性能的 key -
 * 设置/取值 （String, Hash , List , Set）
 
 Redis 命令参考：http://doc.redisfans.com/ (推荐) or http://redisdoc.com/
+
+redis鉴权登录：（1）redis-cli -h 127.0.0.1 -a 123456 （2）redis-cli auth 123456
+
+LPUSH 是 List (列表) 相关的命令，关于 List 命令，与  JS 中的 Array 操作进行对比：
+
+LPUSH -> unshift -> 从队首插入一个元素      LPOP -> shift 从队首移出一个元素
+
+RPUSH -> push 从队尾插入一个元素              RPOP -> pop 从队尾移出一个元素
+
+##### 3-6 Redis常见CLI命令2—发布订阅
+
+SUBSCRIBE / PUBLISH

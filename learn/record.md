@@ -1136,3 +1136,8 @@ RPUSH -> push 从队尾插入一个元素              RPOP -> pop 从队尾移�
 ##### 3-6 Redis常见CLI命令2—发布订阅
 
 SUBSCRIBE / PUBLISH
+
+##### 3-11 Redis常见CLI命令3—服务相关&备份恢复
+
+CONFIG / CLIENT / FLUSHALL (清空所有数据库) / FLUSHDB（清空单个数据库）/ SAVE(备份-同步任务) / BGSAVE (备份-开启子任务) /  LASTSAVE(备份-最后一次)
+

@@ -7,4 +7,22 @@ extend('min', min)
 extend('length', length)
 extend('required', required)
 extend('confirmed', confirmed)
-localize('zh_CN', zh)
+localize('zh_CN', {
+    messages: {
+        ...zh.messages,
+        required: '请输入{_field_}',
+    },
+    names: {
+        email: '邮箱',
+        password: '密码',
+        name: '昵称',
+        username: '账号',
+        code: '验证码',
+    },
+    fields: {
+        email: {
+            email: '请输入正确的{_field_}',
+            required: '请输入{_field_}！！！',
+        },
+    },
+})

@@ -1238,9 +1238,9 @@ JWT 特点
 
 有2个坑：
 
-(1) vee-validate 的版本需要是 ^3.1.3
+(1) vee-validate 的版本需要是 ^3.1.3 , 否则在引入 rules 时会报 rules 未定义；
 
-(2) Login.vue 中 validation-provider 需要包裹 errors 和 errros[0] , 不然会找不到 errors
+(2) Login.vue 中 validation-provider 需要包裹 errors 和 errros[0] , 不然会找不到 errors；
 
 ```html
 <label for="L_pass" class="layui-form-label">密码</label>
@@ -1262,3 +1262,36 @@ JWT 特点
 ```
 
 ##### 2-3 Veevalidate3X升级-本地化&配置自定义消息
+
+```js
+///src/util/veevalidate.js
+import { extend, localize } from 'vee-validate'
+import { required, email, min, length, confirmed } from 'vee-validate/dist/rules'
+import zh from 'vee-validate/dist/locale/zh_CN.json'
+extend('email', email)
+extend('min', min)
+extend('length', length)
+extend('required', required)
+extend('confirmed', confirmed)
+localize('zh_CN', {
+    messages: {
+        ...zh.messages,
+        required: '请输入{_field_}',
+    },
+    names: {
+        email: '邮箱',
+        password: '密码',
+        name: '昵称',
+        username: '账号',
+        code: '验证码',
+    },
+    fields: {
+        email: {
+            email: '请输入正确的{_field_}',
+            required: '请输入{_field_}！！！',
+        },
+    },
+})
+```
+
+##### 2-4 Veevalidate结合vuei18n

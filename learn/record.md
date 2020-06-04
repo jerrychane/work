@@ -1235,3 +1235,30 @@ JWT 特点
 * 鉴权方式：jwt, 采用 koa-jwt
 
 ##### 2-2 前端项目Veevalidate3X
+
+有2个坑：
+
+(1) vee-validate 的版本需要是 ^3.1.3
+
+(2) Login.vue 中 validation-provider 需要包裹 errors 和 errros[0] , 不然会找不到 errors
+
+```html
+<label for="L_pass" class="layui-form-label">密码</label>
+<validation-provider  name="password" rules="required|min:6"  v-slot="{errors}">
+    <div class="layui-input-inline">
+      <input
+        type="password"
+        name="password"
+        v-model="password"
+        placeholder="请输入密码"
+        autocomplete="off"
+        class="layui-input"
+      />
+    </div>
+    <div class="layui-form-mid">
+    <span style="color: #c00;">{{errors[0]}}</span>
+    </div>
+</validation-provider>
+```
+
+##### 2-3 Veevalidate3X升级-本地化&配置自定义消息

@@ -1295,3 +1295,8 @@ localize('zh_CN', {
 ```
 
 ##### 2-4 Veevalidate结合vuei18n
+
+```bash
+npm install vue-i18n@8.14.1 -S
+```
+

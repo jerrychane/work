@@ -1344,3 +1344,4 @@ const i18n = new VueI18n({
 export { i18n }
 ```
 
+##### 2-5 封装Axios请求（拦截器）

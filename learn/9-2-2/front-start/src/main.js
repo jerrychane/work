@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 
 import axios from 'axios'
-import '@/util/veevalidate'
+import '@/util/veevalidate-i18n'
 
 Vue.config.productionTip = false
 

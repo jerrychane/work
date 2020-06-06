@@ -1,4 +1,4 @@
-import axios from '@/utils/axios'
+import axios from '@/utils/request'
 
 const getCode = () => {
   return axios.get('/getCaptcha')

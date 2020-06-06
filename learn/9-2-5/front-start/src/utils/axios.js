@@ -68,7 +68,7 @@ class HttpRequest {
     post (url, data) {
         return this.request({
             method: 'post',
-            url: ulr,
+            url: url,
             data: data
         })
     }

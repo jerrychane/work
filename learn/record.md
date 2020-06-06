@@ -1405,3 +1405,5 @@ exports.getWebpackResolveConfig = function (customAlias = {}) {
 
 提高 JWT 安全性的策略：（1）使用 HTTPS （2）服务端存储 Secret,动态 Secret  (3) 设置短期的 Token 有效，设置刷新 Token
 
+##### 2-8 前台veevalidate登录校验&接口请求设计
+

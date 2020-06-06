@@ -1,8 +1,10 @@
 import svgCaptcha from 'svg-captcha'
 
 class PublicController {
-  constructor() {}
-  async getCaptcha(ctx) {
+  constructor() { }
+  async getCaptcha (ctx) {
+    const body = ctx.request.query
+    console.log(body.sid)
     const newCaptca = svgCaptcha.create({
       size: 4,
       ignoreChars: '0o1il',

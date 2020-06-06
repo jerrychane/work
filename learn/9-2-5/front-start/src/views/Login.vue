@@ -102,35 +102,45 @@
 </template>
 
 <script>
-import { ValidationProvider } from 'vee-validate'
-import { getCode } from '@/api/login'
+import { ValidationProvider } from "vee-validate";
+import uuid from "uuid/v4";
+import { getCode } from "@/api/login";
 export default {
-  name: 'login',
+  name: "login",
   components: {
     ValidationProvider
   },
-  data () {
+  data() {
     return {
-      username: '',
-      password: '',
-      code: '',
-      svg: ''
-    }
+      username: "",
+      password: "",
+      code: "",
+      svg: ""
+    };
   },
-  mounted () {
-    this._getCode()
+  mounted() {
+    let sid = "";
+    if (localStorage.getItem("sid")) {
+      sid = localStorage.getItem("sid");
+    } else {
+      sid = uuid();
+      localStorage.setItem("sid", sid);
+    }
+    this.$store.commit("setSid", sid);
+    console.log(sid);
+    this._getCode(sid);
   },
   methods: {
-    _getCode () {
-      getCode().then((res) => {
-        console.log(res)
+    _getCode(sid) {
+      getCode(sid).then(res => {
+        console.log(res);
         if (res.code === 200) {
-          this.svg = res.data
+          this.svg = res.data;
         }
-      })
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

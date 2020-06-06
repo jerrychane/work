@@ -1360,3 +1360,14 @@ Axios 封装要点 （见课程 9-2-5）
 
 ##### 2-7 图片验证码存储&校验机制设计
 
+```bash
+npm install uuid@3.3.3 -S
+```
+
+使用 uuid v4 版本
+
+```js
+import { v4 as uuidv4 } from 'uuid';
+uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
+```
+

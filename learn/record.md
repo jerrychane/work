@@ -1371,3 +1371,37 @@ import { v4 as uuidv4 } from 'uuid';
 uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
 ```
 
+使用 redis 缓存，setValue 和 getValue , 设置超时时间
+
+src 路径使用@作为 alias webpack 如何配置
+
+```bash
+"watch": "cross-env NODE_ENV=dev webpack --watch --progress --hide-modules --config config/webpack.config.dev.js",
+"debug": "nodemon --inspect ./dist/server.bundle.js"
+```
+
+```js
+// config/utils
+const path = require('path')
+exports.resolve = function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
+exports.APP_PATH = exports.resolve('src')
+exports.DIST_PATH = exports.resolve('dist')
+exports.getWebpackResolveConfig = function (customAlias = {}) {
+  const appPath = exports.APP_PATH;
+  return {
+    modules: [appPath, 'node_modules'],
+    extensions: ['.js', '.json'],
+    alias: {
+      '@': appPath,
+      ...customAlias,
+    },
+  };
+};
+```
+
+前端常见问题 Token 存哪里？ localStorage(推荐) , sessionStorage(会话中断，内容清空)，cookie(浏览器端好，跨端支持不好)
+
+提高 JWT 安全性的策略：（1）使用 HTTPS （2）服务端存储 Secret,动态 Secret  (3) 设置短期的 Token 有效，设置刷新 Token
+

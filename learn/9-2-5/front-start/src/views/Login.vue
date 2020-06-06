@@ -128,10 +128,11 @@ export default {
     }
     this.$store.commit("setSid", sid);
     console.log(sid);
-    this._getCode(sid);
+    this._getCode();
   },
   methods: {
-    _getCode(sid) {
+    _getCode() {
+      let sid = this.$store.state.sid;
       getCode(sid).then(res => {
         console.log(res);
         if (res.code === 200) {

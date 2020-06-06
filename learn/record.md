@@ -1345,3 +1345,8 @@ export { i18n }
 ```
 
 ##### 2-5 封装Axios请求（拦截器）
+
+import 或 export 函数和模块不需要加 {} 例如 axios, react ， import 或 export 对象和组件需要加 {}
+
+##### 2-6 axios封装进阶-业务示例、逻辑代码、配置
+

@@ -1351,3 +1351,12 @@ import 或 export 函数和模块不需要加 {} 例如 axios, react ， import 
 ##### 2-6 axios封装进阶-业务示例、逻辑代码、配置
 
 Axios  Request Config 有一个配置叫 withCredentials：true,解决跨域请求时，是否带上凭证即cookie
+
+Axios 封装要点 （见课程 9-2-5）
+
+* 公共配置内容，注意目录结构
+* Axios 拦截器（请求拦截/响应拦截）使用
+* 错误日志收集
+
+##### 2-7 图片验证码存储&校验机制设计
+

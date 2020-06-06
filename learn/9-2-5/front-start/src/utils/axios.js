@@ -44,7 +44,7 @@ class HttpRequest {
         }, (error) => {
             // Any status codes that falls outside the range of 2xx cause this function to trigger
             // Do something with response error
-            debugger
+            // debugger
             errorHandle(error)
             return Promise.reject(error);
         });

@@ -1407,3 +1407,4 @@ exports.getWebpackResolveConfig = function (customAlias = {}) {
 
 ##### 2-8 前台veevalidate登录校验&接口请求设计
 
+先校验整个提交的表单数据，然后执行 submit 方法，发送请求，提交数据。

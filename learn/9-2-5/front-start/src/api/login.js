@@ -34,4 +34,8 @@ const login = (loginInfo) => {
   })
 }
 
-export { getCode, forget, login }
+export {
+  getCode,
+  forget,
+  login
+}

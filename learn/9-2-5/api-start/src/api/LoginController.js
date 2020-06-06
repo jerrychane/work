@@ -2,8 +2,8 @@ import send from '../config/MailConfig'
 import moment from 'moment'
 
 class LoginController {
-  constructor() {}
-  async forget(ctx) {
+  constructor() { }
+  async forget (ctx) {
     const { body } = ctx.request
     console.log(body)
     try {
@@ -24,6 +24,12 @@ class LoginController {
     } catch (e) {
       console.log(e)
     }
+  }
+  async login (ctx) {
+    // 接收用户数据
+    // 验证图片验证码的时效性，正确性
+    // 验证账号密码是否正确
+    // 返回 token
   }
 }
 

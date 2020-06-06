@@ -5,7 +5,7 @@ import store from './store'
 
 import axios from 'axios'
 
-import '@/util/veevalidate'
+import '@/utils/veevalidate'
 
 Vue.config.productionTip = false
 

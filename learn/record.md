@@ -1408,3 +1408,14 @@ exports.getWebpackResolveConfig = function (customAlias = {}) {
 ##### 2-8 前台veevalidate登录校验&接口请求设计
 
 先校验整个提交的表单数据，然后执行 submit 方法，发送请求，提交数据。
+
+#### 第3章 服务端开发 - jwt鉴权集成
+
+##### 3-1 JWT鉴权方式：koa-jwt集成 
+
+在 api-start 目录下
+
+```bash
+npm i koa-jwt@^3.6.0 -S
+```
+

@@ -1417,5 +1417,7 @@ exports.getWebpackResolveConfig = function (customAlias = {}) {
 
 ```bash
 npm i koa-jwt@^3.6.0 -S
+npm i -D npm-run-all@4.1.5
 ```
 
+##### 3-2 服务端登录逻辑&业务代码调试

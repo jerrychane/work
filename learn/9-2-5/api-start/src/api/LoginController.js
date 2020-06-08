@@ -30,6 +30,7 @@ class LoginController {
     // 验证图片验证码的时效性，正确性
     // 验证账号密码是否正确
     // 返回 token
+    console.log('Hello login')
   }
 }
 

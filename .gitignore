@@ -5,6 +5,7 @@ node_modules
 bleeding-edge-react-sample-app.github.io
 yarn.lock
 .idea
+.vscode
 yarn-error.log
 package-lock.json
 learn/learn_daily.code-workspace

@@ -1421,3 +1421,30 @@ npm i -D npm-run-all@4.1.5
 ```
 
 ##### 3-2 服务端登录逻辑&业务代码调试
+
+使用 vscode 调试终端打断点，需要在调试脚本上添加 --inspect 进行监听；
+
+```json
+ {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch via NPM",
+      "runtimeExecutable": "npm",
+      "restart": true,
+      "console": "integratedTerminal",
+      "runtimeArgs": ["run-script", "start:dist"],
+      "port": 9229,
+      "skipFiles": ["<node_internals>/**"]
+    },
+{
+      "type": "node",
+      "request": "launch",
+      "name": "nodemon",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/nodemon",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/src/index.js",
+      "restart": true
+    }
+```
+
+##### 3-3 服务端koa统一错误处理

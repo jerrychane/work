@@ -1448,3 +1448,25 @@ npm i -D npm-run-all@4.1.5
 ```
 
 ##### 3-3 服务端koa统一错误处理
+
+##### 3-4 VSCode对配置alias的支持
+
+借助插件 Node modules resolve，在项目的根目录下创建 jsconfig.json ，配置项如下：
+
+```json
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "allowSyntheticDefaultImports": false,
+        "baseUrl": "./",
+        "paths": {
+            "@/*":["src/*"]
+        }
+    },
+    "exclude": ["node_modules","dist"]
+}
+```
+
+
+
+##### 3-5 使用Chrome调试服务端应用

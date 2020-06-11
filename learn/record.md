@@ -1523,5 +1523,42 @@ export default Alert
 
 ##### 4-5 前端数据校验交互二：veevalidate服务端检验
 
+#### 第5章 前后端联调--注册接口及接口联调
 
+##### 5-1 前端注册业务开发
+
+路由守卫：
+
+```js
+export default new Router({
+  routes: [
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/reg',
+      name: 'reg',
+      component: Reg,
+      beforeEnter: (to, from, next) => {
+        console.log('from', from)
+        console.log('to', to)
+        if (from.name === 'login') {
+          next()
+        } else {
+          next('/login')
+        }
+      }
+    },
+    {
+      path: '/forget',
+      name: 'forget',
+      component: Forget
+    }
+  ]
+})
+```
+
+##### 5-2 注册接口Mock数据
 

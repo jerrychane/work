@@ -18,7 +18,16 @@ export default new Router({
     {
       path: '/reg',
       name: 'reg',
-      component: Reg
+      component: Reg,
+      beforeEnter: (to, from, next) => {
+        console.log('from', from)
+        console.log('to', to)
+        if (from.name === 'login') {
+          next()
+        } else {
+          next('/login')
+        }
+      }
     },
     {
       path: '/forget',

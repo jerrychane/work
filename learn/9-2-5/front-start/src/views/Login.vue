@@ -51,7 +51,12 @@
                     </validation-provider>
                   </div>
                   <div class="layui-form-item">
-                    <validation-provider name="code" rules="required|length:4" v-slot="{errors}">
+                    <validation-provider
+                      name="code"
+                      ref="codefield"
+                      rules="required|length:4"
+                      v-slot="{errors}"
+                    >
                       <div class="layui-row">
                         <label for="L_vercode" class="layui-form-label">验证码</label>
                         <div class="layui-input-inline">
@@ -124,7 +129,7 @@ export default {
     };
   },
   mounted() {
-    window.vue = this;
+    // window.vue = this;
     let sid = "";
     if (localStorage.getItem("sid")) {
       sid = localStorage.getItem("sid");
@@ -140,7 +145,6 @@ export default {
     _getCode() {
       let sid = this.$store.state.sid;
       getCode(sid).then(res => {
-        console.log(res);
         if (res.code === 200) {
           this.svg = res.data;
         }
@@ -152,15 +156,34 @@ export default {
         //ABORT!!
         return;
       }
-      console.log("submit event");
       login({
         username: this.username,
         password: this.password,
         code: this.code,
         sid: this.$store.state.sid
-      }).then(res => {
-        console.log(res);
-      });
+      })
+        .then(res => {
+          if (res.code === 200) {
+            this.username = "";
+            this.password = "";
+            this.code = "";
+            requestAnimationFrame(() => {
+              this.$refs.observer.reset();
+            });
+            console.log(res);
+          } else if (res.code === 401) {
+            this.$refs.codefield.setErrors([res.msg]);
+          }
+        })
+        .catch(err => {
+          const data = err.response.data;
+          if (data.code === 500) {
+            this.$alert("用户名密码校验失败，请检查！");
+          } else {
+            this.$alert("服务器错误");
+            console.log(err);
+          }
+        });
     }
   }
 };

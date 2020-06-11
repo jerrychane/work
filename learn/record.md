@@ -1518,3 +1518,10 @@ export default Alert
 ```
 
 ##### 4-3 Vue自定义Confirm组件
+
+##### 4-4 前端数据校验交互一：自定义弹窗
+
+##### 4-5 前端数据校验交互二：veevalidate服务端检验
+
+
+

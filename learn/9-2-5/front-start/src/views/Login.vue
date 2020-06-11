@@ -1,6 +1,6 @@
 <template>
   <div class="layui-container fly-marginTop">
-    <Alert msg="这是一个 alert 弹窗" :isShow="true"></Alert>
+    <Alert :msg="msg" :isShow="true"></Alert>
     <div class="fly-panel fly-panel-user" pad20>
       <div class="layui-tab layui-tab-brief" lay-filter="user">
         <ul class="layui-tab-title">
@@ -108,13 +108,11 @@
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import uuid from "uuid/v4";
 import { getCode, login } from "@/api/login";
-import Alert from "@/components/modules/alert/Alert";
 export default {
   name: "login",
   components: {
     ValidationProvider,
-    ValidationObserver,
-    Alert
+    ValidationObserver
   },
   data() {
     return {
@@ -122,9 +120,11 @@ export default {
       password: "",
       code: "",
       svg: ""
+      // msg: "这是 Alert 的消息"
     };
   },
   mounted() {
+    window.vue = this;
     let sid = "";
     if (localStorage.getItem("sid")) {
       sid = localStorage.getItem("sid");

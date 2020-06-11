@@ -6,6 +6,8 @@ import store from './store'
 import axios from 'axios'
 
 import '@/utils/veevalidate'
+import Alert from '@/components/modules/alert';
+Vue.use(Alert)
 
 Vue.config.productionTip = false
 

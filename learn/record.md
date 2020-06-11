@@ -1481,4 +1481,24 @@ alert 弹窗 和 vue 自定义组件（推荐）
 
 ##### 4-2 Vue自定义Alert组件
 
-使用 vbase ，快速形成 template 结构的文件。
+使用 vbase ，快速形成 template 结构的文件，定义完 Alert.vue 组件后，可在 index.js 创建 Vue 自定义插件。
+
+```js
+// src\components\modules\alert\index.js
+import AlertComponent from './Alert.vue'
+const Alert = {}
+Alert.install = function (Vue) {
+    const AlertConstructor = Vue.extend(AlertComponent)
+    const instance = new AlertConstructor()
+    instance.$mount(document.createElement('div'))
+    document.body.appendChild(instance.$el)
+    // 4. 添加实例方法
+    Vue.prototype.$alert = function (msg) {
+        // 逻辑...
+        instance.msg = msg
+        instance.isShow = true
+    }
+}
+export default Alert
+```
+

@@ -1,9 +1,10 @@
 <template>
   <div v-show="isShow">
     <div class="alert">
-      <div>{{msg}}</div>
-      <div class="btnCommon" @click="close()">确定</div>
+      <div class="flex">{{msg}}</div>
+      <div class="btnCommon success" @click="close()">确定</div>
     </div>
+    <div class="mask" @click="closeMask()"></div>
   </div>
 </template>
 
@@ -19,15 +20,20 @@ export default {
       default: false
     }
   },
-  method: {
+  methods: {
     close() {
-      this.isShow = true;
+      this.isShow = false;
+    },
+    closeMask() {
+      this.close();
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+$btn-main: #009688;
+$btn-dark: darken($btn-main, 5%);
 .alert {
   width: 300px;
   height: 150px;
@@ -41,6 +47,16 @@ export default {
   padding: 20px 10px;
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.05);
   z-index: 3000;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.flex {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .btnCommon {
   width: 105px;
@@ -48,5 +64,22 @@ export default {
   text-align: center;
   line-height: 32px;
   border-radius: 6px;
+  &.success {
+    background: $btn-main;
+    color: #fff;
+    &:hover {
+      background: $btn-dark;
+    }
+  }
+}
+.mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: 2000;
 }
 </style>

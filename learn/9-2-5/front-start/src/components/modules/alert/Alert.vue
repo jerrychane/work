@@ -2,7 +2,13 @@
   <div v-show="isShow">
     <div class="alert">
       <div class="flex">{{msg}}</div>
-      <div class="btnCommon success" @click="close()">确定</div>
+      <div v-if="type === 'alert'">
+        <div class="btnCommon success" @click="close()">确定</div>
+      </div>
+      <div v-else class>
+        <div class="btnCommon cancel" @click="cancelEvent()">取消</div>
+        <div class="btnCommon success" @click="successEvent()">确定</div>
+      </div>
     </div>
     <div class="mask" @click="closeMask()"></div>
   </div>
@@ -11,6 +17,12 @@
 <script>
 export default {
   props: {
+    type: {
+      type: {
+        type: String,
+        default: "alert"
+      }
+    },
     msg: {
       type: String,
       default: ""

@@ -1502,3 +1502,4 @@ Alert.install = function (Vue) {
 export default Alert
 ```
 
+##### 4-3 Vue自定义Confirm组件

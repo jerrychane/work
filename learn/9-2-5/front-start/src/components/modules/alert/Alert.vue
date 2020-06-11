@@ -5,7 +5,7 @@
       <div v-if="type === 'alert'">
         <div class="btnCommon success" @click="close()">确定</div>
       </div>
-      <div v-else class>
+      <div v-else class="space-round">
         <div class="btnCommon cancel" @click="cancelEvent()">取消</div>
         <div class="btnCommon success" @click="successEvent()">确定</div>
       </div>
@@ -30,6 +30,18 @@ export default {
     isShow: {
       type: Boolean,
       default: false
+    },
+    success: {
+      type: Function,
+      default: () => {
+        console.log("点击了 success");
+      }
+    },
+    cancel: {
+      type: Function,
+      default: () => {
+        console.log("点击了 cancel");
+      }
     }
   },
   methods: {
@@ -37,6 +49,16 @@ export default {
       this.isShow = false;
     },
     closeMask() {
+      if (this.type === "alert") {
+        this.close();
+      }
+    },
+    cancelEvent() {
+      this.cancel();
+      this.close();
+    },
+    successEvent() {
+      this.success();
       this.close();
     }
   }
@@ -70,6 +92,14 @@ $btn-dark: darken($btn-main, 5%);
   justify-content: center;
   align-items: center;
 }
+.space-round {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+}
 .btnCommon {
   width: 105px;
   height: 32px;
@@ -82,6 +112,10 @@ $btn-dark: darken($btn-main, 5%);
     &:hover {
       background: $btn-dark;
     }
+  }
+  &.cancel {
+    background: #ededed;
+    color: #333;
   }
 }
 .mask {

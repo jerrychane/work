@@ -1562,3 +1562,10 @@ export default new Router({
 
 ##### 5-2 注册接口Mock数据
 
+##### 5-3 注册接口开发&前后联调
+
+```bash
+npm i -S bcrypt@3.0.6
+```
+
+##### 5-4 登录鉴权总结

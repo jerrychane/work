@@ -1623,3 +1623,32 @@ npm i -S bcrypt@3.0.6
 - 备注：无
 
 ##### 2-3 数据库设计-发贴、签到、友链
+
+- 发帖信息
+
+|字段|类型|空|默认|注释|
+|:----    |:-------    |:--- |-- -|------      |
+|tid    |ObjectId     |否 |  |这个默认产生的ObjectId(''),取的使用需要\_id             |
+|uid |String |否 |    |   用户ID  |
+|title |String |否 |    |  文章标题  |
+|content |String |否   |    |   文章内容    |
+|created |Date     |否   | now()  |   创建时间  |
+|catalog |String     |否   |   |   帖子分类，index-全部，ask-提问，advise-建议，discuss-讨论，share-分享，news-动态  |
+|fav     |Number |否   |   |    帖子积分     |
+|isEnd     |String |   | 0 | 0-未结束，1-已结帖   |
+|reads     |Number |否   | 0  |    阅读记数    |
+|answer     |Number |否   |0    |    回答记数     |
+|status     |String |否   |  0  |    0-打开回复，1-关闭回复     |
+|isTop     |String |否   |  0  |    0-未置顶，1-已置顶      |
+|sort     |String |否   |  0  |    置顶排序    |
+|tags     |String |否   |  |    文章的标签、精华，加精，etc    |                              |
+
+-  友情链接、推荐，常用信息
+
+| 字段    | 类型   | 空   | 默认 | 注释     |
+| :------ | :----- | :--- | ---- | -------- |
+| title   | String | 否   |      | 标题     |
+| link    | String | 否   |      | 链接     |
+| created | Date   | 否   |      | 创建时间 |
+| isTop   | String | 是   | 0    | 是否置顶 |
+| sort    | String | 否   | 0    | 排序编号 |

@@ -1652,3 +1652,12 @@ npm i -S bcrypt@3.0.6
 | created | Date   | 否   |      | 创建时间 |
 | isTop   | String | 是   | 0    | 是否置顶 |
 | sort    | String | 否   | 0    | 排序编号 |
+
+-  签到记录
+
+| 字段      | 类型   | 空   | 默认 | 注释         |
+| :-------- | :----- | :--- | ---- | ------------ |
+| uid       | String | 否   |      | 用户ID       |
+| created   | Date   | 否   |      | 创建时间     |
+| fav       | String | 否   |      | 积分数量     |
+| last_sign | Date   | 是   |      | 上一签到时间 |

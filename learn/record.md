@@ -1598,3 +1598,28 @@ npm i -S bcrypt@3.0.6
 
 ##### 2-1 数据库-业务功能分析
 
+##### 2-2 数据库设计-用户信息
+
+-  用户表，储存用户信息
+
+| 字段     | 类型     | 空   | 默认  | 注释                                                       |
+| :------- | :------- | :--- | ----- | ---------------------------------------------------------- |
+| uid      | ObjectId | 否   |       | 这个默认产生的ObjectId(''),取的使用需要\_id                |
+| username | String   | 否   |       | 用户名，这个是邮件账号                                     |
+| password | String   | 否   |       | 密码                                                       |
+| name     | String   | 否   |       | 昵称                                                       |
+| created  | Date     | 否   | now() | 注册时间                                                   |
+| updated  | Date     | 否   | now() | 更新时间                                                   |
+| favs     | Number   | 否   | 100   | 用户积分                                                   |
+| gender   | String   |      |       | 默认，0-男，1-女                                           |
+| roles    | String   | 否   | user  | 角色，user-普通用户，admin-管理员，super-admin超级管理员   |
+| pic      | String   | 否   |       | 用户头像                                                   |
+| mobile   | String   | 否   |       | 手机号码                                                   |
+| status   | String   | 否   | 0     | 是否被禁用，0-正常，1-禁言，2-账号禁用                     |
+| regmark  | String   | 否   |       | 个性签名                                                   |
+| location | String   | 否   |       | 城市                                                       |
+| isVip    | String   | 否   | 0     | 是否是Vip用户，0-普通用户，1-会员用户，2-7定义成vip的level |
+| count    | Number   | 否   | 0     | 签到次数                                                   |
+- 备注：无
+
+##### 2-3 数据库设计-发贴、签到、友链

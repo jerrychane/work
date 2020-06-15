@@ -1775,7 +1775,7 @@ npm i -S bcrypt@3.0.6
 
 #### 第4章 首页样式开发
 
-4-1 git 仓库初始化
+##### 4-1 git 仓库初始化
 
 ```bash
 git config user.name "jerrychane"
@@ -1783,3 +1783,4 @@ git config user.email "jerrychane@126.com"
 git config --list
 ```
 
+##### 4-2 vue-cli升级到v4版本

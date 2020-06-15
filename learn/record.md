@@ -1772,3 +1772,14 @@ npm i -S bcrypt@3.0.6
 | pic    | string | 用户头像                       |
 
 ##### 3-3 首页接口定义-侧栏接口定义
+
+#### 第4章 首页样式开发
+
+4-1 git 仓库初始化
+
+```bash
+git config user.name "jerrychane"
+git config user.email "jerrychane@126.com"
+git config --list
+```
+

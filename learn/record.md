@@ -1784,3 +1784,9 @@ git config --list
 ```
 
 ##### 4-2 vue-cli升级到v4版本
+
+```sh
+npm install -g @vue/cli
+vue upgrade
+```
+

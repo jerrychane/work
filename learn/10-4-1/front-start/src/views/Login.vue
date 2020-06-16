@@ -165,7 +165,7 @@ export default {
           requestAnimationFrame(() => {
             this.$refs.observer.reset()
           })
-          console.log(res)
+          // console.log(res)
         } else if (res.code === 401) {
           this.$refs.codefield.setErrors([res.msg])
         }
@@ -176,7 +176,7 @@ export default {
         } else {
           this.$alert('服务器错误')
         }
-        console.log(err.response)
+        // console.log(err.response)
       })
     }
   }

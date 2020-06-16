@@ -31,11 +31,15 @@ export default {
     },
     success: {
       type: Function,
-      default: () => { console.log('点击了success') }
+      default: () => { 
+        // console.log('点击了success')
+         }
     },
     cancel: {
       type: Function,
-      default: () => { console.log('点击了cancel') }
+      default: () => { 
+        // console.log('点击了cancel')
+        }
     }
   },
   methods: {

@@ -207,7 +207,7 @@ export default {
           setTimeout(() => {
             this.$router.push('/login')
           }, 1000)
-          console.log(res)
+          // console.log(res)
         } else {
           // username -> '用户名已经注册'
           // res.msg = { username: [], name: [], code: []}

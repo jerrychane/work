@@ -1790,3 +1790,6 @@ npm install -g @vue/cli
 vue upgrade
 ```
 
+##### 4-4 初识响应式原理
+
+##### 4-7 完成首页静态页面结构

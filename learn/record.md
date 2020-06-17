@@ -1793,3 +1793,35 @@ vue upgrade
 ##### 4-4 初识响应式原理
 
 ##### 4-7 完成首页静态页面结构
+
+##### 4-8 优化温馨通道样式
+
+```scss
+<style lang="scss" scoped>
+$border-color: #f2f2f2;
+.fly-panel-main {
+  padding: 15px;
+}
+.imooc-quick {
+  border: 1px solid $border-color;
+  border-bottom: none;
+  border-right: none;
+  .layui-col-xs6 {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    border: 1px solid $border-color;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-left: none;
+    border-top: none;
+    a {
+      display: block;
+    }
+  }
+}
+```
+
+#### 第5章 首页筛选交互及接口开发

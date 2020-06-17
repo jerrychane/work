@@ -6,7 +6,10 @@ const Login = () => import(/* webpackChunkName: 'login' */ './views/Login.vue')
 const Reg = () => import(/* webpackChunkName: 'reg' */ './views/Reg.vue')
 const Forget = () =>
   import(/* webpackChunkName: 'forget' */ './views/Forget.vue')
-
+const Index = () =>
+  import(/* webpackChunkName: 'index' */ './views/chanels/Index.vue')
+const Template1 = () =>
+  import(/* webpackChunkName: 'template' */ './views/chanels/Template1.vue')
 Vue.use(Router)
 
 export default new Router({
@@ -14,7 +17,14 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: '',
+          name: 'index',
+          component: Index
+        }
+      ]
     },
     {
       path: '/login',

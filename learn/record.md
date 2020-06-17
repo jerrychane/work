@@ -1825,3 +1825,18 @@ $border-color: #f2f2f2;
 ```
 
 #### 第5章 首页筛选交互及接口开发
+
+##### 5-1 首页交互及接口分析&最终效果展示
+
+linkActiveClass和linkExactActiveClass都是用来设置 链接激活时使用的 CSS 类名
+
+linkActiveClass 是只要匹配路由，就会添加类名。
+
+linkExactActiveClass是精确匹配到路由就会添加类名。
+
+linkActiveClass的默认值是router-link-active
+
+linkExactActiveClass的默认值是router-link-exact-active
+
+##### 5-3 首页Panel部分路由交互
+

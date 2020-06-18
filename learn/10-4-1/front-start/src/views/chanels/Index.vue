@@ -2,6 +2,7 @@
   <div class="layui-container">
     <div class="layui-row layui-col-space15">
       <div class="layui-col-md8">
+        <jerry-top></jerry-top>
         <jerry-list></jerry-list>
       </div>
       <div class="layui-col-md4">
@@ -22,6 +23,7 @@ import HotList from "@/components/sidebar/HotList";
 import Ads from "@/components/sidebar/Ads";
 import Links from "@/components/sidebar/Links";
 import List from "@/components/contents/List";
+import Top from "@/components/contents/Top";
 export default {
   name: "index",
   components: {
@@ -30,7 +32,8 @@ export default {
     "jerry-hotlist": HotList,
     "jerry-ads": Ads,
     "jerry-links": Links,
-    "jerry-list": List
+    "jerry-list": List,
+    "jerry-top": Top
   }
 };
 </script>

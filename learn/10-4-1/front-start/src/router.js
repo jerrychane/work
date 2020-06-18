@@ -13,6 +13,8 @@ const Template1 = () =>
 Vue.use(Router)
 
 export default new Router({
+  linkExactActiveClass: 'layui-this',
+  // linkActiveClass: 'layui-this',
   routes: [
     {
       path: '/',
@@ -23,6 +25,11 @@ export default new Router({
           path: '',
           name: 'index',
           component: Index
+        },
+        {
+          path: '/index/:catalog',
+          name: 'catalog',
+          component: Template1
         }
       ]
     },

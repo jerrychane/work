@@ -19,7 +19,7 @@ import Ads from "@/components/sidebar/Ads";
 import Links from "@/components/sidebar/Links";
 import List from "@/components/contents/List";
 export default {
-  name: "index",
+  name: "template1",
   components: {
     "jerry-hotlist": HotList,
     "jerry-ads": Ads,

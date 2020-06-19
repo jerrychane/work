@@ -1889,3 +1889,11 @@ template 不会渲染任何 DOM
 </template>
 ```
 
+##### 5-6 拆分首页ListItem组件1
+
+```bash
+npm i lodash@^4.17.15 -S
+```
+
+##### 5-7 拆分首页ListItem组件2
+

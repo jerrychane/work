@@ -14,11 +14,12 @@
         <a :class="{'layui-this':sort === 'answer'}" @click.prevent="search(4)">按热议</a>
       </span>
     </div>
-    <list-item></list-item>
+    <list-item :lists="lists" @nextPage="nextPage()"></list-item>
   </div>
 </template>
 
 <script>
+import { getList } from "@/api/content";
 import ListItem from "./ListItem";
 export default {
   name: "list",
@@ -29,10 +30,35 @@ export default {
     return {
       status: "",
       tag: "",
-      sort: "answer"
+      sort: "created",
+      page: 0,
+      limit: 20,
+      catalog: "",
+      lists: []
     };
   },
+  mounted() {
+    this._getLists();
+  },
   methods: {
+    _getLists() {
+      let options = {
+        catalog: this.catalog,
+        isTop: 0,
+        page: this.page,
+        limit: this.limit,
+        sort: this.sort,
+        tag: this.tag,
+        status: this.status
+      };
+      getList(options).then(res => {
+        console.log(res);
+      });
+    },
+    nextPage() {
+      this.page++;
+      this._getLists();
+    },
     search(val) {
       switch (val) {
         // 未结帖
@@ -52,13 +78,11 @@ export default {
           break;
         // 按最新，按照日期查询
         case 3:
-          this.status = "";
-          this.tag = "精华";
+          this.sort = "created";
           break;
-        // 按热议，按照日期查询
+        // 按热议，按照评论数查询
         case 4:
-          this.status = "";
-          this.tag = "精华";
+          this.sort = "answer";
           break;
         // 默认综合查询
         default:

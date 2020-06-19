@@ -2,12 +2,12 @@
   <div class="fly-panel fly-column">
     <div class="layui-container">
       <ul class="layui-clear">
-        <router-link tag='li' to='/' class="layui-hide-xs">
+        <router-link tag="li" to="/" class="layui-hide-xs">
           <a href="/">首页</a>
         </router-link>
-        <router-link v-for="(item,index) in lists" :key="'panel' +index" tag='li' :to="item.path">
+        <router-link v-for="(item,index) in lists" :key="'panel' +index" tag="li" :to="item.path">
           <a href="jie/index.html">
-           {{item.name}}
+            {{item.name}}
             <span class="layui-badge-dot" v-if="item.new"></span>
           </a>
         </router-link>
@@ -46,44 +46,44 @@
 <script>
 export default {
   name: "panel",
-  data () {
-   return {
-     lists: [
-      {
-        name: "提问",
-        path: "/index/ask",
-        isNew: false
-      },
-      {
-        name: "分享",
-        path: "/index/share",
-        isNew: true
-      },
-      {
-        name: "讨论",
-        path: "/index/discuss",
-        isNew: false
-      },
-      {
-        name: "建议",
-        path: "/index/advice",
-        isNew: false
-      },
-      {
-        name: "公告",
-        path: "/index/notice",
-        isNew: false
-      },
-      {
-        name: "动态",
-        path: "/index/logs",
-        isNew: false
-      }
-    ],
-    isLogin: false
-   } 
-}
-}
+  data() {
+    return {
+      lists: [
+        {
+          name: "提问",
+          path: "/index/ask",
+          isNew: false
+        },
+        {
+          name: "分享",
+          path: "/index/share",
+          isNew: true
+        },
+        {
+          name: "讨论",
+          path: "/index/discuss",
+          isNew: false
+        },
+        {
+          name: "建议",
+          path: "/index/advice",
+          isNew: false
+        },
+        {
+          name: "公告",
+          path: "/index/notice",
+          isNew: false
+        },
+        {
+          name: "动态",
+          path: "/index/logs",
+          isNew: false
+        }
+      ],
+      isLogin: this.$store.state.isLogin
+    };
+  }
+};
 </script>
 
 <style lang="scss" scoped>

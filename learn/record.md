@@ -1874,3 +1874,18 @@ export { getList, getTips, getLinks, getTop }
 ```
 
 ##### 5-5 首页列表筛选部分交互逻辑
+
+template 不会渲染任何 DOM 
+
+```vue
+<!-- 用户登入后显示 -->
+<template v-if="isLogin">
+    <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block">
+        <a href="user/index.html">我发表的贴</a>
+    </li>
+    <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block">
+        <a href="user/index.html#collection">我收藏的贴</a>
+    </li>
+</template>
+```
+

@@ -21,7 +21,7 @@
               v-if="item.uid.isVip !=='0'"
             >{{'VIP' + item.uid.isVip}}</i>
           </a>
-          <span>{{item.created}}</span>
+          <span>{{item.created | moment}}</span>
 
           <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻">
             <i class="iconfont icon-kiss"></i>
@@ -43,7 +43,7 @@
         </div>
       </li>
     </ul>
-    <div style="text-align: center">
+    <div style="text-align: center" v-show="isShow">
       <div class="laypage-main">
         <a @click.prevent="more()" class="laypage-next">更多求解</a>
       </div>
@@ -52,10 +52,21 @@
 </template>
 
 <script>
+import moment from "moment";
+import "moment/locale/zh-cn";
 import _ from "lodash";
 export default {
   name: "listitem",
-  props: ["lists"],
+  props: {
+    lists: {
+      default: () => [],
+      type: Array
+    },
+    isShow: {
+      default: true,
+      type: Boolean
+    }
+  },
   computed: {
     items() {
       _.map(this.lists, item => {
@@ -88,6 +99,17 @@ export default {
   methods: {
     more() {
       this.$emit("nextPage");
+    }
+  },
+  filters: {
+    moment(date) {
+      // 超过7天，显示日期
+      if (moment(date).isBefore(moment().subtract(7, "days"))) {
+        return moment(date).format("YYYY-MM-DD");
+      } else {
+        // 1小时前，XX 小时前，X天前
+        return moment(date).from(moment());
+      }
     }
   }
 };

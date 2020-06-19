@@ -34,7 +34,125 @@ export default {
       page: 0,
       limit: 20,
       catalog: "",
-      lists: []
+      lists: [
+        {
+          uid: {
+            name: "jerry",
+            isVip: 1
+          },
+          title: "大前端课程",
+          content: "",
+          created: "2020-06-19 01:00:00",
+          catalog: "ask",
+          fav: 40,
+          isEnd: 0,
+          reads: 10,
+          answer: 0,
+          status: 0,
+          isTop: 0,
+          tags: [
+            {
+              name: "精华",
+              class: "layui-bg-red"
+            },
+            {
+              name: "热门",
+              class: "layui-bg-blue"
+            }
+          ]
+          // uid	String	否		用户ID
+          // title	String	否		文章标题
+          // content	String	否		文章内容
+          // created	Date	否	now()	创建时间
+          // catalog	String	否		帖子分类，index-全部，ask-提问，advise-建议，discuss-讨论，share-分享，news-动态
+          // fav	Number	否		帖子积分
+          // isEnd	String		0	0-未结束，1-已结帖
+          // reads	Number	否	0	阅读记数
+          // answer	Number	否	0	回答记数
+          // status	String	否	0	0-打开回复，1-关闭回复
+          // isTop	String	否	0	0-未置顶，1-已置顶
+          // sort	String	否	0	置顶排序
+          // tags	String	否		文章的标签、精华，加精，etc
+        },
+        {
+          uid: {
+            name: "jerry",
+            isVip: 1
+          },
+          title: "大前端课程",
+          content: "",
+          created: "2020-06-19 01:00:00",
+          catalog: "ask",
+          fav: 40,
+          isEnd: 0,
+          reads: 10,
+          answer: 0,
+          status: 0,
+          isTop: 0,
+          tags: [
+            {
+              name: "精华",
+              class: "layui-bg-red"
+            },
+            {
+              name: "热门",
+              class: "layui-bg-blue"
+            }
+          ]
+        },
+        {
+          uid: {
+            name: "jerry",
+            isVip: 1
+          },
+          title: "大前端课程",
+          content: "",
+          created: "2020-06-19 01:00:00",
+          catalog: "ask",
+          fav: 40,
+          isEnd: 0,
+          reads: 10,
+          answer: 0,
+          status: 0,
+          isTop: 0,
+          tags: [
+            {
+              name: "精华",
+              class: "layui-bg-red"
+            },
+            {
+              name: "热门",
+              class: "layui-bg-blue"
+            }
+          ]
+        },
+        {
+          uid: {
+            name: "jerry",
+            isVip: 1
+          },
+          title: "大前端课程",
+          content: "",
+          created: "2020-06-19 01:00:00",
+          catalog: "ask",
+          fav: 40,
+          isEnd: 0,
+          reads: 10,
+          answer: 0,
+          status: 0,
+          isTop: 0,
+          tags: [
+            {
+              name: "精华",
+              class: "layui-bg-red"
+            },
+            {
+              name: "热门",
+              class: "layui-bg-blue"
+            }
+          ]
+        }
+      ]
     };
   },
   mounted() {

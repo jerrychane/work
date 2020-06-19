@@ -1897,3 +1897,25 @@ npm i lodash@^4.17.15 -S
 
 ##### 5-7 拆分首页ListItem组件2
 
+```bash
+npm i -S moment@2.24.0
+```
+
+ momen可以使用format方法指定转换格式  
+
+```js
+moment(‘1580452305134’).format(‘YYYY-MM-DD’)
+```
+
+ moment可以接受两个参数，第二个参数是格式的类型。
+
+```js
+moment(‘1580452305134’, ‘MM-YY-DD HH:mm:ss’)
+```
+
+ moment().subtract方法接受两个参数，第一个参数是数字，第二参数是单位。
+
+```js 
+moment(‘2012-02-02’).isBefore(moment().subtract(7, ‘days’))
+```
+

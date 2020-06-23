@@ -1919,3 +1919,39 @@ moment(‘1580452305134’, ‘MM-YY-DD HH:mm:ss’)
 moment(‘2012-02-02’).isBefore(moment().subtract(7, ‘days’))
 ```
 
+#### 第6章 首页长列表内容配合Mock数据开发
+
+##### 6-1 长列表加载注意的三个基本面
+
+```js
+getList(options)
+        .then(res => {
+          console.log(res);
+          // 对于异常的判断， res.code 非200，我们给用户一个提示
+          // 判断是否lists长度为0，如果为零即可直接赋值
+          // 当lists长度不为0，后面请求的数据，加入到Lists里面来
+          if (res.code === 200) {
+            if (this.lists.length === 0) {
+              this.lists = res.data;
+            } else {
+              this.lists = this.lists.concat(res.data);
+            }
+          }
+        })
+        .catch(err => {
+          this.$alert(err.msg);
+        });
+```
+
+接口地址:
+
+```html
+http://url.cn/5ayaGGs
+```
+
+下载 net.js ，进行 mock 数据的监听，同时修改vue.config.js 中的代理地址  和 src/config/index.js 中的dev代理,在 net.js 同级目录 执行命令以下命令，
+
+```bash
+node net.js http://www.toimc.com:10040/mock/5d0666bebaa920000bb519b1 http://localhost:3000
+```
+

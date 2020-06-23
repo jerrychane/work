@@ -28,131 +28,14 @@ export default {
   },
   data() {
     return {
+      isEnd: false,
       status: "",
       tag: "",
       sort: "created",
       page: 0,
       limit: 20,
       catalog: "",
-      lists: [
-        {
-          uid: {
-            name: "jerry",
-            isVip: 1
-          },
-          title: "大前端课程",
-          content: "",
-          created: "2020-06-19 01:00:00",
-          catalog: "ask",
-          fav: 40,
-          isEnd: 0,
-          reads: 10,
-          answer: 0,
-          status: 0,
-          isTop: 0,
-          tags: [
-            {
-              name: "精华",
-              class: "layui-bg-red"
-            },
-            {
-              name: "热门",
-              class: "layui-bg-blue"
-            }
-          ]
-          // uid	String	否		用户ID
-          // title	String	否		文章标题
-          // content	String	否		文章内容
-          // created	Date	否	now()	创建时间
-          // catalog	String	否		帖子分类，index-全部，ask-提问，advise-建议，discuss-讨论，share-分享，news-动态
-          // fav	Number	否		帖子积分
-          // isEnd	String		0	0-未结束，1-已结帖
-          // reads	Number	否	0	阅读记数
-          // answer	Number	否	0	回答记数
-          // status	String	否	0	0-打开回复，1-关闭回复
-          // isTop	String	否	0	0-未置顶，1-已置顶
-          // sort	String	否	0	置顶排序
-          // tags	String	否		文章的标签、精华，加精，etc
-        },
-        {
-          uid: {
-            name: "jerry",
-            isVip: 1
-          },
-          title: "大前端课程",
-          content: "",
-          created: "2020-06-19 01:00:00",
-          catalog: "ask",
-          fav: 40,
-          isEnd: 0,
-          reads: 10,
-          answer: 0,
-          status: 0,
-          isTop: 0,
-          tags: [
-            {
-              name: "精华",
-              class: "layui-bg-red"
-            },
-            {
-              name: "热门",
-              class: "layui-bg-blue"
-            }
-          ]
-        },
-        {
-          uid: {
-            name: "jerry",
-            isVip: 1
-          },
-          title: "大前端课程",
-          content: "",
-          created: "2020-06-19 01:00:00",
-          catalog: "ask",
-          fav: 40,
-          isEnd: 0,
-          reads: 10,
-          answer: 0,
-          status: 0,
-          isTop: 0,
-          tags: [
-            {
-              name: "精华",
-              class: "layui-bg-red"
-            },
-            {
-              name: "热门",
-              class: "layui-bg-blue"
-            }
-          ]
-        },
-        {
-          uid: {
-            name: "jerry",
-            isVip: 1
-          },
-          title: "大前端课程",
-          content: "",
-          created: "2020-06-19 01:00:00",
-          catalog: "ask",
-          fav: 40,
-          isEnd: 0,
-          reads: 10,
-          answer: 0,
-          status: 0,
-          isTop: 0,
-          tags: [
-            {
-              name: "精华",
-              class: "layui-bg-red"
-            },
-            {
-              name: "热门",
-              class: "layui-bg-blue"
-            }
-          ]
-        }
-      ]
+      lists: []
     };
   },
   mounted() {
@@ -169,9 +52,27 @@ export default {
         tag: this.tag,
         status: this.status
       };
-      getList(options).then(res => {
-        console.log(res);
-      });
+      getList(options)
+        .then(res => {
+          console.log(res);
+          // 对于异常的判断， res.code 非200，我们给用户一个提示
+          // 判断是否lists长度为0，如果为零即可直接赋值
+          // 当lists长度不为0，后面请求的数据，加入到Lists里面来
+          if (res.code === 200) {
+            if (res.data.length < this.limit) {
+              this.isEnd = true;
+            }
+            // 判断res.data的长度，如果小于20条，则是最后一页
+            if (this.lists.length === 0) {
+              this.lists = res.data;
+            } else {
+              this.lists = this.lists.concat(res.data);
+            }
+          }
+        })
+        .catch(err => {
+          this.$alert(err.msg);
+        });
     },
     nextPage() {
       this.page++;

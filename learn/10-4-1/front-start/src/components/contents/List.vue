@@ -33,7 +33,7 @@ export default {
       tag: "",
       sort: "created",
       page: 0,
-      limit: 20,
+      limit: 25,
       catalog: "",
       lists: []
     };
@@ -43,6 +43,9 @@ export default {
   },
   methods: {
     _getLists() {
+      if (this.isEnd) {
+        return;
+      }
       let options = {
         catalog: this.catalog,
         isTop: 0,
@@ -59,8 +62,11 @@ export default {
           // 判断是否lists长度为0，如果为零即可直接赋值
           // 当lists长度不为0，后面请求的数据，加入到Lists里面来
           if (res.code === 200) {
+            console.log("_getLists -> res.data.length", res.data.length);
+            console.log("_getLists -> this.limit", this.limit);
             if (res.data.length < this.limit) {
               this.isEnd = true;
+              console.log("_getLists -> this.isEnd", this.isEnd);
             }
             // 判断res.data的长度，如果小于20条，则是最后一页
             if (this.lists.length === 0) {

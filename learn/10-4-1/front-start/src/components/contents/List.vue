@@ -14,7 +14,7 @@
         <a :class="{'layui-this':sort === 'answer'}" @click.prevent="search(4)">按热议</a>
       </span>
     </div>
-    <list-item :lists="lists" @nextPage="nextPage()"></list-item>
+    <list-item :lists="lists" :isEnd="isEnd" @nextPage="nextPage()"></list-item>
   </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
       tag: "",
       sort: "created",
       page: 0,
-      limit: 25,
+      limit: 20,
       catalog: "",
       lists: []
     };

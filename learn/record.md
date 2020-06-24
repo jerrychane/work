@@ -1955,3 +1955,8 @@ http://url.cn/5ayaGGs
 node net.js http://www.toimc.com:10040/mock/5d0666bebaa920000bb519b1 http://localhost:3000
 ```
 
+##### 6-2 axios拦截器取消用户重复请求
+
+##### 6-3 首页列表监听筛选数据
+
+##### 6-4 首页路由监听加载分类数据

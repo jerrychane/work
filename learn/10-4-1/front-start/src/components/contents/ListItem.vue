@@ -72,6 +72,10 @@ export default {
       type: Boolean
     }
   },
+  mounted() {
+    console.log("11111111");
+    console.log(this.data);
+  },
   computed: {
     items() {
       _.map(this.lists, item => {

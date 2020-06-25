@@ -1962,3 +1962,20 @@ node net.js http://www.toimc.com:10040/mock/5d0666bebaa920000bb519b1 http://loca
 ##### 6-4 首页路由监听加载分类数据
 
 ##### 6-5 首页侧边栏：温馨通道、友链接口开发
+
+#### 第7章 首页后端开发
+
+##### 7-1 后台项目初始化：项目依赖升级
+
+检查依赖的更新情况
+
+```bash
+npm i -g npm-check-updates
+```
+
+```bash
+npm i -D eslint
+npx eslint --init
+npx eslint src/**/*.js 查看src目录下的js文件
+```
+

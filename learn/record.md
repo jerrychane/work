@@ -1979,3 +1979,9 @@ npx eslint --init
 npx eslint src/**/*.js 查看src目录下的js文件
 ```
 
+##### 7-2 ESLint规则扩展：使用Standard规则
+
+```bash
+npm install --save-dev eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node
+```
+

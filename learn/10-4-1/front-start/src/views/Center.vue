@@ -8,7 +8,7 @@
         :key="'center' + index"
       >
         <a href="javascript:;">
-          <i class="iconfont-tomic" :class="item.icon"></i>
+          <i class="layui-icon" :class="item.icon"></i>
           {{item.name}}
         </a>
       </li>
@@ -24,23 +24,23 @@ export default {
       lists: [
         {
           name: "我的主页",
-          icon: "iconhome1"
+          icon: "layui-icon-home"
         },
         {
           name: "基本设置",
-          icon: "iconSettings"
+          icon: "layui-icon-set"
         },
         {
           name: "我的帖子",
-          icon: "icondocument"
+          icon: "layui-icon-form"
         },
         {
           name: "我的消息",
-          icon: "iconmessage1"
+          icon: "layui-icon-reply-fill"
         },
         {
           name: "其他设置",
-          icon: "iconSimilarproducts"
+          icon: "layui-icon-component"
         }
       ]
     };
@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/custom/iconfont.css";
+// @import "../assets/custom/iconfont.css";
 .iconfont-tomic {
   margin-right: 10px;
 }

@@ -2084,3 +2084,10 @@ export default {
 </style>
 ```
 
+##### 1-4 使用最新的Layui版本 
+
+```html
+https://www.layuicdn.com/
+```
+
+##### 1-5 创建个人内容子组件

@@ -2005,3 +2005,21 @@ npm install --save-dev eslint-config-standard eslint-plugin-standard eslint-plug
 
 ##### 1-2 首页个人中心菜单交互
 
+```js
+show() {
+      console.log("show");
+      // 当用户的鼠标移入头像时，显示操作菜单
+      this.hoverCtrl = setTimeout(() => {
+        this.isHover = true;
+      }, 200);
+    },
+hide() {
+  console.log("hide");
+  // 当用户的鼠标移出头像时，隐藏操作菜单
+  clearTimeout(this.hoverCtrl);
+  this.hoverCtrl = setTimeout(() => {
+    this.isHover = false;
+  }, 5000);
+}
+```
+

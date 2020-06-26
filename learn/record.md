@@ -1985,3 +1985,23 @@ npx eslint src/**/*.js 查看src目录下的js文件
 npm install --save-dev eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node
 ```
 
+##### 7-3 定义文章接口的Model（学习Pre、Statics方法）
+
+### 第11周 全栈开发—用户中心和发贴/回帖模块
+
+#### 第1章 个人中心页面与交互开发
+
+##### 1-1 优化用户登录路由
+
+对于用户密码、昵称和角色等敏感信息，在用户登录时不需要返回给用户，需要在服务端进行过滤删除后返回给用户。
+
+```js
+ const userObj = user.JSON()
+        const arr = ['password', 'username', 'roles']
+        arr.map((item) => {
+          delete userObj[item]
+})
+```
+
+##### 1-2 首页个人中心菜单交互
+

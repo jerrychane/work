@@ -109,78 +109,84 @@
 </template>
 
 <script>
-import { ValidationProvider, ValidationObserver } from 'vee-validate'
-import { getCode, login } from '@/api/login'
-import uuid from 'uuid/v4'
+import { ValidationProvider, ValidationObserver } from "vee-validate";
+import { getCode, login } from "@/api/login";
+import uuid from "uuid/v4";
 export default {
-  name: 'login',
+  name: "login",
   components: {
     ValidationProvider,
     ValidationObserver
   },
-  data () {
+  data() {
     return {
-      username: '',
-      password: '',
-      code: '',
-      svg: ''
-    }
+      username: "",
+      password: "",
+      code: "",
+      svg: ""
+    };
   },
-  mounted () {
-    let sid = ''
-    if (localStorage.getItem('sid')) {
-      sid = localStorage.getItem('sid')
+  mounted() {
+    let sid = "";
+    if (localStorage.getItem("sid")) {
+      sid = localStorage.getItem("sid");
     } else {
-      sid = uuid()
-      localStorage.setItem('sid', sid)
+      sid = uuid();
+      localStorage.setItem("sid", sid);
     }
-    this.$store.commit('setSid', sid)
-    this._getCode()
+    this.$store.commit("setSid", sid);
+    this._getCode();
   },
   methods: {
-    _getCode () {
-      let sid = this.$store.state.sid
-      getCode(sid).then((res) => {
+    _getCode() {
+      let sid = this.$store.state.sid;
+      getCode(sid).then(res => {
         if (res.code === 200) {
-          this.svg = res.data
+          this.svg = res.data;
         }
-      })
+      });
     },
-    async submit () {
-      const isValid = await this.$refs.observer.validate()
+    async submit() {
+      const isValid = await this.$refs.observer.validate();
       if (!isValid) {
         // ABORT!!
-        return
+        return;
       }
       login({
         username: this.username,
         password: this.password,
         code: this.code,
         sid: this.$store.state.sid
-      }).then((res) => {
-        if (res.code === 200) {
-          this.username = ''
-          this.password = ''
-          this.code = ''
-          requestAnimationFrame(() => {
-            this.$refs.observer.reset()
-          })
-          // console.log(res)
-        } else if (res.code === 401) {
-          this.$refs.codefield.setErrors([res.msg])
-        }
-      }).catch((err) => {
-        const data = err.response.data
-        if (data.code === 500) {
-          this.$alert('用户名密码校验失败，请检查！')
-        } else {
-          this.$alert('服务器错误')
-        }
-        // console.log(err.response)
       })
+        .then(res => {
+          if (res.code === 200) {
+            console.log("data is :" + JSON.stringify(res.data));
+            this.$store.commit("setUserInfo", res.data);
+            this.$store.commit("setIsLogin", true);
+            this.username = "";
+            this.password = "";
+            this.code = "";
+            requestAnimationFrame(() => {
+              this.$refs.observer.reset();
+            });
+            this.$router.push({ name: "index" });
+            // console.log(res)
+          } else if (res.code === 401) {
+            this.$refs.codefield.setErrors([res.msg]);
+          }
+        })
+        .catch(err => {
+          const data = err.response.data;
+          if (data.code === 500) {
+            this.$alert("用户名密码校验失败，请检查！");
+          } else {
+            this.$alert("服务器错误");
+          }
+          // console.log(err.response)
+        });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -20,6 +20,21 @@ export default {
 <style lang="scss">
 @import "assets/css/global.css";
 // 公用样式
+.pl0 {
+  padding-left: 0;
+}
+.pr0 {
+  padding-right: 0;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
 .svg {
   position: relative;
   top: -4px;

@@ -7,7 +7,7 @@
         v-for="(item,index) in lists"
         :key="'center' + index"
       >
-        <router-link :to="{name:item.link}">
+        <router-link :to="{name:item.link}" :active-class="item.activeClass">
           <i class="layui-icon" :class="item.icon"></i>
           {{item.name}}
         </router-link>
@@ -36,7 +36,8 @@ export default {
         {
           name: "基本设置",
           icon: "layui-icon-set",
-          link: "set"
+          link: "info",
+          activeClass: "layui-this"
         },
         {
           name: "我的帖子",

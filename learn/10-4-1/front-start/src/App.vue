@@ -23,6 +23,14 @@ export default {
 .pl0 {
   padding-left: 0;
 }
+// .pl20 {
+//   padding: 20px;
+// }
+@for $i from 0 through 5 {
+  .pd#{$i} {
+    padding: $i * 10 + px;
+  }
+}
 .pr0 {
   padding-right: 0;
 }

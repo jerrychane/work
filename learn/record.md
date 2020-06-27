@@ -2100,3 +2100,11 @@ https://www.layuicdn.com/
 
 ##### 1-9 完成消息&其他设置页面静态样式(CSS基础)
 
+##### 1-10 Sass进阶1@for,@Mixin,Map用法介绍
+
+```bash
+npm init -y
+npm install -S dart-sass
+npx dart-sass test.scss
+```
+

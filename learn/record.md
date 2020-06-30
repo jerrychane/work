@@ -2102,9 +2102,62 @@ https://www.layuicdn.com/
 
 ##### 1-10 Sass进阶1@for,@Mixin,Map用法介绍
 
+vscode 中安装 Live Sass Compiler，点击 watch 可以实时看到 Css 代码
+
 ```bash
 npm init -y
 npm install -S dart-sass
 npx dart-sass test.scss
+```
+
+##### 1-12 Sass进阶2@each,Map相关操作，学会书写通用工具类Mixin
+
+```scss
+$spacer: 10px;
+$spacers: map-merge(
+  $map1: (
+    0: 0 * $spacer,
+    1: 1 * $spacer,
+    2: 2 * $spacer,
+    3: 3 * $spacer,
+    4: 4 * $spacer,
+    5: 5 * $spacer,
+  ),
+  $map2: (),
+);
+
+@each $key, $value in $spacers {
+  .p-#{$key} {
+    padding: $value;
+  }
+}
+```
+
+```scss
+// 合并 map.scss
+$spacers: (
+  6: 60px,
+  7: 70px,
+) !default;
+// unites.scss
+$spacer: 8px;
+$spacers: map-merge(
+  $map1: (
+    0: 0 * $spacer,
+    1: 1 * $spacer,
+    2: 2 * $spacer,
+    3: 3 * $spacer,
+    4: 4 * $spacer,
+    5: 5 * $spacer,
+  ),
+  $map2: $spacers,// 必须是一个map
+);
+
+@each $key, $value in $spacers {
+  .p-#{$key} {
+    padding: $value;
+  }
+}
+
 ```
 

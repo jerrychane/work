@@ -1,5 +1,32 @@
-.hello {
-  color: black;
-  font-size: 14px;
+.p-0 {
+  padding: 0px;
+}
+
+.p-1 {
+  padding: 8px;
+}
+
+.p-2 {
+  padding: 16px;
+}
+
+.p-3 {
+  padding: 24px;
+}
+
+.p-4 {
+  padding: 32px;
+}
+
+.p-5 {
+  padding: 40px;
+}
+
+.p-6 {
+  padding: 60px;
+}
+
+.p-7 {
+  padding: 70px;
 }
 /*# sourceMappingURL=test.css.map */

@@ -2177,3 +2177,8 @@ localStorage.setItem("userInfo", JSON.stringify(res.data));
 localStorage 能够将数据存储在缓存中，除非用户主动清除，否则将一直保留。localStorage.clear 方法可以清除当前域下的所有缓存。
 
 sessionStorage和localStorage都仅在客户端(即浏览器)中保存，不参与和服务器的通信。sessionStorage和localStorage在使用时需要注意一些安全性问题，都不适合存放敏感数据。
+
+##### 2-3 登录路由优化（全局路由守卫） 
+
+路由元信息的使用,beforeRouterEnter 是组件内的守卫，应该通过 beforeEach注册全局前置守卫，对应三个参数分别为 to, from , next，to为即将进入的目标，from 是当前导航要离开的路由，next 是一个方法，调用后退出当前的等待。
+

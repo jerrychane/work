@@ -38,7 +38,7 @@ const MyCollection = () =>
   import(/* webpackChunkName: 'mycollection' */ './components/user/common/MyCollection.vue')
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   linkExactActiveClass: 'layui-this',
   // linkActiveClass: 'layui-this',
   routes: [
@@ -91,6 +91,7 @@ export default new Router({
       path: '/center',
       name: 'center',
       component: Center,
+      meta: { requireAuth: true },
       linkExactActiveClass: 'layui-this',
       children: [
         {
@@ -153,29 +154,33 @@ export default new Router({
           component: Others
         },
       ],
-      beforeEnter: (to, from, next) => {
-        console.log('from', from)
-        console.log('to', to)
-        const isLogin = store.state.isLogin
-        console.log('isLogin', isLogin)
-        if (isLogin) {
-          // 已经登录的状态
-          next()
-        } else {
-          // 取localStorage里面缓存的token信息 + 用户信息
-          const token = localStorage.getItem('token')
-          const userInfo = JSON.parse(localStorage.getItem('userInfo'))
-          if (token !== '' && token !== null) {
-            store.commit('setToken', token)
-            store.commit('setUserInfo', userInfo)
-            store.commit('setIsLogin', true)
-            next()
-          } else {
-            // 未登录的状态
-            next('/login')
-          }
-        }
-      }
     }
   ]
 })
+router.beforeEach((to, from, next) => {
+  // 取localStorage里面缓存的token信息 + 用户信息
+  const token = localStorage.getItem('token')
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+  if (token !== '' && token !== null) {
+    store.commit('setToken', token)
+    store.commit('setUserInfo', userInfo)
+    store.commit('setIsLogin', true)
+  }
+  if (to.matched.some(record => record.meta.requireAuth)) {
+    const isLogin = store.state.isLogin
+    // 需要用户登录的页面进行区别
+    if (isLogin) {
+      // 已经登录的状态
+      // 权限判断，meta元数据
+      next()
+    } else {
+      // 未登录的状态
+      next('/login')
+    }
+  } else {
+    //公共页面，不需要用户登录
+    next()
+  }
+})
+
+export default router;

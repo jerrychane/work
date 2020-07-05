@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home.vue'
-
+import store from './store'
 const Login = () => import(/* webpackChunkName: 'login' */ './views/Login.vue')
 const Reg = () => import(/* webpackChunkName: 'reg' */ './views/Reg.vue')
 const Forget = () =>
@@ -152,7 +152,30 @@ export default new Router({
           name: 'others',
           component: Others
         },
-      ]
+      ],
+      beforeEnter: (to, from, next) => {
+        console.log('from', from)
+        console.log('to', to)
+        const isLogin = store.state.isLogin
+        console.log('isLogin', isLogin)
+        if (isLogin) {
+          // 已经登录的状态
+          next()
+        } else {
+          // 取localStorage里面缓存的token信息 + 用户信息
+          const token = localStorage.getItem('token')
+          const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+          if (token !== '' && token !== null) {
+            store.commit('setToken', token)
+            store.commit('setUserInfo', userInfo)
+            store.commit('setIsLogin', true)
+            next()
+          } else {
+            // 未登录的状态
+            next('/login')
+          }
+        }
+      }
     }
   ]
 })

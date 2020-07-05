@@ -2158,6 +2158,22 @@ $spacers: map-merge(
     padding: $value;
   }
 }
-
 ```
 
+#### 第2章 前后端分离后安全机制与缓存机制
+
+##### 2-1 用户信息如何缓存？localStorage&SessionStorage的区别 
+
+```js
+sessionStorage.setItem("userInfo", JSON.stringify(res.data));
+```
+
+sessionStorage 只存在于本次会话中，切换 tab 页签或关闭 tab 页签存储的内容就没有了。
+
+```
+localStorage.setItem("userInfo", JSON.stringify(res.data));
+```
+
+localStorage 能够将数据存储在缓存中，除非用户主动清除，否则将一直保留。localStorage.clear 方法可以清除当前域下的所有缓存。
+
+sessionStorage和localStorage都仅在客户端(即浏览器)中保存，不参与和服务器的通信。sessionStorage和localStorage在使用时需要注意一些安全性问题，都不适合存放敏感数据。

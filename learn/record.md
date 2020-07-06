@@ -2182,3 +2182,6 @@ sessionStorage和localStorage都仅在客户端(即浏览器)中保存，不参�
 
 路由元信息的使用,beforeRouterEnter 是组件内的守卫，应该通过 beforeEach注册全局前置守卫，对应三个参数分别为 to, from , next，to为即将进入的目标，from 是当前导航要离开的路由，next 是一个方法，调用后退出当前的等待。
 
+#### 第3章 用户积分体系之签到模块开发
+
+##### 3-11 自定义Pop气泡组件

@@ -129,7 +129,7 @@ export default {
           this.$store.commit("setUserInfo", "");
           this.$store.commit("setToken", "");
           this.$store.commit("setIsLogin", false);
-          this.$router.push("/");
+          this.$router.push({ name: "index" }, () => {});
         },
         () => {}
       );

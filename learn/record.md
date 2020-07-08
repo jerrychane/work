@@ -2205,6 +2205,16 @@ upload (e) {
         this.formData = formData
     }
     // 上传图片之后 -> uploadImg
+    uploadImg(this.formData).then((res) => {
+        updateUserInfo({pic:this.pic}).then((res) => {
+            if(res.code === 200) {
+                let user = this.$store.state.userInfo
+                user.pic = this.pic
+                this.$store.commit('setUserInfo',user)
+                this.$alter('图片上传成功')
+            }
+        })
+    })
     // 更新用户基本资料 -> uploadUserInfo
 }
 // 图片上传接口

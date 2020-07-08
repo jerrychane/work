@@ -2204,8 +2204,10 @@ upload (e) {
         formData.append('file',file[0])
         this.formData = formData
     }
-    // 上传图片之后
-    // 更新用户基本资料
+    // 上传图片之后 -> uploadImg
+    // 更新用户基本资料 -> uploadUserInfo
 }
+// 图片上传接口
+const uploadImg = (formData) =>axios.post('/content/upload',formData)
 ```
 

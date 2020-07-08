@@ -2193,3 +2193,19 @@ sessionStorage和localStorage都仅在客户端(即浏览器)中保存，不参�
 ##### 4-1 异常路由处理，添加404页面
 
 ##### 4-2 input标签radio样式自定义
+
+##### 4-11 上传头像前端页面开发
+
+```js
+upload (e) {
+    let file = e.target.files
+    let formData = new FormData()
+    if(file.length>0) {
+        formData.append('file',file[0])
+        this.formData = formData
+    }
+    // 上传图片之后
+    // 更新用户基本资料
+}
+```
+

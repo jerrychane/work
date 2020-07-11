@@ -2221,3 +2221,8 @@ upload (e) {
 const uploadImg = (formData) =>axios.post('/content/upload',formData)
 ```
 
+##### 5-4 使用mixin混入优化图片验证码功能
+
+mixin中的数据对象与组件中的数据对象重名时，优先组件中的数据。当组件的methods中有与mixin的methods方法重名，调用此方法时，只会执行组件中的方法。
+
+##### 5-6 自定义表情&transition过渡、父子通信

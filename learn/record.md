@@ -2225,6 +2225,7 @@ const uploadImg = (formData) =>axios.post('/content/upload',formData)
 
 mixin中的数据对象与组件中的数据对象重名时，优先组件中的数据。当组件的methods中有与mixin的methods方法重名，调用此方法时，只会执行组件中的方法。
 
+<<<<<<< HEAD
 ##### 5-6 自定义表情&transition过渡、父子通信
 
  Vue 提供了 transition 的封装组件来实现过渡效果，其中name属性定义类名的前缀，如果不定义，默认的前缀为v-。
@@ -2234,3 +2235,6 @@ mixin中的数据对象与组件中的数据对象重名时，优先组件中的
 enter-to / leave-to在Vue 2.1.8版本之后出现，定义 进入/离开 时过渡的结束状态。
 
 自定义过渡类名优先级高于普通的类名。
+=======
+##### 5-6 自定义表情&transition过渡、父子通信
+>>>>>>> aed93e4953f117869fccefa83984a7ed05bbdf58

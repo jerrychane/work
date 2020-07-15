@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-  </head>
+</head>
 
-  <body>
-    <script>
-      var ws = new WebSocket('ws://127.0.0.1:3000')
-      ws.onopen = function () {
-        ws.send('Hello from client')
-      }
-      ws.onmessage = function (event) {
-        console.log(event.data)
-      }
-    </script>
-  </body>
+<body>
+    <button type="button" id="btn">按钮</button:b>
+        <script>
+            var ws = new WebSocket('ws://127.0.0.1:3000')
+            ws.onopen = function() {
+                console.log('open:' + ws.readyState);
+                ws.send('Hello from client')
+            }
+            ws.onmessage = function(event) {
+                console.log('message:' + ws.readyState);
+                console.log(event.data)
+            }
+            // 当连接主动断开的时候触发 close 事件
+            ws.onclose = function() {
+                console.log('close:' + ws.readyState);
+                console.log('已关闭 websocket');
+            }
+            // 当连接失败时，触发 onerror事件
+            ws.onerror = function() {
+                console.log('error:' + ws.readyState);
+                console.log('websocket 连接失败！');
+            }
+            document.getElementById('btn').addEventListener('click', function() {
+                ws.close()
+            })
+        </script>
+</body>
+
 </html>

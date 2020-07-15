@@ -2419,3 +2419,13 @@ http.listen(3000, function() {
 </html>
 ```
 
+##### 1-6 WebSocket属性onerror&onclose
+
+| Constant             | readyState |
+| -------------------- | ---------- |
+| Websocket.CONNETTING | 0          |
+| Websocket.OPEN       | 1          |
+| Websocket.CLOSING    | 2          |
+| Websocket.ERROR      | 3          |
+| Websocket.CLOSE      | 3          |
+

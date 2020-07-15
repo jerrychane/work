@@ -2288,3 +2288,6 @@ _.range(0);
 
 ##### 1-1 websocket章导学
 
+* 了解 websocket 使用场景、工作原理
+* 熟悉 websocket 常用 API （属性、方法）
+* 开发调试 websocket 应用（多人聊天、鉴权、离线消息）

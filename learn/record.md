@@ -2321,3 +2321,44 @@ npm i -S ws@7.2.1
 ```
 
 ##### 1-4 常见API介绍&第一个ws应用
+
+```js
+// server/index.js
+const WebSocket = require('ws')
+const wss = new WebSocket.Server({ port: 3000 })
+wss.on('connection',function connection(ws) {
+    console.log('one client is connected');
+    // 接收客户端的消息
+    ws.on('message',function (msg) {
+        console.log(msg);
+    })
+    // 主动发送消息给客户端
+    ws.send('Message from server')
+})
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      var ws = new WebSocket('ws://127.0.0.1:3000')
+      ws.onopen = function () {
+        ws.send('Hello from client')
+      }
+      ws.onmessage = function (event) {
+        console.log(event.data)
+      }
+    </script>
+  </body>
+</html>
+
+```
+
+##### 1-5 socket.io开发简单的消息应用

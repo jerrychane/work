@@ -2362,3 +2362,60 @@ wss.on('connection',function connection(ws) {
 ```
 
 ##### 1-5 socket.io开发简单的消息应用
+
+```bash
+npm i -S socket.io@2.3.0
+npm i -S express@4.17.1
+```
+
+```js
+// sockit/server.js
+const app = require('express')()
+const http = require('http').createServer(app)
+const io = require('socket.io')(http)
+
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/index.html')
+})
+
+io.on('connection', function(socket) {
+    console.log('a socket is running');
+    socket.on('chatEvent', function(msg) {
+        console.log('msg from client ' + msg);
+        // socket.send('server says:' + msg)
+        socket.broadcast.emit('ServerMsg', msg)
+    })
+})
+http.listen(3000, function() {
+    console.log('server is running on:3000');
+})
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/socket.io/2.3.0/socket.io.js"></script>
+</head>
+<body>
+    <input type="text" name="" id="msg">
+    <button type="button" id="btn">发送</button>
+</body>
+<script>
+    var socket = io()
+    document.getElementById('btn').addEventListener('click', function() {
+        var value = document.getElementById('msg').value
+        socket.emit('chatEvent', value)
+        document.getElementById('msg').value = ''
+    })
+    socket.on('ServerMsg', function(msg) {
+        console.log(msg);
+    })
+</script>
+</html>
+```
+

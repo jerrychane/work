@@ -2429,3 +2429,6 @@ http.listen(3000, function() {
 | Websocket.ERROR      | 3          |
 | Websocket.CLOSE      | 3          |
 
+#### 第2章 多人聊天室应用
+
+##### 2-1 ws实现聊天功能(消息广播)

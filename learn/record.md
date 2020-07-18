@@ -2523,3 +2523,5 @@ var app = new Vue({
 
 ##### 2-3 统计在线人数&离开聊天室发送通知
 
+所有在线人数：`wss.clients.size`
+

@@ -17,6 +17,7 @@
     <div v-else>
       <ul>
         <li v-for="(item,index) in lists" :key="'message' + index"> {{item}} </li>
+        <li>在线人数 {{num}}</li>
       </ul>
       <div class="ctrl">
         <!-- 输入框 -->
@@ -33,7 +34,8 @@
         lists: [],
         ws: {},
         name: '',
-        isShow: true
+        isShow: true,
+        num: 0
       },
       mounted() {
         this.ws = new WebSocket('ws://127.0.0.1:3000')
@@ -59,14 +61,24 @@
           // ws.send('Hello from client')
         },
         onMessage: function (event) {
+          // 当用户未进入聊天室，则不接收消息
+          if (this.isShow) {
+            return
+          }
           // 接收服务端发送过来的消息
           var obj = JSON.parse(event.data);
           if (obj.event === 'enter') {
             // 当一个新的用户进入聊天室
             this.lists.push('欢迎: ' + obj.message + '加入聊天室')
+          } else if (obj.event === 'out') {
+            this.lists.push(obj.name + "已经退出了聊天室！")
           } else {
-            this.lists.push(obj.message)
+            if (obj.name !== this.name) { // 不等于自己的判断
+              // 接收正常的聊天
+              this.lists.push(obj.name + ":" + obj.message)
+            }
           }
+          this.num = obj.num
         },
         onClose: function () {
           console.log('close:' + this.ws.readyState);
@@ -78,10 +90,11 @@
         },
         // 发送消息
         send: function () {
-          this.lists.push(this.message)
+          this.lists.push(this.name + ":" + this.message)
           this.ws.send(JSON.stringify({
             event: 'message',
-            message: this.message
+            message: this.message,
+            name: this.name
           }))
           this.message = ''
         },

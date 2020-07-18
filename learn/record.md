@@ -2453,3 +2453,71 @@ wss.on('connection',function connection(ws) {
 ```
 
 红色箭头为服务端向客户端发送消息，绿色箭头为客户端向服务端发送消息
+
+##### 2-2 进入聊天室欢迎语功能
+
+```js
+var app = new Vue({
+      el: '#app',
+      data: {
+        message: '',
+        lists: [],
+        ws: {},
+        name: '',
+        isShow: true
+      },
+      mounted() {
+        this.ws = new WebSocket('ws://127.0.0.1:3000')
+        this.ws.onopen = this.onOpen
+        this.ws.onmessage = this.onMessage
+        this.ws.onclose = this.onClose
+        this.ws.onerror = this.onError
+      },
+      methods: {
+        enter: function () {
+          if (this.name.trim() === '') {
+            alert('用户名不得为空')
+            return
+          }
+          this.isShow = false
+          this.ws.send(JSON.stringify({
+            event: 'enter',
+            message: this.name
+          }))
+        },
+        onOpen: function () {
+          console.log('open:' + this.ws.readyState);
+          // ws.send('Hello from client')
+        },
+        onMessage: function (event) {
+         // 接收服务端发送过来的消息
+          var obj = JSON.parse(event.data);
+          if (obj.event === 'enter') {
+            // 当一个新的用户进入聊天室
+            this.lists.push('欢迎: ' + obj.message + '加入聊天室')
+          } else {
+              // 接收正常的聊天
+            this.lists.push(obj.message)
+          }
+        },
+        onClose: function () {
+          console.log('close:' + this.ws.readyState);
+          console.log('已关闭 websocket');
+        },
+        onError: function () {
+          console.log('error:' + this.ws.readyState);
+          console.log('websocket 连接失败！');
+        },
+        // 发送消息
+        send: function () {
+          this.lists.push(this.message)
+          this.ws.send(JSON.stringify({
+            event: 'message',
+            message: this.message
+          }))
+          this.message = ''
+        },
+      }
+    })
+```
+

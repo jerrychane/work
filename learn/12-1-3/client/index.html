@@ -10,13 +10,19 @@
 
 <body>
   <div id="app">
-    <div class="ctrl">
+    <div v-if="isShow">
+      <input type="text" v-model="name">
+      <button type="button" @click="enter()">进入聊天室</button>
+    </div>
+    <div v-else>
       <ul>
         <li v-for="(item,index) in lists" :key="'message' + index"> {{item}} </li>
       </ul>
-      <!-- 输入框 -->
-      <input type="text" v-model="message">
-      <button type="button" @click="send()">按钮</button>
+      <div class="ctrl">
+        <!-- 输入框 -->
+        <input type="text" v-model="message">
+        <button type="button" @click="send()">按钮</button>
+      </div>
     </div>
   </div>
   <script>
@@ -25,7 +31,9 @@
       data: {
         message: '',
         lists: [],
-        ws: {}
+        ws: {},
+        name: '',
+        isShow: true
       },
       mounted() {
         this.ws = new WebSocket('ws://127.0.0.1:3000')
@@ -35,13 +43,30 @@
         this.ws.onerror = this.onError
       },
       methods: {
+        enter: function () {
+          if (this.name.trim() === '') {
+            alert('用户名不得为空')
+            return
+          }
+          this.isShow = false
+          this.ws.send(JSON.stringify({
+            event: 'enter',
+            message: this.name
+          }))
+        },
         onOpen: function () {
           console.log('open:' + this.ws.readyState);
           // ws.send('Hello from client')
         },
         onMessage: function (event) {
-          console.log('message:' + this.ws.readyState);
-          this.lists.push(event.data)
+          // 接收服务端发送过来的消息
+          var obj = JSON.parse(event.data);
+          if (obj.event === 'enter') {
+            // 当一个新的用户进入聊天室
+            this.lists.push('欢迎: ' + obj.message + '加入聊天室')
+          } else {
+            this.lists.push(obj.message)
+          }
         },
         onClose: function () {
           console.log('close:' + this.ws.readyState);
@@ -54,9 +79,12 @@
         // 发送消息
         send: function () {
           this.lists.push(this.message)
-          this.ws.send(this.message)
+          this.ws.send(JSON.stringify({
+            event: 'message',
+            message: this.message
+          }))
           this.message = ''
-        }
+        },
       }
     })
   </script>

@@ -2525,3 +2525,13 @@ var app = new Vue({
 
 所有在线人数：`wss.clients.size`
 
+##### 2-4 多聊天室
+
+在服务端增加 roomid ，通过服务端的 roomid 进行判断，是否发送消息；
+
+```js
+if (client.readyState === WebSocket.OPEN && client.roomid === ws.roomid) {
+        ...
+ }
+```
+

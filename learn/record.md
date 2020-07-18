@@ -2432,3 +2432,24 @@ http.listen(3000, function() {
 #### 第2章 多人聊天室应用
 
 ##### 2-1 ws实现聊天功能(消息广播)
+
+```js
+// server/index.js
+const WebSocket = require('ws')
+const wss = new WebSocket.Server({ port: 3000 })
+wss.on('connection',function connection(ws) {
+    console.log('one client is connected');
+    // 接收客户端的消息
+    ws.on('message',function (msg) {
+        console.log(msg);
+        // 主动发送消息给客户端
+        // ws.send("server: "+ msg)
+        // 广播消息
+        wss.clients.forEach((client) => {
+          client.send('server: ' + msg)
+        })
+    })
+})
+```
+
+红色箭头为服务端向客户端发送消息，绿色箭头为客户端向服务端发送消息

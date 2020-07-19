@@ -98,6 +98,10 @@ server.listen(3000);
 
 setInterval(() => {
   wss.clients.forEach((ws) => {
+    if (!ws.isAlive) {
+      group[ws.roomid]--
+      return ws.terminate()
+    }
     // 主动发送心跳检测请求
     // 当客户端返回了消息后，主动设置 flag 为在线
     ws.isAlive = false

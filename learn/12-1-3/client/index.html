@@ -75,6 +75,10 @@
           }
           // 接收服务端发送过来的消息
           var obj = JSON.parse(event.data);
+          switch (obj.event) {
+            case 'noauth':
+
+          }
           if (obj.event === 'noauth') {
             // 鉴权失败
             // 路由跳转到路由 /login  重新获取 token

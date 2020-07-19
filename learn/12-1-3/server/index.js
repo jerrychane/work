@@ -1,5 +1,8 @@
+const http = require('http')
+const server = http.createServer();
 const WebSocket = require('ws')
-const wss = new WebSocket.Server({ port: 3000 })
+const wss = new WebSocket.Server({ noServer: true })
+const jwt = require('jsonwebtoken')
 // 多聊天室功能
 // roomid -> 对应相同的 roomid 进行广播消息
 let group = {}
@@ -14,8 +17,22 @@ wss.on('connection', function connection (ws) {
       if (typeof group[ws.roomid] === "undefined") {
         group[ws.roomid] = 1
       } else {
-        group[ws.roomid] ++
+        group[ws.roomid]++
       }
+    }
+    // 鉴权
+    if (msgObj.event === 'auth') {
+      jwt.verify(msgObj.message, 'secret', (err, decode) => {
+        if (err) {
+          // websocket返回前台鉴权失败消息
+          console.log('auth error')
+          return
+        } else {
+          // 鉴权通过
+          console.log(decode)
+          return
+        }
+      })
     }
     // console.log(msg);
     // 主动发送消息给客户端
@@ -34,7 +51,7 @@ wss.on('connection', function connection (ws) {
   // 当 ws 客户端断开连接的时候
   ws.on('close', function () {
     if (ws.name) {
-      group[ws.roomid] --
+      group[ws.roomid]--
     }
     let msgObj = {}
     // 广播消息
@@ -49,3 +66,21 @@ wss.on('connection', function connection (ws) {
     })
   })
 })
+
+server.on('upgrade', function upgrade (request, socket, head) {
+  console.log('upgrade -> request', request.headers)
+  // This function is not defined on purpose. Implement it with your own logic.
+  // authenticate(request, (err, client) => {
+  //   if (err || !client) {
+  //     socket.write('HTTP/1.1 401 Unauthorized\r\n\r\n');
+  //     socket.destroy();
+  //     return;
+  //   }
+
+  wss.handleUpgrade(request, socket, head, function done (ws) {
+    wss.emit('connection', ws, request);
+  });
+  // });
+});
+
+server.listen(3000);

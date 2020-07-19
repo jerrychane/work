@@ -2535,3 +2535,15 @@ if (client.readyState === WebSocket.OPEN && client.roomid === ws.roomid) {
  }
 ```
 
+#### 第3章 WebSocket消息应用进阶
+
+##### 3-1 WebSocket鉴权方式
+
+在浏览器端调用ws, 会自动降级调用 http 中的 websocket, 不能传递 header 对象。
+
+```bash
+npm i jsonwebtoken@8.5.1
+```
+
+jsonwebtoken 主要用于解析前端发送过来的 token 数据。
+

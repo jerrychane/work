@@ -35,6 +35,14 @@ wss.on('connection', function connection (ws) {
         }
       })
     }
+    // 拦截未鉴权的请求
+    if (!ws.isAuth) {
+      ws.send(JSON.stringify({
+        event: 'noauth',
+        message: 'please auth again'
+      }))
+      return
+    }
     // console.log(msg);
     // 主动发送消息给客户端
     // ws.send("server: "+ msg)

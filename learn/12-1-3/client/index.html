@@ -62,6 +62,11 @@
         onOpen: function () {
           console.log('open:' + this.ws.readyState);
           // ws.send('Hello from client')
+          // 发起鉴权请求
+          this.ws.send(JSON.stringify({
+            event: 'auth',
+            message: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Imltb29jIiwiaWF0IjoxNTE2MjM5MDIyfQ.KQv-KO2KRPtFP1Hl9h3qyxiko8Czz_7vWVm-5JcyP7k__'
+          }))
         },
         onMessage: function (event) {
           // 当用户未进入聊天室，则不接收消息
@@ -70,6 +75,10 @@
           }
           // 接收服务端发送过来的消息
           var obj = JSON.parse(event.data);
+          if (obj.event === 'noauth') {
+            // 鉴权失败
+            // 路由跳转到路由 /login  重新获取 token
+          }
           if (obj.event === 'enter') {
             // 当一个新的用户进入聊天室
             this.lists.push('欢迎: ' + obj.message + '加入聊天室')

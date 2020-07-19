@@ -100,6 +100,10 @@ setInterval(() => {
   wss.clients.forEach((ws) => {
     // 主动发送心跳检测请求
     // 当客户端返回了消息后，主动设置 flag 为在线
-    ws.isAlive
+    ws.isAlive = false
+    ws.send(JSON.stringify({
+      event: 'heartbeat',
+      message: 'ping'
+    }))
   })
 }, timeInterval);

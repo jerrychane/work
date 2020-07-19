@@ -30,6 +30,7 @@ wss.on('connection', function connection (ws) {
         } else {
           // 鉴权通过
           console.log(decode)
+          ws.isAuth = true
           return
         }
       })

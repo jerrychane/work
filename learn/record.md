@@ -2550,3 +2550,6 @@ jsonwebtoken 主要用于解析前端发送过来的 token 数据。
 * 协议本身在握手阶段不提供鉴权方案（主要是头部headers信息有规定的格式）
 * 浏览器侧： url 传参、message 主动消息、session/cookie(适合浏览器端的websocket连接)
 * Nodejs侧： 直接使用 ws 传递 Headers
+
+##### 3-2 心跳检测&断线重连
+

@@ -3,6 +3,8 @@ const server = http.createServer();
 const WebSocket = require('ws')
 const wss = new WebSocket.Server({ noServer: true })
 const jwt = require('jsonwebtoken')
+
+const timeInterval = 1000
 // 多聊天室功能
 // roomid -> 对应相同的 roomid 进行广播消息
 let group = {}
@@ -93,3 +95,11 @@ server.on('upgrade', function upgrade (request, socket, head) {
 });
 
 server.listen(3000);
+
+setInterval(() => {
+  wss.clients.forEach((ws) => {
+    // 主动发送心跳检测请求
+    // 当客户端返回了消息后，主动设置 flag 为在线
+    ws.isAlive
+  })
+}, timeInterval);

@@ -9,6 +9,8 @@ const timeInterval = 1000
 // roomid -> 对应相同的 roomid 进行广播消息
 let group = {}
 wss.on('connection', function connection (ws) {
+  // 初始的心跳连接状态
+  ws.isAlive = true
   console.log('one client is connected');
   // 接收客户端的消息
   ws.on('message', function (msg) {
@@ -28,6 +30,10 @@ wss.on('connection', function connection (ws) {
         if (err) {
           // websocket返回前台鉴权失败消息
           console.log('auth error')
+          ws.send(JSON.stringify({
+            event: 'noauth',
+            message: 'please auth again'
+          }))
           return
         } else {
           // 鉴权通过
@@ -36,14 +42,16 @@ wss.on('connection', function connection (ws) {
           return
         }
       })
+      return
     }
     // 拦截未鉴权的请求
     if (!ws.isAuth) {
-      ws.send(JSON.stringify({
-        event: 'noauth',
-        message: 'please auth again'
-      }))
       return
+    }
+    // 心跳检测
+    if (msgObj.event === "heartbeat" && msgObj.message === 'pong') {
+      ws.isAlive = true
+      return 
     }
     // console.log(msg);
     // 主动发送消息给客户端
@@ -107,7 +115,8 @@ setInterval(() => {
     ws.isAlive = false
     ws.send(JSON.stringify({
       event: 'heartbeat',
-      message: 'ping'
+      message: 'ping',
+      num:group[ws.roomid]
     }))
   })
 }, timeInterval);

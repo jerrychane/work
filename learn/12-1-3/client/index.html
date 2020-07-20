@@ -40,24 +40,23 @@
         roomid: '',
       },
       mounted() {
-        this.ws = new WebSocket('ws://127.0.0.1:3000')
-        this.ws.onopen = this.onOpen
-        this.ws.onmessage = this.onMessage
-        this.ws.onclose = this.onClose
-        this.ws.onerror = this.onError
+      
       },
       methods: {
+        init(){
+          this.ws = new WebSocket('ws://127.0.0.1:3000')
+          this.ws.onopen = this.onOpen
+          this.ws.onmessage = this.onMessage
+          this.ws.onclose = this.onClose
+          this.ws.onerror = this.onError
+        },
         enter: function () {
           if (this.name.trim() === '') {
             alert('用户名不得为空')
             return
           }
+          this.init()
           this.isShow = false
-          this.ws.send(JSON.stringify({
-            event: 'enter',
-            message: this.name,
-            roomid: this.roomid
-          }))
         },
         onOpen: function () {
           console.log('open:' + this.ws.readyState);
@@ -65,7 +64,12 @@
           // 发起鉴权请求
           this.ws.send(JSON.stringify({
             event: 'auth',
-            message: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Imltb29jIiwiaWF0IjoxNTE2MjM5MDIyfQ.KQv-KO2KRPtFP1Hl9h3qyxiko8Czz_7vWVm-5JcyP7k__'
+            message: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Imltb29jIiwiaWF0IjoxNTE2MjM5MDIyfQ.KQv-KO2KRPtFP1Hl9h3qyxiko8Czz_7vWVm-5JcyP7k'
+          }))
+          this.ws.send(JSON.stringify({
+            event: 'enter',
+            message: this.name,
+            roomid: this.roomid
           }))
         },
         onMessage: function (event) {
@@ -77,22 +81,26 @@
           var obj = JSON.parse(event.data);
           switch (obj.event) {
             case 'noauth':
-
-          }
-          if (obj.event === 'noauth') {
-            // 鉴权失败
-            // 路由跳转到路由 /login  重新获取 token
-          }
-          if (obj.event === 'enter') {
-            // 当一个新的用户进入聊天室
-            this.lists.push('欢迎: ' + obj.message + '加入聊天室')
-          } else if (obj.event === 'out') {
-            this.lists.push(obj.name + "已经退出了聊天室！")
-          } else {
-            if (obj.name !== this.name) { // 不等于自己的判断
-              // 接收正常的聊天
-              this.lists.push(obj.name + ":" + obj.message)
-            }
+              // 鉴权失败
+              // 路由跳转到路由 /login  重新获取 token
+              break;
+            case 'enter':
+              // 当一个新的用户进入聊天室
+              this.lists.push('欢迎: ' + obj.message + '加入聊天室')
+              break;
+            case 'out':
+              this.lists.push(obj.name + "已经退出了聊天室！")
+              break;
+            case 'heartbeat':
+              this.ws.send(JSON.stringify({
+                event:'heartbeat',
+                message:'pong'
+              }))  
+            default:
+              if (obj.name !== this.name) { // 不等于自己的判断
+                // 接收正常的聊天
+                this.lists.push(obj.name + ":" + obj.message)
+              }
           }
           this.num = obj.num
         },

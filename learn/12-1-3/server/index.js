@@ -1,10 +1,10 @@
 const http = require('http')
 const server = http.createServer();
 const WebSocket = require('ws')
-const wss = new WebSocket.Server({ noServer: true })
-const jwt = require('jsonwebtoken')
+const wss = new WebSocket.Server({ port: 3000 })
+// const jwt = require('jsonwebtoken')
 
-const timeInterval = 1000
+const timeInterval = 30000
 // 多聊天室功能
 // roomid -> 对应相同的 roomid 进行广播消息
 let group = {}
@@ -24,30 +24,30 @@ wss.on('connection', function connection (ws) {
         group[ws.roomid]++
       }
     }
-    // 鉴权
-    if (msgObj.event === 'auth') {
-      jwt.verify(msgObj.message, 'secret', (err, decode) => {
-        if (err) {
-          // websocket返回前台鉴权失败消息
-          console.log('auth error')
-          ws.send(JSON.stringify({
-            event: 'noauth',
-            message: 'please auth again'
-          }))
-          return
-        } else {
-          // 鉴权通过
-          console.log(decode)
-          ws.isAuth = true
-          return
-        }
-      })
-      return
-    }
-    // 拦截未鉴权的请求
-    if (!ws.isAuth) {
-      return
-    }
+    // // 鉴权
+    // if (msgObj.event === 'auth') {
+    //   jwt.verify(msgObj.message, 'secret', (err, decode) => {
+    //     if (err) {
+    //       // websocket返回前台鉴权失败消息
+    //       console.log('auth error')
+    //       ws.send(JSON.stringify({
+    //         event: 'noauth',
+    //         message: 'please auth again'
+    //       }))
+    //       return
+    //     } else {
+    //       // 鉴权通过
+    //       console.log(decode)
+    //       ws.isAuth = true
+    //       return
+    //     }
+    //   })
+    //   return
+    // }
+    // // 拦截未鉴权的请求
+    // if (!ws.isAuth) {
+    //   return
+    // }
     // 心跳检测
     if (msgObj.event === "heartbeat" && msgObj.message === 'pong') {
       ws.isAlive = true
@@ -86,23 +86,7 @@ wss.on('connection', function connection (ws) {
   })
 })
 
-server.on('upgrade', function upgrade (request, socket, head) {
-  console.log('upgrade -> request', request.headers)
-  // This function is not defined on purpose. Implement it with your own logic.
-  // authenticate(request, (err, client) => {
-  //   if (err || !client) {
-  //     socket.write('HTTP/1.1 401 Unauthorized\r\n\r\n');
-  //     socket.destroy();
-  //     return;
-  //   }
-
-  wss.handleUpgrade(request, socket, head, function done (ws) {
-    wss.emit('connection', ws, request);
-  });
-  // });
-});
-
-server.listen(3000);
+// server.listen(3000);
 
 setInterval(() => {
   wss.clients.forEach((ws) => {

@@ -36,16 +36,37 @@ class WebSocketServer {
     // 消息发送
     const msgObj = JSON.parse(msg)
     const events = {
-      auth: () => {
-
+      auth: async () => {
+        const obj = await getJWTPayload(msgObj.message)
+        if (obj) {
+          ws.isAuth = true
+          ws._id = obj._id
+        } else {
+          ws.send(JSON.stringify({
+            event: 'noauth',
+            message: 'please auth again'
+          }))
+        }
       },
       heartbeat: () => {
-
+        if (msgObj.message === 'pong') {
+          ws.isAlive = true
+        }
       },
       message: () => {
-
+        // 鉴权拦截
+        if (!ws.isAuth && this.isAuth) {
+          return
+        }
+        // 消息广播
+        this.wss.clients.forEach((client) => {
+          if (client.readState === WebSocket.OPEN && client._id === ws._id) {
+            this.send(msg)
+          }
+        })
       }
     }
+    events[msgObj.event]()
   }
   onClose (ws) {
 

@@ -31,7 +31,21 @@ class WebSocketServer {
     })
   }
   onMessage (ws, msg) {
+    // 用户鉴权 -> token -> id
+    // 心跳检测
+    // 消息发送
+    const msgObj = JSON.parse(msg)
+    const events = {
+      auth: () => {
 
+      },
+      heartbeat: () => {
+
+      },
+      message: () => {
+
+      }
+    }
   }
   onClose (ws) {
 

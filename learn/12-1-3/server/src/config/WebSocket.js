@@ -68,7 +68,27 @@ class WebSocketServer {
     }
     events[msgObj.event]()
   }
+  // 点对点的消息发送
+  send (uid, msg) {
+    this.wss.clients.forEach((client) => {
+      if (client.readState === WebSocket.OPEN && client._id === uid) {
+        this.send(msg)
+      }
+    })
+  }
+  // 广播消息 -> 推送系统消息
+  broadcast (msg) {
+    this.wss.clients.forEach((client) => {
+      if (client.readState === WebSocket.OPEN) {
+        this.send(msg)
+      }
+    })
+  }
   onClose (ws) {
+
+  }
+  // 心跳检测
+  heartbeat () {
 
   }
 }

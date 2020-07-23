@@ -2577,3 +2577,29 @@ Redis 缓存：房间用户（userID:1） &&  未读消息
 
 ##### 4-8 实时消息开发-断线重连
 
+##### 4-9 本章总结
+
+###### websocket 常见 API 
+
+* 事件：onopen,onmessage,onerror,onclose
+
+* 方法：send,close
+
+* 兼容：尽量保证兼容，进行版本与状态控制
+
+###### websocket 实战应用
+
+* 基本的消息发送、退出提示、在线人数
+
+* 心跳检测、断线重连
+
+* 离线消息缓存
+
+###### 个人中心-我的消息
+
+* 历史消息 -> MongoDB -> 聚合查询
+* 实时消息通知 -> Client、Server封装 -> 注意作用域
+* 通知部分 -> mapState、actions、dispatch
+
+
+

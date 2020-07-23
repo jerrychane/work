@@ -2601,5 +2601,11 @@ Redis 缓存：房间用户（userID:1） &&  未读消息
 * 实时消息通知 -> Client、Server封装 -> 注意作用域
 * 通知部分 -> mapState、actions、dispatch
 
+### 第13周 性能优化--服务端渲染
 
+#### 第1章 导读
+
+##### 1-1 导学
+
+##### 第2章 Vue服务端渲染方案一vue-server-renderer
 

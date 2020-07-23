@@ -2631,3 +2631,8 @@ Vue.js vs Nuxt.js
 * 避免使用自定义的指令；
 
 ##### 2-3 SSR的webpack打包配置
+
+```bash
+npm i vue@2.6.11 vue-server-renderer@2.6.11 --save
+```
+

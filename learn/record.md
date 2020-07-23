@@ -2614,12 +2614,20 @@ Vue.js vs Nuxt.js
 | 分类     | Vue.js                  | Nuxt.js                                     |
 | -------- | ----------------------- | ------------------------------------------- |
 | 框架     | 独立框架                | 基于Vue.js,不仅用于服务端渲染，还进行了丰富 |
-| 生命周期 | 全                      | 只有created,beforeCreated                   |
+| 生命周期 | 全                      | 只有created,beforeCreate                    |
 | 组件     | router-view,router-link | nuxt,nuxt-child,nuxt-link,client-only       |
 | 路由     | 自定义                  | 由文件名、文件夹自动生成                    |
 | 目录结构 | 自定义                  | 相对限定，不同的文件名不同的默认行为        |
 | 第三方库 | 自定义                  | 需求分浏览器与Node侧                        |
 | 其他     | CLI集成了vuex,router    | Prettier,UI框架等                           |
 
-##### 第2章 Vue服务端渲染方案一vue-server-renderer
+#### 第2章 Vue服务端渲染方案一vue-server-renderer
 
+##### 2-2 SSR学习路径
+
+* 在服务端编写客户端代码时，要避免交叉状态污染（cross-request state pollution）;
+* 尽量避免在 beforeCreate 和 created 中使用setInterval函数；
+* 在服务端测不能够访问 window 或 document 等全局变量；
+* 避免使用自定义的指令；
+
+##### 2-3 SSR的webpack打包配置

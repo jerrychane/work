@@ -2607,5 +2607,19 @@ Redis 缓存：房间用户（userID:1） &&  未读消息
 
 ##### 1-1 导学
 
+SSR 基本概念 、SSR 工作原理、Nuxt.js 改造前端项目
+
+Vue.js vs Nuxt.js
+
+| 分类     | Vue.js                  | Nuxt.js                                     |
+| -------- | ----------------------- | ------------------------------------------- |
+| 框架     | 独立框架                | 基于Vue.js,不仅用于服务端渲染，还进行了丰富 |
+| 生命周期 | 全                      | 只有created,beforeCreated                   |
+| 组件     | router-view,router-link | nuxt,nuxt-child,nuxt-link,client-only       |
+| 路由     | 自定义                  | 由文件名、文件夹自动生成                    |
+| 目录结构 | 自定义                  | 相对限定，不同的文件名不同的默认行为        |
+| 第三方库 | 自定义                  | 需求分浏览器与Node侧                        |
+| 其他     | CLI集成了vuex,router    | Prettier,UI框架等                           |
+
 ##### 第2章 Vue服务端渲染方案一vue-server-renderer
 

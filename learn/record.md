@@ -2634,5 +2634,7 @@ Vue.js vs Nuxt.js
 
 ```bash
 npm i vue@2.6.11 vue-server-renderer@2.6.11 --save
+npm i webpack webpack-cli friendly-errors-webpack-plugin vue-template-compiler vue-loader babel-loader vue-style-loader css-loader sass-loader @babel/core url-loader file-loader sass webpack-merge webpack-node-
+externals rimraf @babel/preset-env -D
 ```
 

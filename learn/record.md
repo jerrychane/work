@@ -2679,3 +2679,9 @@ server.get('*', (req, res) => {
 server.listen(8080)
 ```
 
+##### 2-5 配置SSR webpack热重载流程分析
+
+```bash
+npm i webpack-dev-middleware webpack-hot-middleware -D
+```
+

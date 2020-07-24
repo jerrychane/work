@@ -5,15 +5,25 @@ const fs = require('fs')
 const { createBundleRenderer } = require('vue-server-renderer')
 
 const resolve = file => path.resolve(__dirname, file)
-const bundle = require('./dist/vue-ssr-server-bundle.json')
-const clientManifest = require('./dist/vue-ssr-client-manifest.json')
-const templatePath = resolve('./src/index.template.html')
-const template = fs.readFileSync(templatePath, 'utf-8')
-const renderer = createBundleRenderer(bundle, {
-  runInNewContext: false, // 推荐
-  template, // （可选）页面模板
-  clientManifest // （可选）客户端构建 manifest
-})
+
+const isProd = process.env.NODE_ENV === "production"
+if (isProd) {
+  const bundle = require('./dist/vue-ssr-server-bundle.json')
+  const clientManifest = require('./dist/vue-ssr-client-manifest.json')
+  const templatePath = resolve('./src/index.template.html')
+  const template = fs.readFileSync(templatePath, 'utf-8')
+  const renderer = createBundleRenderer(bundle, {
+    runInNewContext: false, // 推荐
+    template, // （可选）页面模板
+    clientManifest // （可选）客户端构建 manifest
+  })
+
+} else {
+  // 开发模式
+  // 1.server -> bundle
+  // 2.client -> manifest
+  // 3.待2个文件编译完成，就可以调用 createBundleRender -> render
+}
 
 // 在服务器处理函数中……
 server.get('*', (req, res) => {

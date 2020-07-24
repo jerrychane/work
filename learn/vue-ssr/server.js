@@ -7,13 +7,20 @@ const { createBundleRenderer } = require('vue-server-renderer')
 const resolve = file => path.resolve(__dirname, file)
 
 const isProd = process.env.NODE_ENV === "production"
+
+const createRenderer = (bundle, options) => {
+  return createBundleRenderer(bundle, Object.assign(options, {
+    basedir: resolve('./dist'),
+    runInNewContext: false, // 推荐
+  }))
+}
+let renderer, readyPromise
 if (isProd) {
   const bundle = require('./dist/vue-ssr-server-bundle.json')
   const clientManifest = require('./dist/vue-ssr-client-manifest.json')
   const templatePath = resolve('./src/index.template.html')
   const template = fs.readFileSync(templatePath, 'utf-8')
-  const renderer = createBundleRenderer(bundle, {
-    runInNewContext: false, // 推荐
+  renderer = createRenderer(bundle, {
     template, // （可选）页面模板
     clientManifest // （可选）客户端构建 manifest
   })
@@ -22,11 +29,12 @@ if (isProd) {
   // 开发模式
   // 1.server -> bundle
   // 2.client -> manifest
-  // 3.待2个文件编译完成，就可以调用 createBundleRender -> render
+  // 3.待2个文件编译完成，就可以调用 createBundleRender -> render -> renderToString
+  // 1,2 -> setupServer -> webpack -> readyPromise -> 调用 createRenderer -> 创建renderer实例
+
 }
 
-// 在服务器处理函数中……
-server.get('*', (req, res) => {
+const render = (req, res) => {
   const context = {
     title: 'hello ssr with webpack',
     meta: `
@@ -41,6 +49,11 @@ server.get('*', (req, res) => {
     // 处理异常……
     res.end(html)
   })
+}
+
+// 在服务器处理函数中……
+server.get('*', isProd ? render : (req, res) => {
+  readyPromise().then(() => render(req, res))
 })
 
 server.listen(8080)

@@ -2685,3 +2685,4 @@ server.listen(8080)
 npm i webpack-dev-middleware webpack-hot-middleware -D
 ```
 
+##### 2-6 配置学习webpack-dev-middleware&webpack-hot-middleware

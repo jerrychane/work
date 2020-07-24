@@ -2638,3 +2638,4 @@ npm i webpack webpack-cli friendly-errors-webpack-plugin vue-template-compiler v
 externals rimraf @babel/preset-env -D
 ```
 
+##### 2-4 第一个SSR应用

@@ -5,7 +5,7 @@ const webpack = require('webpack')
 const clientConfig = require('./webpack.client.config')
 const serverConfig = require('./webpack.server.config')
 
-const setupServer = (templatePath, cb) => {
+const setupServer = (app, templatePath, cb) => {
   let bundle
   let clientManifest
   let template
@@ -32,6 +32,12 @@ const setupServer = (templatePath, cb) => {
     new webpack.HotModuleReplacementPlugin(),
   )
   clientConfig.entry.app = ['webpack-hot-middleware/client', clientConfig.entry.app]
+
+  const clientCompiler = webpack(clientConfig);
+
+  app.use(require("webpack-dev-middleware")(clientCompiler, {
+    noInfo: true, publicPath: clientConfig.output.publicPath
+  }));
   // fs -> templatePath -> template
   chokidar.watch(templatePath).on('change', () => {
     template = fs.readFileSync(templatePath, 'utf8')

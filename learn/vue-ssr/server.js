@@ -31,6 +31,9 @@ if (isProd) {
   // 2.client -> manifest
   // 3.待2个文件编译完成，就可以调用 createBundleRender -> render -> renderToString
   // 1,2 -> setupServer -> webpack -> readyPromise -> 调用 createRenderer -> 创建renderer实例
+  readyPromise = require('./config/setup-dev-server')(templatePath, (bundle, options) => {
+    renderer = createRenderer(bundle, options)
+  })
 
 }
 

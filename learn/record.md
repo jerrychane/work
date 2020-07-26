@@ -2820,3 +2820,7 @@ module.exports = {
 }
 ```
 
+```bash
+npm i chokidar -D
+```
+

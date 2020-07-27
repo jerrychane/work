@@ -46,12 +46,21 @@ const render = (req, res) => {
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
     `,
+    url: req.url
   }
   // 这里无需传入一个应用程序，因为在执行 bundle 时已经自动创建过。
   // 现在我们的服务器与应用程序已经解耦！
   renderer.renderToString(context, (err, html) => {
     // 处理异常……
-    res.end(html)
+    if (err) {
+      if (err.code === 404) {
+        res.status(404).end('Page not found')
+      } else {
+        res.status(500).end('Internal Server Error')
+      }
+    } else {
+      res.end(html)
+    }
   })
 }
 

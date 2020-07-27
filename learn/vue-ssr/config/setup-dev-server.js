@@ -19,7 +19,7 @@ const setupServer = (app, templatePath, cb) => {
   let clientManifest
   let template
   let ready
-  const readyPromise = new Promise(r => ready = c)
+  const readyPromise = new Promise(r => ready = r)
   template = fs.readFileSync(templatePath, 'utf8')
   const update = () => {
     if (bundle && clientManifest) {
@@ -35,7 +35,7 @@ const setupServer = (app, templatePath, cb) => {
 
   // webpack -> entry-server -> bundle
   const mfs = new MFS();
-  const serverCompiler = webpack({ serverConfig });
+  const serverCompiler = webpack(serverConfig);
   serverCompiler.outputFileSystem = mfs;
   serverCompiler.watch({}, (err, stats) => {
     // 之后读取输出:
@@ -55,7 +55,9 @@ const setupServer = (app, templatePath, cb) => {
 
   const clientCompiler = webpack(clientConfig);
   const devMiddleware = middleware(clientCompiler, {
-    noInfo: true, publicPath: clientConfig.output.publicPath
+    noInfo: true,
+    publicPath: clientConfig.output.publicPath,
+    logLevel: 'silent'
   })
   app.use(devMiddleware);
   app.use(HMR(clientCompiler));

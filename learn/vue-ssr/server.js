@@ -1,6 +1,6 @@
 const Vue = require('vue')
 const path = require('path')
-const server = require('express')()
+const app = require('express')()
 const fs = require('fs')
 const { createBundleRenderer } = require('vue-server-renderer')
 
@@ -15,10 +15,11 @@ const createRenderer = (bundle, options) => {
   }))
 }
 let renderer, readyPromise
+const templatePath = resolve('./src/index.template.html')
+
 if (isProd) {
   const bundle = require('./dist/vue-ssr-server-bundle.json')
   const clientManifest = require('./dist/vue-ssr-client-manifest.json')
-  const templatePath = resolve('./src/index.template.html')
   const template = fs.readFileSync(templatePath, 'utf-8')
   renderer = createRenderer(bundle, {
     template, // （可选）页面模板
@@ -55,8 +56,8 @@ const render = (req, res) => {
 }
 
 // 在服务器处理函数中……
-server.get('*', isProd ? render : (req, res) => {
-  readyPromise().then(() => render(req, res))
+app.get('*', isProd ? render : (req, res) => {
+  readyPromise.then(() => render(req, res))
 })
 
-server.listen(8080)
+app.listen(8080)

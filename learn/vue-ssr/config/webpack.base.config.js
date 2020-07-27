@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: resolve('dist'),
     publicPath: '/dist/',
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[hash].js'
   },
   resolve: {
     alias: {

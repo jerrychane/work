@@ -2822,5 +2822,7 @@ module.exports = {
 
 ```bash
 npm i chokidar -D
+npm i memory-fs -D
 ```
 
+##### 2-7 调试webpack热重载

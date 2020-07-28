@@ -2859,3 +2859,10 @@ npm i vuex-router-sync -S
 npm i vuex -S
 ```
 
+#### 第3章 Vue服务端渲染方案二：Nuxt.js
+
+##### 3-1 Nuxtjs 简介
+
+* Nuxtjs 是一个基于 Vue.js 的通用应用框架
+* 
+

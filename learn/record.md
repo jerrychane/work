@@ -2828,3 +2828,25 @@ npm i memory-fs -D
 ##### 2-7 调试webpack热重载
 
 ##### 2-8 路由和代码分割
+
+dynamic import 和 code split 结合
+
+```bash
+npm i @babel/plugin-syntax-dynamic-import -D
+```
+
+```js
+// learn/vue-ssr/src/router.js
+export default new Router(
+  {
+    mode: 'history',
+    routes: [
+      // ...
+      {
+        path: '/hello',
+        component: () => import(/* webpackChunkName:'hello' */'./components/Hello.vue')
+      }
+    ]
+  })
+```
+

@@ -23,7 +23,7 @@ export function createStore () {
       // }
       getDataAction ({ commit }) {
         console.log('getDataAction -> commit', commit)
-        getData().then((res) => {
+        return getData().then((res) => {
           console.log(res);
           commit('setData', res)
         })

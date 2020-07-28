@@ -5,7 +5,12 @@
 <script>
 export default {
   asyncData: ({ store }) => {
-    store.dispatch("getDataAction");
+    return store.dispatch("getDataAction");
+  },
+  computed: {
+    item() {
+      return store.state.lists;
+    }
   }
 };
 </script>

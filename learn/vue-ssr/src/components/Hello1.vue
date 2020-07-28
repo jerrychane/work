@@ -1,9 +1,5 @@
 <template>
-  <div>
-    hello world! {{item}}
-    <p></p>
-    <router-link to="/hello1">hello1 link</router-link>
-  </div>
+  <div>hello world 1 ! {{item}}</div>
 </template>
 
 <script>

@@ -13,6 +13,10 @@ export function createRouter () {
         {
           path: '/hello',
           component: () => import(/* webpackChunkName:'hello' */'./components/Hello.vue')
+        },
+        {
+          path: '/hello1',
+          component: () => import(/* webpackChunkName:'hello' */'./components/Hello1.vue')
         }
       ]
     })

@@ -1,14 +1,14 @@
 <template>
-  <div>
-    hello world!
-  </div>
+  <div>hello world!</div>
 </template>
 
 <script>
-  export default {
+export default {
+  asyncData: ({ store }) => {
+    store.dispatch("getDataAction");
   }
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>

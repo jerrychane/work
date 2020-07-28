@@ -6,12 +6,12 @@ Vue.use(Vuex)
 
 // 假定我们有一个可以返回 Promise 的
 // 通用 API（请忽略此 API 具体实现细节）
-// import { fetchItem } from './api'
+import { getData } from '@/api/data'
 
 export function createStore () {
   return new Vuex.Store({
     state: {
-      items: {}
+      lists: []
     },
     actions: {
       // fetchItem ({ commit }, id) {
@@ -21,11 +21,22 @@ export function createStore () {
       //     commit('setItem', { id, item })
       //   })
       // }
+      getDataAction ({ commit }) {
+        console.log('getDataAction -> commit', commit)
+        getData().then((res) => {
+          console.log(res);
+          commit('setData', res)
+        })
+
+      }
     },
     mutations: {
       // setItem (state, { id, item }) {
       //   Vue.set(state.items, id, item)
       // }
+      setData (state, data) {
+        state.lists = data
+      }
     }
   })
 }

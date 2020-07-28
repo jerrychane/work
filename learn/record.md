@@ -2853,3 +2853,9 @@ export default new Router(
 ##### 2-9 数据预取和状态
 
 开始渲染过程之前，需要预先获取和解析好一些数据。
+
+```bash
+npm i vuex-router-sync -S
+npm i vuex -S
+```
+

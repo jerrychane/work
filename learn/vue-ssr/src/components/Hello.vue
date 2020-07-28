@@ -1,5 +1,5 @@
 <template>
-  <div>hello world!</div>
+  <div>hello world! {{item}}</div>
 </template>
 
 <script>
@@ -9,7 +9,7 @@ export default {
   },
   computed: {
     item() {
-      return store.state.lists;
+      return this.$store.state.lists;
     }
   }
 };

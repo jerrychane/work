@@ -40,7 +40,7 @@ export default {
     Logo
   },
   async asyncData({ $axios }) {
-    const result = await $axios.$get('http://localhost:8000/posts')
+    const result = await $axios.get('http://localhost:8000/posts')
     return {
       posts: result
     }

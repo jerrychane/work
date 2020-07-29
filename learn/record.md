@@ -2909,3 +2909,8 @@ npm run dev 是报错：Delete `␍`eslint(prettier/prettier)
 "lint": "eslint --fix --ext .js,.vue src test/unit"
 ```
 
+npm run dev 会报错： npm i sass sass-loader -S
+
+* 安装：npx create-nuxt-app <project-name>
+* 配置 vscode 插件 vetur
+* 认识 Nuxt 工程化目录

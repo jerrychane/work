@@ -38,7 +38,16 @@ export default {
   components: {
     Logo
   },
-  asyncData({ req }) {
+  // asyncData({ req }) {
+  //   return {
+  //     userAgent: req
+  //       ? req.headers['user-agent']
+  //       : typeof navigator !== 'undefined'
+  //       ? navigator.userAgent
+  //       : 'No user agent'
+  //   }
+  // }
+  asyncData: ({ req }) => {
     return {
       userAgent: req
         ? req.headers['user-agent']

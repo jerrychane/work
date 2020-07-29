@@ -25,7 +25,8 @@
         <br />
         <br />
         <br />
-        userAgent is : {{ userAgent }}
+        <!-- userAgent is : {{ userAgent }} -->
+        {{ posts }}
       </div>
     </div>
   </div>
@@ -38,7 +39,24 @@ export default {
   components: {
     Logo
   },
+  async asyncData({ $axios }) {
+    const result = await $axios.get('http://localhost:8000/posts')
+    return {
+      posts: result.data
+    }
+  }
+
   // asyncData({ req }) {
+  //     return {
+  //       userAgent: req
+  //         ? req.headers['user-agent']
+  //         : typeof navigator !== 'undefined'
+  //         ? navigator.userAgent
+  //         : 'No user agent'
+  //     }
+  //   }
+
+  // asyncData: ({ req }) => {
   //   return {
   //     userAgent: req
   //       ? req.headers['user-agent']
@@ -47,15 +65,6 @@ export default {
   //       : 'No user agent'
   //   }
   // }
-  asyncData: ({ req }) => {
-    return {
-      userAgent: req
-        ? req.headers['user-agent']
-        : typeof navigator !== 'undefined'
-        ? navigator.userAgent
-        : 'No user agent'
-    }
-  }
 }
 </script>
 

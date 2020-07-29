@@ -2917,3 +2917,11 @@ npm run dev 会报错： npm i sass sass-loader -S
 
 ##### 3-3 Nuxtjs异步数据
 
+```bash
+npm install -g json-server
+json-server --watch db.json 
+json-server --watch db.json --port=8000 # 端口冲突下使用
+```
+
+
+

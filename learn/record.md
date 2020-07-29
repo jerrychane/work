@@ -2871,3 +2871,5 @@ npm i vuex -S
 npx create-nuxt-app@2.14.0 nuxt-demo
 ```
 
+##### 3-2 工程目录&自动生成路由
+

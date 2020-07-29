@@ -2864,5 +2864,10 @@ npm i vuex -S
 ##### 3-1 Nuxtjs 简介
 
 * Nuxtjs 是一个基于 Vue.js 的通用应用框架
-* 
+* 预设了利用 Vue.js 开发服务端渲染所需要的各种配置
+* 提供静态站点、异步数据加载、中间件支持、布局支持等
+
+```bash
+npx create-nuxt-app@2.14.0 nuxt-demo
+```
 

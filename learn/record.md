@@ -2889,12 +2889,23 @@ src
 
 ``` js
 /
-	-- layouts    // 视图
-    -- pages      // 页面、用于形成路由
-    -- components // 存放业务组件
-    -- assets     // 预编译资源 sass
-    -- plugins    // 插件配置
-    -- middleware // 模块
-    -- static     // 静态资源 (roboots.txt 等)
-    -- store      // vuex
+	-- layouts       // 视图
+    -- pages         // 页面、用于形成路由
+    -- components    // 存放业务组件
+    -- assets        // 预编译资源 sass
+    -- plugins       // 插件配置
+    -- middleware    // 模块
+    -- static        // 静态资源 (robots.txt 等)
+    -- store         // vuex
 ```
+
+Nuxt 没有 src 目录，而是将所有文件存放在根目录下，通过 pages 形成动态的路由，目录的名称是固定的；
+
+npm run dev 是报错：Delete `␍`eslint(prettier/prettier)
+
+需要在 package.json 将 --fix加入到 lint 命令中，即改成下面的方式：
+
+```bash
+"lint": "eslint --fix --ext .js,.vue src test/unit"
+```
+

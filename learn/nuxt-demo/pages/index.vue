@@ -19,6 +19,13 @@
         >
           GitHub
         </a>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        userAgent is : {{ userAgent }}
       </div>
     </div>
   </div>
@@ -31,11 +38,14 @@ export default {
   components: {
     Logo
   },
-  asyncData(context) {
-    console.log('Data -> context', context)
-    // console.log('Data -> store', store)
-    // console.log('Data -> $axios', $axios)
-    // ErrorHandle($axios, redirect)
+  asyncData({ req }) {
+    return {
+      userAgent: req
+        ? req.headers['user-agent']
+        : typeof navigator !== 'undefined'
+        ? navigator.userAgent
+        : 'No user agent'
+    }
   }
 }
 </script>

@@ -31,9 +31,10 @@ export default {
   components: {
     Logo
   },
-  asyncData({ $axios, store }) {
-    console.log('Data -> store', store)
-    console.log('Data -> $axios', $axios)
+  asyncData(context) {
+    console.log('Data -> context', context)
+    // console.log('Data -> store', store)
+    // console.log('Data -> $axios', $axios)
     // ErrorHandle($axios, redirect)
   }
 }

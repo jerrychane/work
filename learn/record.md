@@ -2914,3 +2914,6 @@ npm run dev 会报错： npm i sass sass-loader -S
 * 安装：npx create-nuxt-app <project-name>
 * 配置 vscode 插件 vetur
 * 认识 Nuxt 工程化目录
+
+##### 3-3 Nuxtjs异步数据
+

@@ -26,10 +26,15 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
-
+// import ErrorHandle from '~/plugins/axios'
 export default {
   components: {
     Logo
+  },
+  asyncData({ $axios, store }) {
+    console.log('Data -> store', store)
+    console.log('Data -> $axios', $axios)
+    // ErrorHandle($axios, redirect)
   }
 }
 </script>

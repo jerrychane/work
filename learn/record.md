@@ -2923,5 +2923,8 @@ json-server --watch db.json
 json-server --watch db.json --port=8000 # 端口冲突下使用
 ```
 
+* asyncData 方法的基本使用
+* store(vuex)，@nuxjs/axios,json-sever 集成
+* 异步数据中 context 上下文对象
 
-
+##### 3-4 Universal Mode

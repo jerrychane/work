@@ -2873,3 +2873,28 @@ npx create-nuxt-app@2.14.0 nuxt-demo
 
 ##### 3-2 工程目录&自动生成路由
 
+###### 1、Vue 应用目录
+
+``` js
+src
+	-- components    // 存放业务组件
+    -- view          // 页面视图
+    -- api           // 页面请求
+    -- router        // 路由
+    -- utils         // 公共配置
+    -- store         // vuex
+```
+
+###### 2、Nuxt 应用工程目录
+
+``` js
+/
+	-- layouts    // 视图
+    -- pages      // 页面、用于形成路由
+    -- components // 存放业务组件
+    -- assets     // 预编译资源 sass
+    -- plugins    // 插件配置
+    -- middleware // 模块
+    -- static     // 静态资源 (roboots.txt 等)
+    -- store      // vuex
+```

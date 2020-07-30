@@ -27,6 +27,30 @@
         <br />
         <!-- userAgent is : {{ userAgent }} -->
         {{ posts }}
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     </div>
   </div>
@@ -42,7 +66,7 @@ export default {
   async asyncData({ $axios }) {
     const result = await $axios.get('http://localhost:8000/posts')
     return {
-      posts: result
+      posts: result.data
     }
   }
 

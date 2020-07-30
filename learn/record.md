@@ -2928,3 +2928,21 @@ json-server --watch db.json --port=8000 # 端口冲突下使用
 * 异步数据中 context 上下文对象
 
 ##### 3-4 Universal Mode
+
+* 传统 SPA 应用的工作模式
+* 什么是 Universal Mode ?
+* Universal Mode 的工作原理 & 测试
+
+###### 1、SPA 应用很慢，why ?
+
+* 下载 index.html
+* 下载 Vue 应用相关的 JavaScript 文件
+* 初始化 Vue 应用
+* 初始化 Vue 路由，并且导航到对应的路由组件
+* 请求 API 接口，拉取必要渲染所需的数据
+* 渲染页面
+
+###### 2、Universal Mode 
+
+会在滚动到对应位置加载相应的 js 文件，不会在一开始的时候就加载
+

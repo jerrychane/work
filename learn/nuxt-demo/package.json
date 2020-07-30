@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run lint && nuxt",
-    "build": "nuxt build",
+    "build": "npm run lint && nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."

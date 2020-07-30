@@ -2946,3 +2946,5 @@ json-server --watch db.json --port=8000 # 端口冲突下使用
 
 会在滚动到对应位置加载相应的 js 文件，不会在一开始的时候就加载
 
+##### 3-5 登录鉴权之nuxtjs auth模块
+

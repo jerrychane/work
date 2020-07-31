@@ -2974,4 +2974,6 @@ json-server --watch db.json --port=8000 # 端口冲突下使用
 * 如何快速开发新的 UI 页面
 * 开发用户管理页面
 
- 
+####  第2章 中后台UI进阶（升级iview-admin基础组件库）
+
+##### 2-1 项目依赖升级：Prettier&lint-stage配置

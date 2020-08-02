@@ -1,11 +1,29 @@
 <template>
   <div>
-    <div v-if="searchable && searchPlace === 'top'" class="search-con search-con-top">
+    <div
+      v-if="searchable && searchPlace === 'top'"
+      class="search-con search-con-top"
+    >
       <Select v-model="searchKey" class="search-col">
-        <Option v-for="item in columns" v-if="item.key !== 'handle'" :value="item.key" :key="`search-col-${item.key}`">{{ item.title }}</Option>
+        <Option
+          v-for="item in columns"
+          :value="item.key"
+          :key="`search-col-${item.key}`"
+        >
+          <template v-if="item.key !== 'handle'"></template>
+          {{ item.title }}</Option
+        >
       </Select>
-      <Input @on-change="handleClear" clearable placeholder="输入关键字搜索" class="search-input" v-model="searchValue"/>
-      <Button @click="handleSearch" class="search-btn" type="primary"><Icon type="search"/>&nbsp;&nbsp;搜索</Button>
+      <Input
+        @on-change="handleClear"
+        clearable
+        placeholder="输入关键字搜索"
+        class="search-input"
+        v-model="searchValue"
+      />
+      <Button @click="handleSearch" class="search-btn" type="primary"
+        ><Icon type="search" />&nbsp;&nbsp;搜索</Button
+      >
     </div>
     <Table
       ref="tablesMain"
@@ -38,14 +56,32 @@
       <slot name="footer" slot="footer"></slot>
       <slot name="loading" slot="loading"></slot>
     </Table>
-    <div v-if="searchable && searchPlace === 'bottom'" class="search-con search-con-top">
+    <div
+      v-if="searchable && searchPlace === 'bottom'"
+      class="search-con search-con-top"
+    >
       <Select v-model="searchKey" class="search-col">
-        <Option v-for="item in columns" v-if="item.key !== 'handle'" :value="item.key" :key="`search-col-${item.key}`">{{ item.title }}</Option>
+        <Option
+          v-for="item in columns"
+          v-if="item.key !== 'handle'"
+          :value="item.key"
+          :key="`search-col-${item.key}`"
+          >{{ item.title }}</Option
+        >
       </Select>
-      <Input placeholder="输入关键字搜索" class="search-input" v-model="searchValue"/>
-      <Button class="search-btn" type="primary"><Icon type="search"/>&nbsp;&nbsp;搜索</Button>
+      <Input
+        placeholder="输入关键字搜索"
+        class="search-input"
+        v-model="searchValue"
+      />
+      <Button class="search-btn" type="primary"
+        ><Icon type="search" />&nbsp;&nbsp;搜索</Button
+      >
     </div>
-    <a id="hrefToExportTable" style="display: none;width: 0px;height: 0px;"></a>
+    <a
+      id="hrefToExportTable"
+      style="display: none; width: 0px; height: 0px;"
+    ></a>
   </div>
 </template>
 
@@ -162,7 +198,7 @@ export default {
             editable: this.editable
           },
           on: {
-            'input': val => {
+            input: val => {
               this.edittingText = val
             },
             'on-start-edit': (params) => {
@@ -185,12 +221,12 @@ export default {
       return item
     },
     surportHandle (item) {
-      let options = item.options || []
-      let insideBtns = []
+      const options = item.options || []
+      const insideBtns = []
       options.forEach(item => {
         if (handleBtns[item]) insideBtns.push(handleBtns[item])
       })
-      let btns = item.button ? [].concat(insideBtns, item.button) : insideBtns
+      const btns = item.button ? [].concat(insideBtns, item.button) : insideBtns
       item.render = (h, params) => {
         params.tableData = this.value
         return h('div', btns.map(item => item(h, params, this)))
@@ -216,7 +252,7 @@ export default {
     },
     handleTableData () {
       this.insideTableData = this.value.map((item, index) => {
-        let res = item
+        const res = item
         res.initRowIndex = index
         return res
       })

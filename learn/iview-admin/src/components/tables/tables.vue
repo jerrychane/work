@@ -10,9 +10,8 @@
           :value="item.key"
           :key="`search-col-${item.key}`"
         >
-          <template v-if="item.key !== 'handle'"></template>
-          {{ item.title }}</Option
-        >
+          <template v-if="item.key !== 'handle'">{{ item.title }}</template>
+        </Option>
       </Select>
       <Input
         @on-change="handleClear"
@@ -63,10 +62,11 @@
       <Select v-model="searchKey" class="search-col">
         <Option
           v-for="item in columns"
-          v-if="item.key !== 'handle'"
           :value="item.key"
           :key="`search-col-${item.key}`"
-          >{{ item.title }}</Option
+          ><template v-if="item.key !== 'handle'">{{
+            item.title
+          }}</template></Option
         >
       </Select>
       <Input

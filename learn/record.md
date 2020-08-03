@@ -2981,5 +2981,6 @@ json-server --watch db.json --port=8000 # 端口冲突下使用
 ```bash
 vue --version
 vue upgrade
+npm i prettier-eslint -D
 ```
 

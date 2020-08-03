@@ -2984,3 +2984,9 @@ vue upgrade
 npm i prettier-eslint -D
 ```
 
+##### 2-2 升级iview4.x版本&配置sass-loader
+
+```bash
+npm i view-design -S
+```
+

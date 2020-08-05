@@ -1,5 +1,10 @@
 <template>
-  <Form ref="loginForm" :model="form" :rules="rules" @keydown.enter.native="handleSubmit">
+  <Form
+    ref="loginForm"
+    :model="form"
+    :rules="rules"
+    @keydown.enter.native="handleSubmit"
+  >
     <FormItem prop="userName">
       <Input v-model="form.userName" placeholder="请输入用户名">
         <span slot="prepend">
@@ -9,6 +14,13 @@
     </FormItem>
     <FormItem prop="password">
       <Input type="password" v-model="form.password" placeholder="请输入密码">
+        <span slot="prepend">
+          <Icon :size="14" type="md-lock"></Icon>
+        </span>
+      </Input>
+    </FormItem>
+    <FormItem prop="code">
+      <Input type="password" v-model="form.code" placeholder="请输入验证码">
         <span slot="prepend">
           <Icon :size="14" type="md-lock"></Icon>
         </span>
@@ -26,25 +38,22 @@ export default {
     userNameRules: {
       type: Array,
       default: () => {
-        return [
-          { required: true, message: '账号不能为空', trigger: 'blur' }
-        ]
+        return [{ required: true, message: '账号不能为空', trigger: 'blur' }]
       }
     },
     passwordRules: {
       type: Array,
       default: () => {
-        return [
-          { required: true, message: '密码不能为空', trigger: 'blur' }
-        ]
+        return [{ required: true, message: '密码不能为空', trigger: 'blur' }]
       }
     }
   },
   data () {
     return {
       form: {
-        userName: 'super_admin',
-        password: ''
+        userName: '',
+        password: '',
+        code: ''
       }
     }
   },

@@ -7,8 +7,8 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint",
-    "dev": "vue-cli-service serve --open"
+    "lint": "vue-cli-service lint  --fix ",
+    "dev": "npm run lint && vue-cli-service serve --open"
   },
   "dependencies": {
     "axios": "^0.18.0",

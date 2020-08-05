@@ -22,8 +22,9 @@
     <FormItem prop="code">
       <Input type="password" v-model="form.code" placeholder="请输入验证码">
         <span slot="prepend">
-          <Icon :size="14" type="md-lock"></Icon>
+          <Icon :size="14" type="md-image"></Icon>
         </span>
+        <span slot="append" v-html="svg" @click="_getCode()"></span>
       </Input>
     </FormItem>
     <FormItem>
@@ -32,6 +33,7 @@
   </Form>
 </template>
 <script>
+import axios from 'axios'
 export default {
   name: 'LoginForm',
   props: {
@@ -50,6 +52,7 @@ export default {
   },
   data () {
     return {
+      svg: '',
       form: {
         userName: '',
         password: '',
@@ -65,6 +68,9 @@ export default {
       }
     }
   },
+  mounted () {
+    this._getCode()
+  },
   methods: {
     handleSubmit () {
       this.$refs.loginForm.validate((valid) => {
@@ -75,6 +81,17 @@ export default {
           })
         }
       })
+    },
+    _getCode () {
+      axios
+        .get('http://localhost:3000/public/getCaptcha?sid=toimc')
+        .then((res) => {
+          const obj = res.data
+          if (res.status === 200) {
+            console.log('_getCode -> res', res)
+            this.svg = obj.data
+          }
+        })
     }
   }
 }

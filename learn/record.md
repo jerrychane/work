@@ -3024,3 +3024,6 @@ https://lison16.github.io/iview-admin-doc/#/
 * 业务目录：components,views,api,router,store
 * 资源配置：assets,locale,config
 * 测试目录：mock,test
+
+##### 2-4 修改登录表单，添加图片验证码样式
+

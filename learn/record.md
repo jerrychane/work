@@ -3042,3 +3042,5 @@ https://lison16.github.io/iview-admin-doc/#/
 什么情况下要用 module?  可以用在任务框架下的组件，能够复用
 
 什么情况下要用 plugin? 在项目的全局，在任意一个地方都可能用到
+
+##### 2-6 vuex中modules用法介绍

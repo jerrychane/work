@@ -3019,7 +3019,7 @@ https://lison16.github.io/iview-admin-doc/#/
     └── tests  测试相关
 ```
 
-学贵心悟，守旧无功，想清楚比马上动手更重要。
+> 学贵心悟，守旧无功，想清楚比马上动手更重要。
 
 * 业务目录：components,views,api,router,store
 * 资源配置：assets,locale,config

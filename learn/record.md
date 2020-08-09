@@ -3045,3 +3045,28 @@ https://lison16.github.io/iview-admin-doc/#/
 
 ##### 2-6 vuex中modules用法介绍
 
+###### 使用常量替代 Mutation 事件类型
+
+```js
+// mutation-types.js
+export const SOME_MUTATION = 'SOME_MUTATION';
+```
+
+```js
+// store.js
+import Vuex from 'vuex'
+import { SOME_MUTATION } from './mutation-types'
+
+const store = new Vuex.Store({
+   state:{...},
+   mutations:{
+   // 可以使用 ES2015 风格的计算属性命名功能来使用一个常量作为函数名
+       [SOME_MUTATION](state) {
+           // mutate state
+       }
+   }
+})
+```
+
+
+

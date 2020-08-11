@@ -1,5 +1,6 @@
 import Main from '@/components/main'
 import parentView from '@/components/parent-view'
+import communityRouters from './community'
 
 /**
  * iview-admin中meta除了原生参数外可配置的参数:
@@ -50,20 +51,12 @@ export default [
       }
     ]
   },
+  ...communityRouters,
   {
     path: '',
     name: 'doc',
     meta: {
       title: '文档',
-      href: 'https://lison16.github.io/iview-admin-doc/#/',
-      icon: 'ios-book'
-    }
-  },
-  {
-    path: '/test',
-    name: 'test',
-    meta: {
-      title: '测试菜单',
       href: 'https://lison16.github.io/iview-admin-doc/#/',
       icon: 'ios-book'
     }

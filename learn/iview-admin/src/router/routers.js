@@ -60,6 +60,15 @@ export default [
     }
   },
   {
+    path: '/test',
+    name: 'test',
+    meta: {
+      title: '测试菜单',
+      href: 'https://lison16.github.io/iview-admin-doc/#/',
+      icon: 'ios-book'
+    }
+  },
+  {
     path: '/join',
     name: 'join',
     component: Main,

@@ -6,7 +6,12 @@
         <Icon :size="18" type="md-arrow-dropdown" />
       </a>
       <DropdownMenu slot="list">
-        <DropdownItem v-for="(value, key) in localList" :name="key" :key="`lang-${key}`">{{ value }}</DropdownItem>
+        <DropdownItem
+          v-for="(value, key) in localList"
+          :name="key"
+          :key="`lang-${key}`"
+          >{{ value }}</DropdownItem
+        >
       </DropdownMenu>
     </Dropdown>
   </div>
@@ -22,12 +27,12 @@ export default {
     return {
       langList: {
         'zh-CN': '语言',
-        'zh-TW': '語言',
+        // 'zh-TW': '語言',
         'en-US': 'Lang'
       },
       localList: {
         'zh-CN': '中文简体',
-        'zh-TW': '中文繁体',
+        // 'zh-TW': '中文繁体',
         'en-US': 'English'
       }
     }

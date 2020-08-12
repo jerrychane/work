@@ -3087,7 +3087,6 @@ export default [
   //  链接式的跳转 -> doc
   //  内嵌的子页面 -> Main Layout -> children
   //  一级菜单上添加的路由 (hideInMenu hideInBread)
-
   // 内容管理
   // 1.文章管理 -> 文章内容管理，文章标签管理（热门、精华 etc）
   {
@@ -3113,3 +3112,6 @@ export default [
 ]
 ```
 
+##### 3-2 路由多语言逻辑分析&i18n多语言插件
+
+多语设置的思路：a.看官方文档； b.全文进行搜素（效率最高）；c.查看路由逻辑（debugger）

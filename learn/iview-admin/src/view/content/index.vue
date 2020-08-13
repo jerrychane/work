@@ -19,7 +19,7 @@
 
 <script>
 import Tables from '_c/tables'
-import { getTableData } from '@/api/data'
+import { getList } from '@/api/content'
 export default {
   name: 'content_management',
   components: {
@@ -114,8 +114,9 @@ export default {
     }
   },
   mounted () {
-    getTableData().then((res) => {
-      this.tableData = res.data
+    getList({ page: 0, limit: 10 }).then((res) => {
+      // this.tableData = res.data
+      console.log('mounted -> res', res)
     })
   }
 }

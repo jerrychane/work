@@ -116,7 +116,16 @@ export default {
   mounted () {
     getList({ page: 0, limit: 10 }).then((res) => {
       // this.tableData = res.data
-      console.log('mounted -> res', res)
+      // 方法一: -> 修改 getList 接口
+      const data = res.data
+      data.forEach((item) => {
+        if (item.status === 0) {
+          item.status = '打开回复'
+        } else {
+          item.status = '禁止回复'
+        }
+      })
+      this.tableData = data
     })
   }
 }

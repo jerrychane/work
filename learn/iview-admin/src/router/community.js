@@ -9,7 +9,7 @@ export default [
   // 内容管理
   // 1.文章管理 -> 文章内容管理，文章标签管理（热门、精华 etc）
   {
-    path: '/manage',
+    path: '/content',
     name: 'article_manager',
     meta: {
       icon: 'logo-buffer',
@@ -18,16 +18,16 @@ export default [
     component: Main,
     children: [
       {
-        path: 'tables_page',
+        path: 'index',
         name: 'content_management',
         meta: {
           icon: 'md-grid',
           title: '内容管理'
         },
-        component: () => import('@/view/components/tables/tables.vue')
+        component: () => import('@/view/content/index')
       },
       {
-        path: 'tables_page',
+        path: 'tags',
         name: 'tags_management',
         meta: {
           icon: 'md-grid',

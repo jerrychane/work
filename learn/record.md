@@ -3119,3 +3119,32 @@ export default [
 ##### 3-3 自定义内容管理页面基础样式
 
 ##### 3-4 两种格式化表格数据的方法（推荐render动态渲染）
+
+```js
+getList({ page: 0, limit: 10 }).then((res) => {
+      // 方法一： -> 修改getList接口
+       const data = res.data
+       data.forEach((item) => {
+         if (item.status === 0) {
+           item.status = '打开回复'
+         } else {
+           item.status = '禁止回复'
+         }
+       })
+this.tableData = res.data
+```
+
+```js
+// 方法二： 使用 render 动态渲染 (推荐使用)
+{
+  title: '作者',
+  key: 'user',
+  width: 120,
+  align: 'center',
+  // 方法二：使用 render 方法结构化数据
+  render: (h, params) => {
+    return h('div', [h('span', params.row.uid.name)])
+  }
+},
+```
+

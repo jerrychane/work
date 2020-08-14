@@ -10,6 +10,7 @@
         :columns="columns"
         @on-delete="handleDelete"
       />
+      <Button type="error" size="small" @click="remove(index)">Delete</Button>
       <Row type="flex" justify="space-between" align="middle">
         <Button style="margin: 10px 0;" type="primary" @click="exportExcel"
           >导出为Excel文件</Button
@@ -187,6 +188,7 @@ export default {
         {
           title: '设置',
           fixed: 'right',
+          slot: 'action',
           width: 160,
           align: 'center',
         },

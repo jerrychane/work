@@ -73,7 +73,8 @@ export default {
           align: 'center',
           // 方法二：使用 render 方法结构化数据
           render: (h, params) => {
-            return h('div', [h('span', params.row.uid.name)])
+            console.log('data -> params', params)
+            return h('div', [h('span', params.row.user)])
           },
         },
         {
@@ -190,7 +191,47 @@ export default {
           align: 'center',
         },
       ],
-      tableData: [],
+      tableData: [
+        {
+          title: 'aaaa',
+          created: '2020-08-20',
+          user: 'jerry1',
+          catalog: 'ask',
+          fav: 100,
+          tags: '历史,人文',
+          isEnd: '0',
+          reads: 100,
+          answer: 200,
+          status: 0,
+          isTop: '1',
+        },
+        {
+          title: 'bbb',
+          created: '2020-07-20',
+          user: 'jerry2',
+          catalog: 'advise',
+          fav: 100,
+          tags: '历史,人文',
+          isEnd: '0',
+          reads: 100,
+          answer: 200,
+          status: 0,
+          isTop: '1',
+        },
+        {
+          title: 'ccc',
+          created: '2020-06-20',
+          user: 'jerry3',
+          catalog: 'share',
+          fav: 100,
+          tags: '历史,人文',
+          isEnd: '0',
+          reads: 100,
+          answer: 200,
+          status: 1,
+          isTop: '1',
+        },
+      ],
     }
   },
   methods: {
@@ -224,13 +265,22 @@ export default {
         //     item.status = '禁止回复'
         //   }
         // })
+        res = {
+          data: [
+            {
+              title: 'aaaa',
+              create: '2020-08-20',
+            },
+          ],
+        }
         this.tableData = res.data
+        console.log('_getList -> this.tableData', this.tableData)
         this.total = res.total
       })
     },
   },
   mounted() {
-    _this.getList()
+    this._getList()
   },
 }
 </script>

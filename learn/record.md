@@ -3148,3 +3148,5 @@ this.tableData = res.data
 },
 ```
 
+##### 3-5 集成Page分页组件
+

@@ -10,9 +10,22 @@
         :columns="columns"
         @on-delete="handleDelete"
       />
-      <Button style="margin: 10px 0;" type="primary" @click="exportExcel"
-        >导出为Excel文件</Button
-      >
+      <Row type="flex" justify="space-between" align="middle">
+        <Button style="margin: 10px 0;" type="primary" @click="exportExcel"
+          >导出为Excel文件</Button
+        >
+        <Page
+          :total="total"
+          :current="page"
+          :page-size="limit"
+          :page-size-opts="pageArr"
+          show-elevator
+          show-sizer
+          show-total
+          @on-change="onPageChange"
+          @on-page-size-change="onPageSizeChange"
+        />
+      </Row>
     </Card>
   </div>
 </template>
@@ -24,15 +37,19 @@ import dayjs from 'dayjs'
 export default {
   name: 'content_management',
   components: {
-    Tables
+    Tables,
   },
-  data () {
+  data() {
     return {
+      page: 1,
+      limit: 10,
+      total: 0,
+      pageArr: [10, 20, 30, 50, 100],
       columns: [
         {
           title: '标题',
           key: 'title',
-          minWidth: 400
+          minWidth: 400,
         },
         {
           title: '创建时间',
@@ -45,9 +62,9 @@ export default {
               h(
                 'span',
                 dayjs(params.row.created).format('YYYY-MM-DD hh:mm:ss')
-              )
+              ),
             ])
-          }
+          },
         },
         {
           title: '作者',
@@ -57,7 +74,7 @@ export default {
           // 方法二：使用 render 方法结构化数据
           render: (h, params) => {
             return h('div', [h('span', params.row.uid.name)])
-          }
+          },
         },
         {
           title: '分类',
@@ -90,13 +107,13 @@ export default {
                 result = '全部'
             }
             return h('div', [h('span', result)])
-          }
+          },
         },
         {
           title: '积分',
           key: 'fav',
           width: 100,
-          align: 'center'
+          align: 'center',
         },
         {
           title: '标签',
@@ -105,9 +122,9 @@ export default {
           align: 'center',
           render: (h, params) => {
             return h('div', [
-              h('span', params.row.tags.map((o) => o.name).join(','))
+              h('span', params.row.tags.map((o) => o.name).join(',')),
             ])
-          }
+          },
         },
         {
           title: '是否结束',
@@ -116,19 +133,19 @@ export default {
           align: 'center',
           render: (h, params) => {
             return h('div', [h('span', params.row.isEnd === '0' ? '否' : '是')])
-          }
+          },
         },
         {
           title: '阅读记数',
           key: 'reads',
           width: 100,
-          align: 'center'
+          align: 'center',
         },
         {
           title: '回答记数',
           key: 'answer',
           width: 100,
-          align: 'center'
+          align: 'center',
         },
         {
           title: '状态',
@@ -140,14 +157,14 @@ export default {
               h('Tag', {
                 class: 'test',
                 props: {
-                  color: params.row.status === '0' ? 'success' : 'error'
+                  color: params.row.status === '0' ? 'success' : 'error',
                 },
                 domProps: {
-                  innerHTML: params.row.status === '0' ? 'on' : 'off'
-                }
-              })
+                  innerHTML: params.row.status === '0' ? 'on' : 'off',
+                },
+              }),
             ])
-          }
+          },
         },
         {
           title: '是否置顶',
@@ -160,46 +177,61 @@ export default {
                 props: {
                   color: '#19be6b',
                   type: params.row.isTop === '1' ? 'md-checkmark' : '',
-                  size: 20
-                }
-              })
+                  size: 20,
+                },
+              }),
             ])
-          }
+          },
         },
         {
           title: '设置',
           fixed: 'right',
           width: 160,
-          align: 'center'
-        }
+          align: 'center',
+        },
       ],
-      tableData: []
+      tableData: [],
     }
   },
   methods: {
-    handleDelete (params) {
+    handleDelete(params) {
       console.log(params)
     },
-    exportExcel () {
+    exportExcel() {
       this.$refs.tables.exportCsv({
-        filename: `table-${new Date().valueOf()}.csv`
+        filename: `table-${new Date().valueOf()}.csv`,
       })
-    }
+    },
+    onPageChange(page) {
+      this.page = page
+      this._getList()
+      console.log('onPageChange -> page', page)
+    },
+    onPageSizeChange(size) {
+      this.limit = size
+      this._getList()
+      console.log('onPageSizeChange -> size', size)
+    },
+    _getList() {
+      getList({ page: this.page - 1, limit: this.limit }).then((res) => {
+        console.log('mounted -> res', res)
+        // 方法一： -> 修改getList接口
+        // const data = res.data
+        // data.forEach((item) => {
+        //   if (item.status === 0) {
+        //     item.status = '打开回复'
+        //   } else {
+        //     item.status = '禁止回复'
+        //   }
+        // })
+        this.tableData = res.data
+        this.total = res.total
+      })
+    },
   },
-  mounted () {
-    getList({ page: 0, limit: 10 }).then((res) => {
-      // 方法一： -> 修改getList接口
-      // const data = res.data
-      // data.forEach((item) => {
-      //   if (item.status === 0) {
-      //     item.status = '打开回复'
-      //   } else {
-      //     item.status = '禁止回复'
-      //   }
-      // })
-      this.tableData = res.data
-    })
-  }
+  mounted() {
+    _this.getList()
+  },
 }
 </script>
 

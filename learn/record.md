@@ -3145,7 +3145,7 @@ this.tableData = res.data
   render: (h, params) => {
     return h('div', [h('span', params.row.uid.name)])
   }
-},
+}
 ```
 
 ##### 3-5 集成Page分页组件

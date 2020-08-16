@@ -317,6 +317,12 @@ export default {
     onExpand(row, status) {
       this.$emit('on-expand', row, status)
     },
+    editRow(row, index) {
+      this.$emit('on-row-edit', row, index)
+    },
+    removeRow(row, index) {
+      this.$emit('on-row-remove', row, index)
+    },
   },
   watch: {
     columns(columns) {

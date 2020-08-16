@@ -8,7 +8,8 @@
         search-place="top"
         v-model="tableData"
         :columns="columns"
-        @on-delete="handleDelete"
+        @on-row-edit="handleRowEdit"
+        @on-row-remove="handleRowRemove"
       />
       <Button type="error" size="small" @click="remove(index)">Delete</Button>
       <Row type="flex" justify="space-between" align="middle">
@@ -206,6 +207,7 @@ export default {
           answer: 200,
           status: 0,
           isTop: '1',
+          _id: 0,
         },
         {
           title: 'bbb',
@@ -219,6 +221,7 @@ export default {
           answer: 200,
           status: 0,
           isTop: '1',
+          _id: 1,
         },
         {
           title: 'ccc',
@@ -232,13 +235,30 @@ export default {
           answer: 200,
           status: 1,
           isTop: '1',
+          _id: 2,
         },
       ],
     }
   },
   methods: {
-    handleDelete(params) {
-      console.log(params)
+    handleRowEdit(row, index) {
+      console.log('handleRowEdit -> row, index', row, index)
+    },
+    handleRowRemove(row, index) {
+      console.log('handleRowRemove -> row, index', row, index)
+      this.$Modal.confirm({
+        title: `确定删除文章吗`,
+        content: `删除第${index + 1} 条数据, 文章标题:"${row.title}"的文章吗`,
+        onOk: () => {
+          this.$Message.info('成功删除!')
+          this.tableData = this.tableData.filter((item) => {
+            item._id !== row._id
+          })
+        },
+        onCancel: () => {
+          this.$Message.info('取消操作!')
+        },
+      })
     },
     exportExcel() {
       this.$refs.tables.exportCsv({

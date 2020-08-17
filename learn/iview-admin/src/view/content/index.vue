@@ -34,7 +34,7 @@
 
 <script>
 import Tables from '_c/tables'
-import { getList } from '@/api/content'
+import { getList, deletePostById } from '@/api/content'
 import dayjs from 'dayjs'
 export default {
   name: 'content_management',
@@ -250,10 +250,18 @@ export default {
         title: `确定删除文章吗`,
         content: `删除第${index + 1} 条数据, 文章标题:"${row.title}"的文章吗`,
         onOk: () => {
-          this.$Message.info('成功删除!')
-          this.tableData = this.tableData.filter((item) => {
-            item._id !== row._id
-          })
+          deletePostById(row._id)
+            .then((res) => {
+              if (res.code === 200) {
+                this.$Message.info('成功删除!')
+                this.tableData = this.tableData.filter((item) => {
+                  item._id !== row._id
+                })
+              }
+            })
+            .catch((err) => {
+              this.$Message.info('删除失败！原因：' + err)
+            })
         },
         onCancel: () => {
           this.$Message.info('取消操作!')

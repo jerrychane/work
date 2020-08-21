@@ -3184,3 +3184,10 @@ this.tableData = res.data
 
 ##### 2-4 角色权限控制基础
 
+#### 第3章 用户管理（自定义动态搜索组件、批量设置）
+
+##### 3-1 用户管理页面样式开发-添加Tables行批量选择功能
+
+* @on-select , 选中某一项触发，返回值为 selection 和 row，分别为已选项和刚选择的项。
+* @on-select-all, 点击全选时触发，返回值为 selection,已选项。
+* @on-selection-change,只要选中项发生变化时就会触发，返回值为 selection，已选项。

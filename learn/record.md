@@ -3191,3 +3191,9 @@ this.tableData = res.data
 * @on-select , 选中某一项触发，返回值为 selection 和 row，分别为已选项和刚选择的项。
 * @on-select-all, 点击全选时触发，返回值为 selection,已选项。
 * @on-selection-change,只要选中项发生变化时就会触发，返回值为 selection，已选项。
+
+##### 3-2 开发用户管理接口（获取用户列表）
+
+##### 3-3 用户基本信息编辑功能
+
+##### 3-4 修改用户信息&删除用户模态框开发（form表单异步校验）

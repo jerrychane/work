@@ -3219,3 +3219,21 @@ this.tableData = res.data
 * 1.datepicker - item:string, search  ---> array , starttime, endtime;
 * 2.radio ---> key - value , $in
 * 3.select ---> key -value ,$in
+
+#### 第四章 权限设计
+
+##### 4-1 菜单权限设计基础
+
+* 菜单权限设计分为 原型设计、数据库设计（难点）、接口设计
+
+* 菜单权限与用户如何进行关联（多对多，还是1对多）
+* 树形菜单数据如何查询
+* 菜单权限界面如何设计
+* 经典模型：用户 ---> 角色（1：n） --->  菜单 （1：n）---> 操作（1：n）
+
+数据库设计：
+
+* Menu : 存储菜单，子菜单和资源操作
+* Roles ：存储角色 ，存储对应的 Menu
+* Users ： 存储用户角色
+

@@ -3212,3 +3212,10 @@ this.tableData = res.data
 
 ##### 3-11 自定义搜索组件动态选项交互
 
+##### 3-12 自定义搜索组件交互调试
+
+##### 3-13 自定义搜索组件接口开发
+
+* 1.datepicker - item:string, search  ---> array , starttime, endtime;
+* 2.radio ---> key - value , $in
+* 3.select ---> key -value ,$in

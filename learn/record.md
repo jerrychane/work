@@ -3237,3 +3237,4 @@ this.tableData = res.data
 * Roles ：存储角色 ，存储对应的 Menu
 * Users ： 存储用户角色
 
+##### 4-2 菜单&权限管理数据库设计

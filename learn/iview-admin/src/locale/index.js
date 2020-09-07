@@ -16,10 +16,9 @@ const lang = localLang || localRead('local') || 'zh-CN'
 Vue.config.lang = lang
 
 // vue-i18n 6.x+写法
-Vue.locale = () => { }
+Vue.locale = () => {}
 const messages = {
   'zh-CN': Object.assign(zhCnLocale, customZhCn),
-  // 'zh-TW': Object.assign(zhTwLocale, customZhTw),
   'en-US': Object.assign(enUsLocale, customEnUs)
 }
 const i18n = new VueI18n({

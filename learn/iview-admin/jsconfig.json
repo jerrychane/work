@@ -4,9 +4,9 @@
     "allowSyntheticDefaultImports": false,
     "baseUrl": "./",
     "paths": {
-      "@/*" : ["src/*"],
-      "_c/*" : ["src/components/*"],
-      "~*" : ["node_modules/*"]
+      "@/*": ["src/*"],
+      "_c/*": ["src/components/*"],
+      "~*": ["node_modules/*"]
     }
   },
   "exclude": ["dist"]

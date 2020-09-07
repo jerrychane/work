@@ -3,19 +3,23 @@
     <Card>
       <tables
         ref="tables"
-        editable
         searchable
         search-place="top"
         v-model="tableData"
         :columns="columns"
         @on-row-edit="handleRowEdit"
         @on-row-remove="handleRowRemove"
+        @on-selection-change="handleSelect"
+        @searchEvent="handleSearch"
       />
-      <Button type="error" size="small" @click="remove(index)">Delete</Button>
       <Row type="flex" justify="space-between" align="middle">
-        <Button style="margin: 10px 0;" type="primary" @click="exportExcel"
-          >导出为Excel文件</Button
-        >
+        <Col class="ctrls">
+          <Button @click="handleDeleteBatch()">批量删除</Button>
+          <Button @click="handleSetBatch()">批量设置</Button>
+          <Button style="margin: 10px 0;" type="primary" @click="exportExcel">
+            <Icon type="md-download"></Icon>导出表格
+          </Button>
+        </Col>
         <Page
           :total="total"
           :current="page"
@@ -29,29 +33,61 @@
         />
       </Row>
     </Card>
+    <EditModel
+      :isShow="showEdit"
+      :item="currentItem"
+      @editEvent="handleItemEdit"
+      @changeEvent="handleChangeEvent"
+    ></EditModel>
+    <BatchSet :isShow="showSet" @editEvent="handleItemSet" @changeEvent="handleSetChangeEvent"></BatchSet>
   </div>
 </template>
 
 <script>
 import Tables from '_c/tables'
-import { getList, deletePostById } from '@/api/content'
+import EditModel from './index/edit'
+import BatchSet from './index/batchSet'
+import {
+  getList,
+  deletePostById,
+  updatePostById,
+  updatePostBatchById
+} from '@/api/content'
 import dayjs from 'dayjs'
 export default {
   name: 'content_management',
   components: {
     Tables,
+    EditModel,
+    BatchSet
   },
-  data() {
+  data () {
     return {
       page: 1,
       limit: 10,
       total: 0,
-      pageArr: [10, 20, 30, 50, 100],
+      option: {},
+      showEdit: false,
+      showSet: false,
+      currentIndex: 0,
+      currentItem: {},
+      selection: [],
       columns: [
+        {
+          type: 'selection',
+          width: 60,
+          align: 'center',
+          hidden: true
+        },
         {
           title: '标题',
           key: 'title',
           minWidth: 400,
+          ellipsis: true,
+          tooltip: true,
+          search: {
+            type: 'input'
+          }
         },
         {
           title: '创建时间',
@@ -61,12 +97,12 @@ export default {
           // 方法二：使用 render 方法结构化数据
           render: (h, params) => {
             return h('div', [
-              h(
-                'span',
-                dayjs(params.row.created).format('YYYY-MM-DD hh:mm:ss')
-              ),
+              h('span', dayjs(params.row.created).format('YYYY-MM-DD HH:mm:ss'))
             ])
           },
+          search: {
+            type: 'date'
+          }
         },
         {
           title: '作者',
@@ -75,9 +111,11 @@ export default {
           align: 'center',
           // 方法二：使用 render 方法结构化数据
           render: (h, params) => {
-            console.log('data -> params', params)
-            return h('div', [h('span', params.row.user)])
+            return h('div', [h('span', params.row.uid.name)])
           },
+          search: {
+            type: 'input'
+          }
         },
         {
           title: '分类',
@@ -111,12 +149,38 @@ export default {
             }
             return h('div', [h('span', result)])
           },
+          search: {
+            type: 'select',
+            options: [
+              {
+                key: '提问',
+                value: 'ask'
+              },
+              {
+                key: '建议',
+                value: 'advise'
+              },
+              {
+                key: '交流',
+                value: 'discuss'
+              },
+              {
+                key: '分享',
+                value: 'share'
+              },
+              {
+                key: '公告',
+                value: 'notice'
+              }
+            ]
+          }
         },
         {
           title: '积分',
           key: 'fav',
           width: 100,
           align: 'center',
+          hidden: true
         },
         {
           title: '标签',
@@ -125,9 +189,12 @@ export default {
           align: 'center',
           render: (h, params) => {
             return h('div', [
-              h('span', params.row.tags.map((o) => o.name).join(',')),
+              h('span', params.row.tags.map((o) => o.name).join(',') || '')
             ])
           },
+          search: {
+            type: 'input'
+          }
         },
         {
           title: '是否结束',
@@ -137,18 +204,23 @@ export default {
           render: (h, params) => {
             return h('div', [h('span', params.row.isEnd === '0' ? '否' : '是')])
           },
+          search: {
+            type: 'radio'
+          }
         },
         {
           title: '阅读记数',
           key: 'reads',
           width: 100,
           align: 'center',
+          hidden: true
         },
         {
           title: '回答记数',
           key: 'answer',
           width: 100,
           align: 'center',
+          hidden: true
         },
         {
           title: '状态',
@@ -160,14 +232,17 @@ export default {
               h('Tag', {
                 class: 'test',
                 props: {
-                  color: params.row.status === '0' ? 'success' : 'error',
+                  color: params.row.status === '0' ? 'success' : 'error'
                 },
                 domProps: {
-                  innerHTML: params.row.status === '0' ? 'on' : 'off',
-                },
-              }),
+                  innerHTML: params.row.status === '0' ? 'on' : 'off'
+                }
+              })
             ])
           },
+          search: {
+            type: 'radio'
+          }
         },
         {
           title: '是否置顶',
@@ -180,83 +255,127 @@ export default {
                 props: {
                   color: '#19be6b',
                   type: params.row.isTop === '1' ? 'md-checkmark' : '',
-                  size: 20,
-                },
-              }),
+                  size: 20
+                }
+              })
             ])
           },
+          search: {
+            type: 'radio'
+          }
         },
         {
           title: '设置',
-          fixed: 'right',
+          key: 'settings',
           slot: 'action',
+          fixed: 'right',
           width: 160,
           align: 'center',
-        },
+          hidden: true
+        }
       ],
-      tableData: [
-        {
-          title: 'aaaa',
-          created: '2020-08-20',
-          user: 'jerry1',
-          catalog: 'ask',
-          fav: 100,
-          tags: '历史,人文',
-          isEnd: '0',
-          reads: 100,
-          answer: 200,
-          status: 0,
-          isTop: '1',
-          _id: 0,
-        },
-        {
-          title: 'bbb',
-          created: '2020-07-20',
-          user: 'jerry2',
-          catalog: 'advise',
-          fav: 100,
-          tags: '历史,人文',
-          isEnd: '0',
-          reads: 100,
-          answer: 200,
-          status: 0,
-          isTop: '1',
-          _id: 1,
-        },
-        {
-          title: 'ccc',
-          created: '2020-06-20',
-          user: 'jerry3',
-          catalog: 'share',
-          fav: 100,
-          tags: '历史,人文',
-          isEnd: '0',
-          reads: 100,
-          answer: 200,
-          status: 1,
-          isTop: '1',
-          _id: 2,
-        },
-      ],
+      pageArr: [10, 20, 30, 50, 100],
+      tableData: []
     }
   },
   methods: {
-    handleRowEdit(row, index) {
-      console.log('handleRowEdit -> row, index', row, index)
-    },
-    handleRowRemove(row, index) {
-      console.log('handleRowRemove -> row, index', row, index)
+    handleDeleteBatch () {
+      // 批量进行删除
+      if (this.selection.length === 0) {
+        this.$Message.info('请选择需要删除的数据！')
+        return
+      }
+      const msg = this.selection.map((o) => o.title).join(',')
       this.$Modal.confirm({
-        title: `确定删除文章吗`,
-        content: `删除第${index + 1} 条数据, 文章标题:"${row.title}"的文章吗`,
+        title: '确定删除吗？',
+        content: `删除${msg}的文章吗？`,
+        onOk: () => {
+          const arr = this.selection.map((o) => o._id)
+          deletePostById(arr).then((res) => {
+            // this.tableData.splice(index, 1)
+            this.tableData = this.tableData.filter(
+              (item) => !arr.includes(item._id)
+            )
+            this.$Message.success('删除成功！')
+            //  this._getList()
+          })
+        },
+        onCancel: () => {
+          this.$Message.info('取消操作！')
+        }
+      })
+    },
+    handleSetBatch () {
+      // 批量进行删除
+      if (this.selection.length === 0) {
+        this.$Message.info('请选择需要删除的数据！')
+        return
+      }
+      // 批量进行设置 -> vip, 禁言, 角色
+      this.showSet = true
+    },
+    handleSelect (selection) {
+      this.selection = selection
+    },
+    handleChangeEvent (value) {
+      this.showEdit = value
+    },
+    handleSetChangeEvent (value) {
+      this.showSet = value
+    },
+    handleItemEdit (item) {
+      updatePostById(item).then((res) => {
+        if (res.code === 200) {
+          console.log('更新成功')
+          // this.tableData[this.currentIndex] = item
+          this.tableData.splice(this.currentIndex, 1, item)
+        }
+      })
+      this.showEdit = false
+    },
+    // 批量设置模态框
+    handleItemSet (settings) {
+      const msg = this.selection.map((o) => o.title).join(',')
+      this.$Modal.confirm({
+        title: '确定修改吗？',
+        content: `修改${msg}的文章吗`,
+        onOk: () => {
+          const arr = this.selection.map((o) => o._id)
+          updatePostBatchById({ ids: arr, settings }).then((res) => {
+            // this.tableData.splice(index, 1)
+            this.tableData.map((item) => {
+              if (arr.includes(item._id)) {
+                for (var keys of Object.keys(settings)) {
+                  item[keys] = settings[keys]
+                }
+              }
+            })
+            this.$Message.success('批量设置成功！')
+            //  this._getList()
+          })
+        },
+        onCancel: () => {
+          this.$Message.info('取消操作！')
+        }
+      })
+    },
+    handleRowEdit (row, index) {
+      this.showEdit = true
+      this.currentIndex = index
+      this.currentItem = { ...row }
+    },
+    handleRowRemove (row, index) {
+      this.$Modal.confirm({
+        title: '确定删除文章吗？',
+        content: `删除第${index + 1}条数据，文章标题："${row.title}"的文章吗`,
         onOk: () => {
           deletePostById(row._id)
             .then((res) => {
               if (res.code === 200) {
-                this.$Message.info('成功删除!')
-                this.tableData = this.tableData.filter((item) => {
-                  item._id !== row._id
-                })
+                this.$Message.info('成功删除！')
+                this.tableData = this.tableData.filter(
+                  (item) => item._id !== row._id
+                )
               }
             })
             .catch((err) => {
@@ -264,28 +383,46 @@ export default {
             })
         },
         onCancel: () => {
-          this.$Message.info('取消操作!')
-        },
+          this.$Message.info('取消操作！')
+        }
       })
     },
-    exportExcel() {
+    handleSearch (value) {
+      // 判断是否有新的查询内容的传递，把分页数据归0
+      this.option = {}
+      this.page = 1
+      // if (
+      //   (typeof this.option.search !== 'undefined' &&
+      //     value.search !== this.option.search) ||
+      //   this.option === {}
+      // ) {
+      //   this.page = 1 // 从1开始
+      // }
+      if (value.item === 'tags') {
+        value.item = 'tag'
+      }
+      this.option[value.item] = value.search
+      this._getList()
+    },
+    exportExcel () {
       this.$refs.tables.exportCsv({
-        filename: `table-${new Date().valueOf()}.csv`,
+        filename: `table-${new Date().valueOf()}.csv`
       })
     },
-    onPageChange(page) {
+    onPageChange (page) {
       this.page = page
       this._getList()
-      console.log('onPageChange -> page', page)
     },
-    onPageSizeChange(size) {
+    onPageSizeChange (size) {
       this.limit = size
       this._getList()
-      console.log('onPageSizeChange -> size', size)
     },
-    _getList() {
-      getList({ page: this.page - 1, limit: this.limit }).then((res) => {
-        console.log('mounted -> res', res)
+    _getList () {
+      getList({
+        page: this.page - 1,
+        limit: this.limit,
+        ...this.option
+      }).then((res) => {
         // 方法一： -> 修改getList接口
         // const data = res.data
         // data.forEach((item) => {
@@ -295,25 +432,21 @@ export default {
         //     item.status = '禁止回复'
         //   }
         // })
-        res = {
-          data: [
-            {
-              title: 'aaaa',
-              create: '2020-08-20',
-            },
-          ],
-        }
         this.tableData = res.data
-        console.log('_getList -> this.tableData', this.tableData)
         this.total = res.total
       })
-    },
+    }
   },
-  mounted() {
+  mounted () {
     this._getList()
-  },
+  }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.ctrls {
+  button {
+    margin-right: 10px;
+  }
+}
 </style>

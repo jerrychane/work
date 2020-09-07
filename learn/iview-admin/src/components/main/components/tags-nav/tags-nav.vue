@@ -1,7 +1,7 @@
 <template>
   <div class="tags-nav">
     <div class="close-con">
-      <Dropdown transfer @on-click="handleTagsOption" style="margin-top: 7px;">
+      <Dropdown transfer @on-click="handleTagsOption" style="margin-top:7px;">
         <Button size="small" type="text">
           <Icon :size="18" type="ios-close-circle-outline" />
         </Button>
@@ -112,24 +112,23 @@ export default {
     handleScroll (offset) {
       const outerWidth = this.$refs.scrollOuter.offsetWidth
       const bodyWidth = this.$refs.scrollBody.offsetWidth
-      let tagBodyLeft = 0
+      let tagBodyLeft = this.tagBodyLeft
       if (offset > 0) {
         tagBodyLeft = Math.min(0, this.tagBodyLeft + offset)
       } else {
         if (outerWidth < bodyWidth) {
-          if (this.tagBodyLeft < -(bodyWidth - outerWidth)) {
-            tagBodyLeft = this.tagBodyLeft
+          if (tagBodyLeft < -(bodyWidth - outerWidth)) {
+            this.tagBodyLeft = tagBodyLeft
           } else {
-            tagBodyLeft = Math.max(
+            this.tagBodyLeft = Math.max(
               this.tagBodyLeft + offset,
               outerWidth - bodyWidth
             )
           }
         } else {
-          tagBodyLeft = 0
+          this.tagBodyLeft = 0
         }
       }
-      this.tagBodyLeft = tagBodyLeft
     },
     handleTagsOption (type) {
       if (type.includes('all')) {
@@ -249,5 +248,5 @@ export default {
 </script>
 
 <style lang="less">
-@import "./tags-nav.less";
+@import './tags-nav.less';
 </style>

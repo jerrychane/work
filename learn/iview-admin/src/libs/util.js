@@ -2,7 +2,12 @@ import Cookies from 'js-cookie'
 // cookie保存的天数
 import config from '@/config'
 import { forEach, hasOneOf, objEqual } from '@/libs/tools'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import 'dayjs/locale/zh-cn'
 const { title, cookieExpires, useI18n } = config
+
+dayjs.extend(relativeTime)
 
 export const TOKEN_KEY = 'token'
 
@@ -32,14 +37,17 @@ const showThisMenuEle = (item, access) => {
  */
 export const getMenuByRouter = (list, access) => {
   const res = []
-  forEach(list, item => {
+  forEach(list, (item) => {
     if (!item.meta || (item.meta && !item.meta.hideInMenu)) {
       const obj = {
         icon: (item.meta && item.meta.icon) || '',
         name: item.name,
         meta: item.meta
       }
-      if ((hasChild(item) || (item.meta && item.meta.showAlways)) && showThisMenuEle(item, access)) {
+      if (
+        (hasChild(item) || (item.meta && item.meta.showAlways)) &&
+        showThisMenuEle(item, access)
+      ) {
         obj.children = getMenuByRouter(item.children, access)
       }
       if (item.meta && item.meta.href) obj.href = item.meta.href
@@ -56,23 +64,27 @@ export const getMenuByRouter = (list, access) => {
 export const getBreadCrumbList = (route, homeRoute) => {
   const homeItem = { ...homeRoute, icon: homeRoute.meta.icon }
   const routeMetched = route.matched
-  if (routeMetched.some(item => item.name === homeRoute.name)) return [homeItem]
-  let res = routeMetched.filter(item => {
-    return item.meta === undefined || !item.meta.hideInBread
-  }).map(item => {
-    const meta = { ...item.meta }
-    if (meta.title && typeof meta.title === 'function') {
-      meta.__titleIsFunction__ = true
-      meta.title = meta.title(route)
-    }
-    const obj = {
-      icon: (item.meta && item.meta.icon) || '',
-      name: item.name,
-      meta: meta
-    }
-    return obj
-  })
-  res = res.filter(item => {
+  if (routeMetched.some((item) => item.name === homeRoute.name)) {
+    return [homeItem]
+  }
+  let res = routeMetched
+    .filter((item) => {
+      return item.meta === undefined || !item.meta.hideInBread
+    })
+    .map((item) => {
+      const meta = { ...item.meta }
+      if (meta.title && typeof meta.title === 'function') {
+        meta.__titleIsFunction__ = true
+        meta.title = meta.title(route)
+      }
+      const obj = {
+        icon: (item.meta && item.meta.icon) || '',
+        name: item.name,
+        meta: meta
+      }
+      return obj
+    })
+  res = res.filter((item) => {
     return !item.meta.hideInMenu
   })
   return [{ ...homeItem, to: homeRoute.path }, ...res]
@@ -97,16 +109,25 @@ export const showTitle = (item, vm) => {
   let { title, __titleIsFunction__ } = item.meta
   if (!title) return
   if (useI18n) {
-    if (title.includes('{{') && title.includes('}}') && useI18n) title = title.replace(/({{[\s\S]+?}})/, (m, str) => str.replace(/{{([\s\S]*)}}/, (m, _) => vm.$t(_.trim())))
-    else if (__titleIsFunction__) { title = item.meta.title } else { title = vm.$t(item.name) }
-  } else { title = (item.meta && item.meta.title) || item.name }
+    if (title.includes('{{') && title.includes('}}') && useI18n) {
+      title = title.replace(/({{[\s\S]+?}})/, (m, str) =>
+        str.replace(/{{([\s\S]*)}}/, (m, _) => vm.$t(_.trim()))
+      )
+    } else if (__titleIsFunction__) {
+      title = item.meta.title
+    } else {
+      title = vm.$t(item.name)
+    }
+  } else {
+    title = (item.meta && item.meta.title) || item.name
+  }
   return title
 }
 
 /**
  * @description 本地存储和获取标签导航列表
  */
-export const setTagNavListInLocalstorage = list => {
+export const setTagNavListInLocalstorage = (list) => {
   localStorage.tagNaveList = JSON.stringify(list)
 }
 /**
@@ -145,7 +166,7 @@ export const getHomeRoute = (routers, homeName = 'home') => {
 export const getNewTagList = (list, newRoute) => {
   const { name, path, meta } = newRoute
   const newList = [...list]
-  if (newList.findIndex(item => item.name === name) >= 0) return newList
+  if (newList.findIndex((item) => item.name === name) >= 0) return newList
   else newList.push({ name, path, meta })
   return newList
 }
@@ -155,8 +176,9 @@ export const getNewTagList = (list, newRoute) => {
  * @param {*} route 路由列表
  */
 const hasAccess = (access, route) => {
-  if (route.meta && route.meta.access) return hasOneOf(access, route.meta.access)
-  else return true
+  if (route.meta && route.meta.access) {
+    return hasOneOf(access, route.meta.access)
+  } else return true
 }
 
 /**
@@ -168,7 +190,7 @@ const hasAccess = (access, route) => {
  */
 export const canTurnTo = (name, access, routes) => {
   const routePermissionJudge = (list) => {
-    return list.some(item => {
+    return list.some((item) => {
       if (item.children && item.children.length) {
         return routePermissionJudge(item.children)
       } else if (item.name === name) {
@@ -184,10 +206,10 @@ export const canTurnTo = (name, access, routes) => {
  * @param {String} url
  * @description 从URL中解析参数
  */
-export const getParams = url => {
+export const getParams = (url) => {
   const keyValueArr = url.split('?')[1].split('&')
   const paramObj = {}
-  keyValueArr.forEach(item => {
+  keyValueArr.forEach((item) => {
     const keyValue = item.split('=')
     paramObj[keyValue[0]] = keyValue[1]
   })
@@ -203,7 +225,7 @@ export const getNextRoute = (list, route) => {
   if (list.length === 2) {
     res = getHomeRoute(list)
   } else {
-    const index = list.findIndex(item => routeEqual(item, route))
+    const index = list.findIndex((item) => routeEqual(item, route))
     if (index === list.length - 1) res = list[list.length - 2]
     else res = list[index + 1]
   }
@@ -236,11 +258,14 @@ export const getArrayFromFile = (file) => {
     reader.onload = function (evt) {
       const data = evt.target.result // 读到的数据
       const pasteData = data.trim()
-      arr = pasteData.split((/[\n\u0085\u2028\u2029]|\r\n?/g)).map(row => {
-        return row.split('\t')
-      }).map(item => {
-        return item[0].split(',')
-      })
+      arr = pasteData
+        .split(/[\n\u0085\u2028\u2029]|\r\n?/g)
+        .map((row) => {
+          return row.split('\t')
+        })
+        .map((item) => {
+          return item[0].split(',')
+        })
       if (format === 'csv') resolve(arr)
       else reject(new Error('[Format Error]:你上传的不是Csv文件'))
     }
@@ -257,13 +282,13 @@ export const getTableDataFromArray = (array) => {
   let tableData = []
   if (array.length > 1) {
     const titles = array.shift()
-    columns = titles.map(item => {
+    columns = titles.map((item) => {
       return {
         title: item,
         key: item
       }
     })
-    tableData = array.map(item => {
+    tableData = array.map((item) => {
       const res = {}
       item.forEach((col, i) => {
         res[titles[i]] = col
@@ -291,7 +316,10 @@ export const findNodeUpperByClasses = (ele, classes) => {
   const parentNode = ele.parentNode
   if (parentNode) {
     const classList = parentNode.classList
-    if (classList && classes.every(className => classList.contains(className))) {
+    if (
+      classList &&
+      classes.every((className) => classList.contains(className))
+    ) {
       return parentNode
     } else {
       return findNodeUpperByClasses(parentNode, classes)
@@ -326,7 +354,11 @@ export const routeEqual = (route1, route2) => {
   const params2 = route2.params || {}
   const query1 = route1.query || {}
   const query2 = route2.query || {}
-  return (route1.name === route2.name) && objEqual(params1, params2) && objEqual(query1, query2)
+  return (
+    route1.name === route2.name &&
+    objEqual(params1, params2) &&
+    objEqual(query1, query2)
+  )
 }
 
 /**
@@ -352,17 +384,16 @@ export const localRead = (key) => {
 // scrollTop animation
 export const scrollTop = (el, from = 0, to, duration = 500, endCallback) => {
   if (!window.requestAnimationFrame) {
-    window.requestAnimationFrame = (
+    window.requestAnimationFrame =
       window.webkitRequestAnimationFrame ||
       window.mozRequestAnimationFrame ||
       window.msRequestAnimationFrame ||
       function (callback) {
         return window.setTimeout(callback, 1000 / 60)
       }
-    )
   }
   const difference = Math.abs(from - to)
-  const step = Math.ceil(difference / duration * 50)
+  const step = Math.ceil((difference / duration) * 50)
 
   const scroll = (start, end, step) => {
     if (start === end) {
@@ -370,9 +401,9 @@ export const scrollTop = (el, from = 0, to, duration = 500, endCallback) => {
       return
     }
 
-    let d = (start + step > end) ? end : start + step
+    let d = start + step > end ? end : start + step
     if (start > end) {
-      d = (start - step < end) ? end : start - step
+      d = start - step < end ? end : start - step
     }
 
     if (el === window) {
@@ -395,4 +426,179 @@ export const setTitle = (routeItem, vm) => {
   const pageTitle = showTitle(handledRoute, vm)
   const resTitle = pageTitle ? `${title} - ${pageTitle}` : title
   window.document.title = resTitle
+}
+
+export const moment = (date) => {
+  // 超过7天，显示日期
+  if (dayjs(date).isBefore(dayjs().subtract(7, 'days'))) {
+    return dayjs(date).format('YYYY-MM-DD')
+  } else {
+    // 1小前，xx小时前，X天前
+    return dayjs(date)
+      .locale('zh-cn')
+      .from(dayjs())
+  }
+}
+
+export const sortObj = (arr, property) => {
+  return arr.sort((m, n) => m[property] - n[property])
+}
+
+export const updateNode = (tree, node) => {
+  for (let i = 0; i < tree.length; i++) {
+    const currentNode = tree[i]
+    if (currentNode.nodeKey === node.nodeKey) {
+      tree.splice(i, 1, node)
+      return tree
+    } else {
+      if (currentNode.children && currentNode.children.length > 0) {
+        updateNode(currentNode.children, node)
+      }
+    }
+  }
+  return tree
+}
+
+// this.menuData = this.menuData -> children -> ... -> selectNode
+// 1. parent 2. selectNdoe -> new menuData
+export const insertNode = (parent, select, data) => {
+  // 1. 遍历parent -> select push
+  // 2. children -> push child
+  // 3. return parent
+  for (let i = 0; i < parent.length; i++) {
+    const item = parent[i]
+    // 去重
+    if (item.nodeKey === select.nodeKey) {
+      // 排序
+      parent.push(data)
+      parent = sortObj(parent, 'sort')
+      return parent
+    } else {
+      if (item.children && item.children.length > 0) {
+        insertNode(item.children, select, data)
+      }
+    }
+  }
+  return parent
+}
+
+export const deleteNode = (tree, node) => {
+  for (let i = 0; i < tree.length; i++) {
+    const currentNode = tree[i]
+    if (currentNode.nodeKey === node.nodeKey) {
+      tree.splice(i, 1)
+      return tree
+    } else {
+      if (currentNode.children && currentNode.children.length > 0) {
+        deleteNode(currentNode.children, node)
+      }
+    }
+  }
+  return tree
+}
+
+export const deleteKey = (node, property) => {
+  if (node.children && node.children.length > 0) {
+    node.children.forEach((item) => {
+      delete item[property]
+      if (item.children && item.children.length > 0) {
+        deleteKey(item.children, property)
+      }
+    })
+  }
+  return node
+}
+
+// 获取节点的父级节点（一级节点）
+export const getNode = (arr, node) => {
+  for (let i = 0; i < arr.length; i++) {
+    const currentNode = arr[i]
+    // 当前的循环中是否有该节点
+    if (currentNode.nodeKey === node.nodeKey) {
+      if (!currentNode.parent) {
+        // 删除子节点上的parent属性
+        deleteKey(currentNode, 'parent')
+        return currentNode
+      } else {
+        return true
+      }
+    } else {
+      // 判断子节点中是否有该节点？
+      if (currentNode.children && currentNode.children.length > 0) {
+        currentNode.children.map((o) => {
+          o.parent = currentNode
+        })
+        // 当前循环中是否有该节点
+        if (getNode(currentNode.children, node)) {
+          // 删除子节点上的parent属性
+          deleteKey(currentNode, 'parent')
+          return currentNode
+        }
+      }
+    }
+  }
+}
+
+export const modifyNode = (tree, nodes, property, flag) => {
+  for (let i = 0; i < tree.length; i++) {
+    // 遍历整个树
+    const currentNode = tree[i]
+    if (nodes && nodes.length > 0) {
+      // 传递了需要设置的节点（权限 ）
+      if (nodes.includes(currentNode._id)) {
+        const tmp = { ...currentNode }
+        tmp[property] = flag
+        tree.splice(i, 1, tmp)
+      }
+    } else {
+      // 无节点，无需要特别设置的节点权限，统一去设置整个树形菜单
+      const tmp = { ...currentNode }
+      tmp[property] = flag
+      tree.splice(i, 1, tmp)
+    }
+    if (currentNode.children && currentNode.children.length > 0) {
+      modifyNode(currentNode.children, nodes, property, flag)
+    }
+    // _checked 或者 _selected 参考：https://www.iviewui.com/components/table 说明
+    if (currentNode.operations && currentNode.operations.length > 0) {
+      modifyNode(currentNode.operations, nodes, '_' + property, flag)
+    }
+  }
+  return tree
+}
+
+export const flatten = (arr) => {
+  while (arr.some((item) => Array.isArray(item))) {
+    arr = [].concat(...arr)
+  }
+  return arr
+}
+
+export const getPropertyIds = (menu, properties) => {
+  const arr = []
+  // 遍历整个树形菜单数据
+  menu.forEach((item) => {
+    if (item.checked || item._checked) {
+      arr.push(item._id)
+    }
+    // 查询两个属性下面的节点信息，children -> children -> operations
+    properties.forEach((property) => {
+      if (item[property] && item[property].length > 0) {
+        arr.push(getPropertyIds(item[property], properties))
+      }
+    })
+  })
+  // [1,2,3 [2,3,4,[44,4,4]]]
+  return flatten(arr)
+}
+
+export const sortMenus = (tree) => {
+  tree = sortObj(tree, 'sort')
+  if (tree.children && tree.children.length > 0) {
+    tree.children = sortMenus(tree.children, 'sort')
+  }
+  if (tree.operations && tree.operations.length > 0) {
+    tree.operations = sortMenus(tree.operations, 'sort')
+  }
+  return tree
 }

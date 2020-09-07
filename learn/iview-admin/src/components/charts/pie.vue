@@ -12,7 +12,8 @@ export default {
   props: {
     value: Array,
     text: String,
-    subtext: String
+    subtext: String,
+    tipname: String
   },
   data () {
     return {
@@ -26,7 +27,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      const legend = this.value.map(_ => _.name)
+      const legend = this.value.map((_) => _.name)
       const option = {
         title: {
           text: this.text,
@@ -47,6 +48,8 @@ export default {
             type: 'pie',
             radius: '55%',
             center: ['50%', '60%'],
+            // 数据名，类目名
+            name: this.tipname,
             data: this.value,
             itemStyle: {
               emphasis: {

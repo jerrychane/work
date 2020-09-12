@@ -143,7 +143,7 @@ module.exports = webpackconfig
 ```
 
 ```
-# .babelrc
+//.babelrc
 {
     "presets": [
         [

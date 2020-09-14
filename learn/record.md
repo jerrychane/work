@@ -3285,6 +3285,10 @@ this.tableData = res.data
 
 ##### 4-3 菜单管理接口（CURD操作）
 
+在 mounted () 方法中可以添加 window.vue = this , 进行调试，获取页面中的数据；
+
+##### 4-4 获取&添加菜单接口对接（递归查询父节点）
+
 
 
 

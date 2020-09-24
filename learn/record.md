@@ -3307,3 +3307,14 @@ this.tableData = res.data
 
 ##### 5-5 角色权限操作互锁（非编辑状态判断）
 
+```js
+// 扁平化数组的方法
+const flatten = (arr) => {
+    while(arr.some((item)=> Array.isArray(item))) {
+        arr = [].concat(...arr)
+    }
+    return arr
+}
+```
+
+##### 5-7 角色权限接口开发&联调

@@ -3122,7 +3122,7 @@ export default [
 
 ```js
 getList({ page: 0, limit: 10 }).then((res) => {
-      // 方法一： -> 修改getList接口
+      // 方法一：修改getList接口
        const data = res.data
        data.forEach((item) => {
          if (item.status === 0) {
@@ -3141,7 +3141,7 @@ this.tableData = res.data
   key: 'user',
   width: 120,
   align: 'center',
-  // 方法二：使用 render 方法结构化数据
+ // 方法二：使用 render 方法结构化数据
   render: (h, params) => {
     return h('div', [h('span', params.row.uid.name)])
   }

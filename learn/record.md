@@ -2838,7 +2838,7 @@ npm i @babel/plugin-syntax-dynamic-import -D
 ```js
 // learn/vue-ssr/src/router.js
 export default new Router(
-  {
+ {
     mode: 'history',
     routes: [
       // ...
@@ -2847,7 +2847,7 @@ export default new Router(
         component: () => import(/* webpackChunkName:'hello' */'./components/Hello.vue')
       }
     ]
-  })
+ })
 ```
 
 ##### 2-9 数据预取和状态
@@ -3081,7 +3081,6 @@ const store = new Vuex.Store({
 ```js
 //  src/router/community.js
 import Main from '@/components/main'
-
 export default [
   // 菜单分三种情况
   //  链接式的跳转 -> doc
@@ -3336,4 +3335,6 @@ const flatten = (arr) => {
 #### 第1章 首页可视化&Echart导学
 
 ##### 1-2 Echarts基础&地图类型图表两种解决方案
+
+#### 第2章 首页统计
 

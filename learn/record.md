@@ -2999,7 +2999,6 @@ https://lison16.github.io/iview-admin-doc/#/
 ###### 目录结构
 
 ```text
-.
 ├── config  开发相关配置
 ├── public  打包所需静态资源
 └── src

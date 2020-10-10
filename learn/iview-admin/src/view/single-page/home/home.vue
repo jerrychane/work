@@ -7,19 +7,25 @@
         :lg="4"
         v-for="(infor, i) in inforCardData"
         :key="`infor-${i}`"
-        style="height: 120px;padding-bottom: 10px;"
+        style="height: 120px; padding-bottom: 10px"
       >
-        <infor-card shadow :color="infor.color" :icon="infor.icon" :icon-size="36" :key="timer1">
+        <infor-card
+          shadow
+          :color="infor.color"
+          :icon="infor.icon"
+          :icon-size="36"
+          :key="timer1"
+        >
           <count-to :end="infor.count" count-class="count-style" />
           <p>{{ infor.title }}</p>
         </infor-card>
       </i-col>
     </Row>
-    <Row :gutter="20" style="margin-top: 10px;">
-      <i-col :md="24" :lg="8" style="margin-bottom: 20px;">
+    <Row :gutter="20" style="margin-top: 10px">
+      <i-col :md="24" :lg="8" style="margin-bottom: 20px">
         <Card shadow>
           <chart-pie
-            style="height: 300px;"
+            style="height: 300px"
             :value="pieData"
             text="发帖统计"
             tipname="统计内容"
@@ -27,15 +33,20 @@
           ></chart-pie>
         </Card>
       </i-col>
-      <i-col :md="24" :lg="16" style="margin-bottom: 20px;">
+      <i-col :md="24" :lg="16" style="margin-bottom: 20px">
         <Card shadow>
-          <chart-bar style="height: 300px;" :value="barData" text="近6月的累计发帖" :key="timer3" />
+          <chart-bar
+            style="height: 300px"
+            :value="barData"
+            text="近6月的累计发帖"
+            :key="timer3"
+          />
         </Card>
       </i-col>
     </Row>
     <Row>
       <Card shadow>
-        <week-stat :key="timer4" :weekData="weekData" style="height: 310px;" />
+        <week-stat :key="timer4" :weekData="weekData" style="height: 310px" />
       </Card>
     </Row>
   </div>

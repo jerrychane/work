@@ -3343,3 +3343,16 @@ const flatten = (arr) => {
 
 ##### 2-2 首页顶部统计-周数据统计
 
+WeekDay add .weekday() API to get or set locale aware of the week.
+
+```js
+var weekday = require('dayjs/plugin/weekday')
+dayjs.extend(weekday)
+// when Monday is first day of the week
+dayjs().weekday(-7) // last Monday
+dayjs().weekday(7) // next Monday
+```
+
+##### 2-3 定制发帖统计功能（通用饼状组件）
+
+##### 2-4 近6月累计发帖统计（aggregate进阶）

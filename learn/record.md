@@ -3356,3 +3356,5 @@ dayjs().weekday(7) // next Monday
 ##### 2-3 定制发帖统计功能（通用饼状组件）
 
 ##### 2-4 近6月累计发帖统计（aggregate进阶）
+
+柱状组件横轴是 key 值， 纵轴是 value 值；

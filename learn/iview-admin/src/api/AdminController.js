@@ -12,6 +12,9 @@ class AdminController {
     inforCardData.push(userNewCount)
     // 2.左侧的饼图数据
     // 3.本周的右侧统计数据
+    // 3.1 计算6个月前的时间：1号 00:00:00
+    // 3.2 查询数据库中对应时间内的数据 $gte
+    // 3.3 group 组合 -> sum -> sort排序
     // 4.底部的数据
     ctx.body = {
       code: 200,

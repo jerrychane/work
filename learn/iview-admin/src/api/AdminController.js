@@ -15,6 +15,8 @@ class AdminController {
     // 3.1 计算6个月前的时间：1号 00:00:00
     // 3.2 查询数据库中对应时间内的数据 $gte
     // 3.3 group 组合 -> sum -> sort排序
+    const startMonth = moment('2019-10-01').subtract(6, 'M')
+    console.log('AdminController -> getStatus -> startMonth', startMonth)
     // 4.底部的数据
     ctx.body = {
       code: 200,

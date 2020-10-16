@@ -3400,3 +3400,32 @@ $ npm install koa-logger
 
 介绍一个库：koa-log4js，其实是在koa-log4js上做了一层封装，使用起来和koa-log4js 是一样；
 
+```js
+import log4js from 'koa-log4js'
+log4js.configure({
+	appenders:{
+      "type": "dateFile",
+      "filename": "logs/access.log",
+      "pattern": "-yyyy-MM-dd.log"
+    },
+    application:{
+      "type": "dateFile",
+      "filename": "logs/app.log",
+      "pattern": "-yyyy-MM-dd.log"
+    },
+    error:{
+      "type": "dateFile",
+      "filename": "logs/error.log",
+      "pattern": "-yyyy-MM-dd.log"
+    },
+    out:{type:'console'}
+},
+   categories:{
+    default: {"appenders": ["console","app"],"level": "all"} ,
+    access:{ "appenders": [ "errors"],"level": "error"},
+ })
+ export default log4js
+```
+
+##### 3-3 错误日志收集 koa 中间件开发（持久化方案-数据库保存）
+

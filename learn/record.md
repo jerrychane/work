@@ -3437,3 +3437,4 @@ log4js.configure({
 
 ##### 3-6 错误日志筛选查询（表格filterRemote）
 
+ViewUI: flters 过滤数组的选项，格式为数组，数组中每项包含 label 和 value 属性，使用过滤，必须同时配合使用 filterMethod。

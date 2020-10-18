@@ -3446,3 +3446,11 @@ ViewUI: flters 过滤数组的选项，格式为数组，数组中每项包含 l
 ##### 4-2 社区应用与后端联调（配置接口权限、优化登录细节）
 
 ##### 4-3 自动化流程回顾 + Jenkins 节点管理
+
+##### 4-4 项目部署准备（Dockerfile、生产环境 mongo & redis）
+
+```shell
+From node:12-alpine
+LABEL maintainer=brian@tomic.com
+```
+

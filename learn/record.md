@@ -3504,3 +3504,8 @@ CMD ["node","dist/server.bundle.js"]
 
 ##### 4-2 Mint 项目初始化（配置babel）
 
+```shell
+npm i mint-ui -S
+npm install babel-plugin-component -D
+```
+

@@ -3452,5 +3452,18 @@ ViewUI: flters 过滤数组的选项，格式为数组，数组中每项包含 l
 ```shell
 From node:12-alpine
 LABEL maintainer=brian@tomic.com
+# 创建一个工作目录
+WORKDIR /app
+COYP ..
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories && apk update
+RUN apk --no-cache add --virtual builds-deps build-base python alpine-sdk \
+ && npm install --no-progress --registry=https://registry.npm.taobao.org \
+ && npm run build \
+ && npm run build bcrypt --build-from-source \
+ && apk del builds-deps
+EXPOSE 12500
+VOLUME ["/app/public"]
+CMD ["node","dist/server.bundle.js"]
 ```
 
+##### 4-5 接口项目配置自动化任务（敏感信息、微信通知）

@@ -3521,3 +3521,5 @@ files.keys().forEach(key => {
 ```
 
 ##### 2-4  自定义 icon 组件（svg-sprite-loader 的 vue  webpack 配置）
+
+##### 2-5 自定义 header 组件（动态组件注册）

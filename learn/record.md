@@ -3500,13 +3500,24 @@ CMD ["node","dist/server.bundle.js"]
 
 #### 第2章 基础组件开发
 
-##### 4-1 Mint-ui介绍（熟悉组件名称、使用场景）
+##### 2-1 Mint-ui介绍（熟悉组件名称、使用场景）
 
-##### 4-2 Mint 项目初始化（配置babel）
+##### 2-2 Mint 项目初始化（配置babel）
 
 ```shell
 npm i mint-ui -S
 npm install babel-plugin-component -D
 ```
 
-##### 4-3 项目 state 分层级动态 module 加载（改造登录逻辑）
+##### 2-3 项目 state 分层级动态 module 加载（改造登录逻辑）
+
+```js
+const files = require.context('./modules',false,/\.js$/);
+const modules = {};
+// 动态加载 vuex
+files.keys().forEach(key => {
+    modules[key.replace(/(\.\/|\.js)/g,'')] = files(key).default
+})
+```
+
+##### 2-4  自定义 icon 组件（svg-sprite-loader 的 vue  webpack 配置）

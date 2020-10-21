@@ -3523,3 +3523,11 @@ files.keys().forEach(key => {
 ##### 2-4  自定义 icon 组件（svg-sprite-loader 的 vue  webpack 配置）
 
 ##### 2-5 自定义 header 组件（动态组件注册）
+
+##### 2-6 全局样式方案：Normalize 和 Reset
+
+```shell
+npm install --save normalize.css
+```
+
+##### 2-7 全局预处理样式 & 变量 sass-loader 配置

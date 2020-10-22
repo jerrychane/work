@@ -3565,3 +3565,16 @@ plugins:{
 
 ##### 3-4 自定义 Footer 组件
 
+##### 3-5 移动端适配底部 Footer 组件（mixin 方法扩展应用）
+
+```scss
+// @include resH-to(small-screens) {}
+@mixin resH-to($media) {
+    @if $media == small-greens {
+        @media only screen and (max-heihgt:$height-small) {
+            @content;
+        }
+    }
+}
+```
+

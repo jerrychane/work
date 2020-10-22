@@ -3537,3 +3537,29 @@ npm install --save normalize.css
 #### 第3章 常见问题解决方案（适配、上下拉加载）
 
 ##### 3-1 添加首页路由及页面 Tabs 
+
+##### 3-2 自定义搜索组件（移动端适配方案 postcss-px-to-viewport）
+
+```js
+plugins:{
+    'postcss-px-to-viewport':{
+          unitToConvert: 'px',
+          viewportWidth: 320,
+          unitPrecision: 5,
+          propList: ['*'],
+          viewportUnit: 'vw',
+          fontViewportUnit: 'vw',
+          selectorBlackList: [],
+          minPixelValue: 1,
+          mediaQuery: false,
+          replace: true,
+          exclude: [],
+          landscape: false,
+          landscapeUnit: 'vw',
+          landscapeWidth: 568
+    }
+}
+```
+
+##### 3-3 作业：iconfont 添加自定义去色的 svg 图片
+

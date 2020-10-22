@@ -1,12 +1,7 @@
-const INIT_WEBSOCKET = 'WS_INIT';
-const SET_SID = 'SET_SID';
-const SET_USER = 'SET_USER';
-const SET_ISLOGIN = 'SET_ISLOGIN';
-const SET_MSG = 'SET_MSG';
-export {
-  INIT_WEBSOCKET,
-  SET_SID,
-  SET_USER,
-  SET_ISLOGIN,
-  SET_MSG
-};
+export const INIT_WEBSOCKET = 'INIT_WEBSOCKET'
+export const SET_SID = 'SET_SID'
+export const SET_USER = 'SET_USER'
+export const SET_ISLOGIN = 'SET_ISLOGIN'
+export const SET_MSG = 'SET_MSG'
+export const SET_TOKEN = 'SET_TOKEN'
+export const SET_HIDE = 'SET_HIDE'

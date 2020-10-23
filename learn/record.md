@@ -3630,3 +3630,20 @@ document.body.addEventListener('touchmove', handler, { passive: false })
 ##### 2-2 移动端 HTML 的 Meta 标签配置
 
 ##### 2-3 移动端横竖屏兼容 CSS 方案
+
+CSS 样式中支持 orientation 的属性：
+
+```css
+@media (orientation:landscape) {
+    body {
+        flex-direction: row;
+    }
+}
+@media (orientation:portrait) {
+    body {
+        flex-direction: column;
+    }
+}
+```
+
+##### 2-4 移动端底部 Fixed 定位交互设计

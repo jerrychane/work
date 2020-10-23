@@ -3595,3 +3595,37 @@ plugins:{
 ##### 1-3 完成评论列表样式
 
 ##### 1-4 评论列表样式（无限滚动加载）
+
+#### 第2章 移动端适配解决方案
+
+##### 2-1 处理微信下拉黑边
+
+```js
+// src/utils/forbidScroll.js
+export const forbidScroll = (elem) => {
+  let flag = false
+
+  elem.addEventListener('touchstart', (evt) => {
+    if (elem.contains(evt.target)) {
+      flag = true
+    } else {
+      flag = false
+    }
+  }, false)
+  elem.addEventListener('touchmove', (evt) => {
+    evt.prop = flag
+  })
+}
+
+const handler = (evt) => {
+  if (evt.prop) {
+    evt.preventDefault()
+  }
+}
+
+document.body.removeEventListener('touchmove', handler, { passive: false })
+document.body.addEventListener('touchmove', handler, { passive: false })
+```
+
+##### 2-2 移动端 HTML 的 Meta 标签配置
+

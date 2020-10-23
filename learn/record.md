@@ -3629,3 +3629,4 @@ document.body.addEventListener('touchmove', handler, { passive: false })
 
 ##### 2-2 移动端 HTML 的 Meta 标签配置
 
+##### 2-3 移动端横竖屏兼容 CSS 方案

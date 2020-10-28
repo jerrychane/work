@@ -3698,3 +3698,21 @@ endtime = moment().add(1,'day').format("YYYY-MM-DD 00:00:00")
 ##### 4-8 如何理解 Vue 中的 Transition 过滤
 
 ##### 4-9 移动端路由切换动画设计
+
+##### 4-10 如何调试过渡效果&动画？transition 小结
+
+v-enter v-enter-active v-enter-to v-leave v-leave-active v-leave-to
+
+##### 4-11 热门模块组件化拆分
+
+##### 4-12 webapp自动化发布&打包优化(配置TerserWebpackPlugin)
+
+### 第20周 小程序基础与进阶
+
+#### 第1章 章导学
+
+##### 1-1 章导学
+
+##### 1-2 小程序起源与技术思考
+
+##### 1-3 重点内容介绍

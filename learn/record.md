@@ -3739,3 +3739,23 @@ v-enter v-enter-active v-enter-to v-leave v-leave-active v-leave-to
 ##### 3-1 小程序样式语言WXSS及两种预编译方案介绍
 
 ##### 3-2 小程序App&Page生命周期
+
+##### 3-3 WXML&WXSS语法简介
+
+##### 3-4 跨端框架横向对比(Wepy, mpvue, taro, uniapp)
+
+##### 3-5 mpvue项目初始化
+
+### 第21周 小程序首页/菜单定制/登录开发
+
+#### 第1章 mpvue集成第三方UI库
+
+##### 1-1 mpvue中webpack配置简介 
+
+##### 1-2 集成vant-weapp&配置mpvue支持sass
+
+#### 第2章 自定义首页tabBar&图标的三种方法
+
+##### 2-1 完成底部导航(方法一：app.json中的tabBar配置)
+
+##### 2-2 自定义con组件(让小程序支持svg图标)

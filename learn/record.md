@@ -3764,3 +3764,10 @@ v-enter v-enter-active v-enter-to v-leave v-leave-active v-leave-to
 
 ##### 2-4 图解 flex 布局
 
+横轴为 row ,  justify-content, 纵轴为 align-items;
+
+| justify-conent: start; <br />align-items: start | justify-conent: center;<br /> align-items: start | justify-conent:end ;<br />align-items: start |
+| ----------------------------------------------- | ------------------------------------------------ | -------------------------------------------- |
+| start center                                    | center center                                    | end center                                   |
+| start end                                       | center end                                       | end end                                      |
+

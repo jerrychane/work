@@ -3771,3 +3771,6 @@ v-enter v-enter-active v-enter-to v-leave v-leave-active v-leave-to
 | start center                                    | center center                                    | end center                                   |
 | start end                                       | center end                                       | end end                                      |
 
+##### 2-5 使用 van-tabbar & 自定义 van-icon
+
+##### 2-6 首页标签页 tabs 切换

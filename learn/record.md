@@ -3759,3 +3759,6 @@ v-enter v-enter-active v-enter-to v-leave v-leave-active v-leave-to
 ##### 2-1 完成底部导航(方法一：app.json中的tabBar配置)
 
 ##### 2-2 自定义con组件(让小程序支持svg图标)
+
+##### 2-3 自定义tabBar组件
+

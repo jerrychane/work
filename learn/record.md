@@ -3762,3 +3762,5 @@ v-enter v-enter-active v-enter-to v-leave v-leave-active v-leave-to
 
 ##### 2-3 自定义tabBar组件
 
+##### 2-4 图解 flex 布局
+

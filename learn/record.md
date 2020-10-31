@@ -3773,4 +3773,20 @@ v-enter v-enter-active v-enter-to v-leave v-leave-active v-leave-to
 
 ##### 2-5 使用 van-tabbar & 自定义 van-icon
 
-##### 2-6 首页标签页 tabs 切换
+#### 第3章 首页列表与搜索功能
+
+##### 3-1 首页标签页 tabs 切换
+
+##### 3-2 首页列表样式
+
+##### 3-3 首页自定义顶部导航-搜索框样式实现
+
+#### 第4章 封装request(Promise支持、重复取消、异常处理)
+
+##### 4-1 API 接口 Promise 化
+
+##### 4-2 Request 方法封装分析（如何取消请求）
+
+##### 4-3 wx.request封装为Promise方法(兼容原生) 
+
+##### 4-4 终止重复请求&优化 toast 显示

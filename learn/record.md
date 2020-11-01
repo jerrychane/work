@@ -3818,3 +3818,11 @@ v-enter v-enter-active v-enter-to v-leave v-leave-active v-leave-to
 ##### 2-2 文章详情之 HTML 解析 mpvue-wxParse 
 
 ##### 2-3 mpvue 中使用原生组件 & 自定义小程序组件
+
+##### 2-4 扩展知识：自定义mpvue高亮组件
+
+##### 2-5 代码高亮之自定义 wxParse 组件
+
+##### 2-6 评论列表接口对接&封装通用分页类 Paging
+
+##### 2-7 onReachBottom 事件 & 底部回复样式

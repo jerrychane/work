@@ -3832,5 +3832,19 @@ v-enter v-enter-active v-enter-to v-leave v-leave-active v-leave-to
 git checkout commitid -b newbranch
 ```
 
+##### 2-8 表情事件绑定&3种safeArea适配方案 
+
+手机刘海挡住文字的情况时，可以在 HTML 中添加 meta 属性 viewport-fit=cover, 即 `<meta name="viewport" content="width=device-width,viewport-fit=cover"` :
+
+```css
+.post {
+    padding:12px;
+    padding-left:env(safe-area-inset-left);
+    padding-left:env(safe-area-inset-left);
+    padding-right:const(safe-area-inset-right);
+    padding-right:const(safe-area-inset-right);
+}
+```
+
 
 

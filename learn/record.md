@@ -3826,3 +3826,11 @@ v-enter v-enter-active v-enter-to v-leave v-leave-active v-leave-to
 ##### 2-6 评论列表接口对接&封装通用分页类 Paging
 
 ##### 2-7 onReachBottom 事件 & 底部回复样式
+
+```shell
+# 切换某个提交记录到新分支上
+git checkout commitid -b newbranch
+```
+
+
+

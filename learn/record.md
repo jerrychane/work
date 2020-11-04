@@ -3885,3 +3885,45 @@ return this.findOne({openid:wxUserInfo.openid},{unionid:0,password:0,openid:0}).
 ##### 4-1 完成个人中心 & 用户数据对接
 
 ##### 4-2 个人中心跳转首页 & globalData 全局变量
+
+### 第23周 小程序编辑与发贴开发
+
+#### 第1章 导读
+
+##### 1-1 章导学
+
+- SSL 证书申请及Nginx配置
+- 小程序原生能力 —— 订阅消息开发
+- 小程序发布流程与提交记录
+
+常见的 cert 证书介绍：
+
+```html
+EV SSL 证书（Extended Validation SSL Certificate）
+OV SSL 证书（Organization Validation SSL Certificate）
+DV SSL 证书（Domain Validation SSL Certificate）- 不适合电商，简易型 SSL 证书
+```
+
+#### 第2章 HTTPS 加持 - SSL 证书申请 & 配置 Nginx
+
+##### 2-1 SSL 证书 & Nginx 配置介绍
+
+HTTPS 默认端口为 443；HTTP 默认端口是 80
+
+##### 2-2 使用 acme.sh 申请免费的 SSL 证书
+
+##### 2-3 docker-compose 配置 nginx
+
+（1）安装 docker,docker-compose ----> nginx
+
+（2）docker-compose -> nginx
+
+（3）创建一个 https docker 网络 -> gitlab , jenkins , etc
+
+（4）配置 nginx.conf, 创建 conf.d -> vhost.conf
+
+（5）安装 ssl 证书
+
+（6）docker-compose up -d 运行 nginx 容器 -> 测试 cron 定时任务脚本
+
+##### 2-4 场景一：静态站 nginx 配置 HTTPS 协议（A+安全评级）

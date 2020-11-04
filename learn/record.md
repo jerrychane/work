@@ -3863,3 +3863,25 @@ auth.code2Session 登录凭证校验。通过 wx.login 接口获得临时登录�
 ##### 3-6 用户信息校验
 
 ##### 3-7 后台登录接口开发&调试
+
+```js
+findOrCreatedByOpenData:function (wxUserInfo) {
+return this.findOne({openid:wxUserInfo.openid},{unionid:0,password:0,openid:0}).then((user) => {
+        return user || this.create({
+            openid:wxUserInfo.openid,
+            unionid:wxUserInfo.unionid,
+            username:getTempName(),//随机产生一个账号
+            name:wxUserInfo.nickName,
+            gender:wxUserInfo.gender,
+            pic:wxUserInfo.avatarUrl,
+			location:wxUserInfo.city
+        })
+    })
+}
+```
+
+#### 第4章 个人中心
+
+##### 4-1 完成个人中心 & 用户数据对接
+
+##### 4-2 个人中心跳转首页 & globalData 全局变量

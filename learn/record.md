@@ -3960,3 +3960,14 @@ accessToken 一般会存放在 redis 缓存中，更新 redis 缓存中的 cooki
 ##### 4-4 内容安全：图片内容安全微信小程序接口对接
 
 ##### 4-5 小程序图片上传接口 wx.uploadFile 封装 & 接口联调
+
+（1）准备图片的 form-data;
+
+（2）处理图片 - 要检测的图片文件，格式支持PNG、JPG、GIF，图片尺寸不超过 750px *  1334px; 
+
+```shell
+npm i images -S
+# 推荐使用 sharp
+npm i install sharp
+```
+

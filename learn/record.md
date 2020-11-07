@@ -3989,3 +3989,90 @@ const data = await img.resize(750,1334,{
 #### 第1章 周导学
 
 ##### 1-1 周导学
+
+#### 第2章 扩展内容
+
+##### 2-1 Linux 中分区扩展
+
+##### 2-2 如何更新 Jenkins & 加速插件下载
+
+##### 2-3 Jenkins 任务构建通知
+
+##### 2-4 更简单上手的 HTTPS 服务 Caddy 简介
+
+```shell
+cp ./caddy /usr/local/bin/
+chmod +x /usr/local/bin/caddy
+caddy -host www.example.com
+```
+
+##### 2-5 Caddy Version 2  上手 Cloudflare DNS 配置 HTTPS
+
+##### 2-6 如何访问谷歌服务（推荐自建）
+
+##### 2-7 学生相关的资源
+
+#### 第3章 课程展望
+
+##### 3-1 前端人的窘境
+
+##### 3-2 课程展望
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

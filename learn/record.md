@@ -3959,8 +3959,6 @@ accessToken 一般会存放在 redis 缓存中，更新 redis 缓存中的 cooki
 
 ##### 4-4 内容安全：图片内容安全微信小程序接口对接
 
-##### 4-5 小程序图片上传接口 wx.uploadFile 封装 & 接口联调
-
 （1）准备图片的 form-data;
 
 （2）处理图片 - 要检测的图片文件，格式支持PNG、JPG、GIF，图片尺寸不超过 750px *  1334px; 
@@ -3971,3 +3969,23 @@ npm i images -S
 npm i install sharp
 ```
 
+```js
+const img = sharp(file.path);
+const data = await img.resize(750,1334,{
+    fit:'inside'
+}).toFile('output.jpg')
+```
+
+##### 4-5 小程序图片上传接口 wx.uploadFile 封装 & 接口联调
+
+#### 第5章 打包优化
+
+##### 5-1 打包优化
+
+##### 5-2 mpvue 小程序分包
+
+### 第24周 项目部署、运维与展望
+
+#### 第1章 周导学
+
+##### 1-1 周导学

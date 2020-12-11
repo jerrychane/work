@@ -15,13 +15,19 @@ export default {
       userList: []
     }
   },
-  created () {
-    axios.get('http://jsonplaceholder.typicode.com/users').then(res => {
-      console.log(res)
-      this.userList = res.data
-    }).catch(err => {
-      console.log(err)
-    })
+  // created () {
+  //   axios.get('http://jsonplaceholder.typicode.com/users').then(res => {
+  //     console.log(res)
+  //     this.userList = res.data
+  //   }).catch(err => {
+  //     console.log(err)
+  //   })
+  // }
+  async created () {
+    const res = await axios.get('http://jsonplaceholder.typicode.com/users')
+    console.log(res)
+    const { data } = res
+    this.userList = data
   }
 }
 </script>
@@ -29,5 +35,6 @@ export default {
 <style>
 li {
   list-style: none;
+  line-height: 26px;
 }
 </style>

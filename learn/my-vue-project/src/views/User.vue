@@ -24,9 +24,9 @@ export default {
   //   })
   // }
   async created () {
-    const res = await axios.get('http://jsonplaceholder.typicode.com/users')
-    console.log(res)
-    const { data } = res
+    const { data } = await axios.get('http://jsonplaceholder.typicode.com/users')
+    console.log(data)
+    // const { data } = res
     this.userList = data
   }
 }

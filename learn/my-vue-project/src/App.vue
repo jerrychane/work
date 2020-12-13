@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">用户列表</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/upload">图片上传</router-link>
     </div>
     <router-view/>
   </div>

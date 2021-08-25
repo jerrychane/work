@@ -1,5 +1,3 @@
-#### 内容结构
-
 第1章 JavaScript 简介：讲述 JavaScript 基础知识 + 搭建运行代码的开发环境。
 
 第2章 ECMAScript 和 TypeScript 概述，介绍 ES6 的新功能以及 TypeScript 的基本功能。

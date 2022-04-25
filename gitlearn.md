@@ -50,7 +50,7 @@ Git跟踪并管理的是**修改**，而非文件。每次修改，如果不用g
 `git reset HEAD <file>` 可以把暂存区的修改撤销掉(unstage),重新放回工作区。<br>
 总结：<br>
 (1)场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令
- 
+
     git checkout -- file
 (2)场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，<br>第一步用命令`git reset HEAD <file>`，就回到了场景1，
 <br>第二步按场景1操作；<br>
@@ -76,9 +76,9 @@ Git跟踪并管理的是**修改**，而非文件。每次修改，如果不用g
 当你第一次使用Git的clone或push命令连接Github时，会得到一个警告，这是因为Git使用SSH连接，而SSH连接在第一次验证GitHub服务器的key时，需要你确认GitHub的key的指纹信息是否真的来自GitHub的服务器，输入**yes**即可。<br>
 
     git pull --rebase origin master(合并Github中README.md文件到本地代码目录中)
-
+    
     git push -u origin master(第一次把本地所有内容推送到远程库上)
-
+    
     git push orgin master(将本地master最新修改推送至GitHub)
 
 **3.2 从远程库克隆**<br>
@@ -191,7 +191,6 @@ Git的标签是版本库的快照，指向某个commit指针(与分支的区别�
 强制添加被.gitignore忽略的文件 `git add -f filename` <br>
 检查.gitignore文件的错误 `git check-ignore -v filename`
 
-<<<<<<< HEAD
 **6.2 配置别名** <br>
 =======
 
